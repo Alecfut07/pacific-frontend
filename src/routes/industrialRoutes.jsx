@@ -1,9 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
 // import IndustrialInventoryPage from "../pages/IndustrialInventoryPage";
 
-export const industrialRoutes = createBrowserRouter([
+export const industrialRoutes = [
   {
     path: "/industrial-inventory",
     // element: <IndustrialInventoryPage />,
   },
-]);
+];
