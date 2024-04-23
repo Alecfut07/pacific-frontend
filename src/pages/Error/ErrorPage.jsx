@@ -1,24 +1,22 @@
 import { useRouteError } from "react-router-dom";
-import { Typography, Container } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 
 function ErrorPage() {
   const error = useRouteError();
   console.log(error);
 
   return (
-    <Container>
-      <div className="flex flex-col items-center justify-center h-screen">
-        <Typography color="red" size="xl">
-          Oops!
-        </Typography>
-        <Typography color="gray" size="lg">
-          Lo sentimos, ha ocurrido un error inesperado.
-        </Typography>
-        <Typography color="gray">
-          <i>{error.statusText || error.message}</i>
-        </Typography>
-      </div>
-    </Container>
+    <div className="flex h-screen flex-col items-center justify-center">
+      <Typography color="red" variant="h1" className="mb-10">
+        Oops!
+      </Typography>
+      <Typography variant="h3" className="mb-10">
+        Lo sentimos, ha ocurrido un error inesperado.
+      </Typography>
+      <Typography color="gray">
+        <i>Error: {error.statusText || error.message}</i>
+      </Typography>
+    </div>
   );
 }
 
