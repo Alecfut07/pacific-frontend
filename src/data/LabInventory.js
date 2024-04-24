@@ -21,6 +21,13 @@ import { MicroscopioFluorescenciaImages } from "../images/LabInventory/Products/
 import { PlacaCalefactoraImages } from "../images/LabInventory/Products/PlacaCalefactora/PlacaCalefactora";
 import { PhmetroImages } from "../images/LabInventory/Products/Phmetro/Phmetro";
 import { CabinaPCRImages } from "../images/LabInventory/Products/CabinaPCR/CabinaPCR";
+import { MicroscopioContrasteFasesImages } from "../images/LabInventory/Products/MicroscopioContrasteFases/MicroscopioContrasteFases";
+import { BathAgitacionImages } from "../images/LabInventory/Products/BathAgitacion/BathAgitacion";
+import { BathUltraSonicoImages } from "../images/LabInventory/Products/BathUltraSonico/BathUltraSonico";
+import { MicroscopioCampoOscuroImages } from "../images/LabInventory/Products/MicroscopioCampoOsucro/MicroscopioCampoOscuro";
+import { CentrifugaAltaCapacidadImages } from "../images/LabInventory/Products/CentrifugaAltaCapacidad/CentrifugaAltaCapacidad";
+import { CamaraPCRImages } from "../images/LabInventory/Products/CamaraPCR/CamaraPCR";
+import { AnalizadorEspectroImages } from "../images/LabInventory/Products/AnalizadorEspectro/AnalizadorEspectro";
 
 export const TABLE_HEAD = [
   "Producto",
@@ -232,7 +239,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 24,
-    images: "",
+    images: [...MicroscopioContrasteFasesImages],
     product: "Microscopio de contraste de fases",
     description:
       "Microscopio para observar detalles de muestras transparentes.",
@@ -241,7 +248,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 25,
-    images: "",
+    images: [...BathAgitacionImages],
     product: "Bañomaría de agitación",
     description:
       "Baño María con función de agitación para mezclar muestras homogéneamente.",
@@ -250,7 +257,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 26,
-    images: "",
+    images: [...BathUltraSonicoImages],
     product: "Baño ultrasónico",
     description:
       "Equipo para la limpieza de instrumentos de laboratorio mediante ultrasonidos.",
@@ -259,7 +266,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 27,
-    images: "",
+    images: [...MicroscopioCampoOscuroImages],
     product: "Microscopio de campo oscuro",
     description:
       "Ideal para observar organismos transparentes que no pueden ser vistos con un microscopio convencional.",
@@ -268,7 +275,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 28,
-    images: "",
+    images: [...CentrifugaAltaCapacidadImages],
     product: "Centrífuga de alta capacidad",
     description:
       "Perfecta para procesar grandes volúmenes de muestras biológicas en poco tiempo.",
@@ -277,7 +284,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 29,
-    images: "",
+    images: [...CamaraPCRImages],
     product: "Cámara de PCR en tiempo real",
     description:
       "Para la detección y cuantificación precisa del ADN amplificado durante la PCR en tiempo real.",
@@ -286,7 +293,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 30,
-    images: "",
+    images: [...AnalizadorEspectroImages],
     product: "Analizador de espectro UV-Vis",
     description:
       "Utilizado para determinar la concentración de compuestos químicos en solución mediante la absorción de luz ultravioleta-visible.",
