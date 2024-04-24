@@ -11,10 +11,14 @@ import {
   Tooltip,
   Typography,
 } from "@material-tailwind/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import {
+  MagnifyingGlassIcon,
+  ShoppingCartIcon,
+} from "@heroicons/react/24/outline";
 import { TABLE_HEAD, TABLE_ROWS } from "../../data/LabInventory";
 
 function Table() {
+  console.log(TABLE_ROWS);
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -54,7 +58,75 @@ function Table() {
               ))}
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {TABLE_ROWS.map((data, index) => {
+              const isLast = index === TABLE_ROWS.length - 1;
+              const classes = isLast
+                ? "p-4"
+                : "p-4 border-b border-blue-gray-50";
+              return (
+                <tr key={data.id}>
+                  <td className={classes}>
+                    <div className="flex items-center gap-3">
+                      <Avatar
+                        src={data.images[0]}
+                        alt={data.product}
+                        size="md"
+                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                      />
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-bold"
+                      >
+                        {data.product}
+                      </Typography>
+                    </div>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {data.description}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      ${data.price} MXN
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <div className="w-max">
+                      <Chip
+                        size="sm"
+                        variant="ghost"
+                        value={data.status}
+                        color={
+                          data.status === "disponible"
+                            ? "green"
+                            : data.status === "no disponible"
+                              ? "red"
+                              : "amber"
+                        }
+                      />
+                    </div>
+                  </td>
+                  <td className={classes}>
+                    <input type="" value={0} className="mr-10 w-10" />
+                    <Button color="blue">
+                      <ShoppingCartIcon className="h-5 w-5" />
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </CardBody>
     </Card>
