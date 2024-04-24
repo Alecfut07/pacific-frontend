@@ -14,6 +14,13 @@ import { MicroscopioElectronicoImages } from "../images/LabInventory/Products/Mi
 import { CamaraCultivoImages } from "../images/LabInventory/Products/CamaraCultivo/CamaraCultivo";
 import { LiofilizadoraImages } from "../images/LabInventory/Products/Liofilizadora/Liofilizadora";
 import { MicrocentrifugaRefrigeradaImages } from "../images/LabInventory/Products/MicrocentrifugaRefrigerada/MicrocentrifugaRefrigerada";
+import { HornoSecadoImages } from "../images/LabInventory/Products/HornoSecado/HornoSecado";
+import { TermometroDigitalImages } from "../images/LabInventory/Products/TermometroDigital/TermometroDigital";
+import { IncubadoraImages } from "../images/LabInventory/Products/Incubadora/Incubadora";
+import { MicroscopioFluorescenciaImages } from "../images/LabInventory/Products/MicroscopioFluorescencia/MicroscopioFluorescencia";
+import { PlacaCalefactoraImages } from "../images/LabInventory/Products/PlacaCalefactora/PlacaCalefactora";
+import { PhmetroImages } from "../images/LabInventory/Products/Phmetro/Phmetro";
+import { CabinaPCRImages } from "../images/LabInventory/Products/CabinaPCR/CabinaPCR";
 
 export const TABLE_HEAD = [
   "Producto",
@@ -165,7 +172,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 17,
-    images: "",
+    images: [...HornoSecadoImages],
     product: "Horno de secado",
     description: "Equipo para secar muestras a temperaturas controladas.",
     price: "6,000",
@@ -173,7 +180,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 18,
-    images: "",
+    images: [...TermometroDigitalImages],
     product: "Termómetro digital",
     description: "Instrumento de medición de temperatura con pantalla LCD.",
     price: "500",
@@ -181,7 +188,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 19,
-    images: "",
+    images: [...IncubadoraImages],
     product: "Incubadora",
     description: "Equipo para el cultivo y mantenimiento de microorganismos.",
     price: "7,800",
@@ -189,7 +196,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 20,
-    images: "",
+    images: [...MicroscopioFluorescenciaImages],
     product: "Microscopio de fluorescencia",
     description:
       "Microscopio especializado para observar fluorescencia en muestras biológicas.",
@@ -198,7 +205,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 21,
-    images: "",
+    images: [...PlacaCalefactoraImages],
     product: "Placa calefactora",
     description:
       "Superficie de calentamiento para calentar matraces y recipientes en el laboratorio.",
@@ -207,7 +214,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 22,
-    images: "",
+    images: [...PhmetroImages],
     product: "Phmetro",
     description:
       "Medidor de pH para la determinación precisa del pH de soluciones.",
@@ -216,7 +223,7 @@ export const TABLE_ROWS = [
   },
   {
     id: 23,
-    images: "",
+    images: [...CabinaPCRImages],
     product: "Cabina de PCR",
     description:
       "Cabina para realizar PCR con condiciones de esterilidad y seguridad.",
