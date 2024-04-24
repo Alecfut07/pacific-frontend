@@ -31,7 +31,7 @@ import { AnalizadorEspectroImages } from "../images/LabInventory/Products/Analiz
 
 export const TABLE_HEAD = [
   "Producto",
-  "Descripcion",
+  "Descripción",
   "Precio",
   "Estado",
   "Agregar al carrito",

@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider>
       <CustomNavbar />
       <RouterProvider router={router} />
-      <CustomFooter />
+      {/* <CustomFooter /> */}
     </ThemeProvider>
   </React.StrictMode>,
 );
