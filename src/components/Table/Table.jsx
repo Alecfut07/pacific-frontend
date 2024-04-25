@@ -168,7 +168,7 @@ function Table() {
                         src={product.images[0]}
                         alt={product.images[0]}
                         size="md"
-                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
                         onClick={() => openModal(product.images[0])}
                       />
                       <Typography
