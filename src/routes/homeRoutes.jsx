@@ -1,11 +1,11 @@
-// import HomePage from "../pages/Home/HomePage";
-import LabInventoryPage from "../pages/Lab/LabInventoryPage/LabInventoryPage";
+import HomePage from "../pages/Home/HomePage";
+// import LabInventoryPage from "../pages/Lab/LabInventoryPage/LabInventoryPage";
 import ErrorPage from "../pages/Error/ErrorPage";
 
 export const homeRoutes = [
   {
     path: "/",
-    element: <LabInventoryPage />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
   },
 ];
