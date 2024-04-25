@@ -81,11 +81,6 @@ function Table() {
     return filteredData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, selectedEntries, tableData, filterFunction]);
 
-  // const navigate = useNavigate();
-
-  // const navigateToLavInventory = () => navigate("/lab-inventory");
-  // const navigateToIndustrialInventory = () => navigate("/industrial-inventory");
-
   return (
     <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -98,13 +93,6 @@ function Table() {
             >
               Inventario de laboratorio
             </Typography>
-            {/* <Switch
-              onChange={(checked) =>
-                checked
-                  ? navigateToIndustrialInventory()
-                  : navigateToLavInventory()
-              }
-            /> */}
             <div className="flex items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Mostrar entradas:&nbsp;
@@ -174,7 +162,7 @@ function Table() {
                       <Typography
                         variant="small"
                         color="blue-gray"
-                        className="font-bold"
+                        className="font-bold hover:border-b hover:border-blue-500"
                       >
                         {product.name}
                       </Typography>
