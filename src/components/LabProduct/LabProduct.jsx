@@ -16,20 +16,20 @@ function LabProduct({ product, openModal }) {
 
   return (
     <div
-      className={`relative flex flex-col border-b border-l border-r border-t border-gray-300`}
+      className={`relative mx-auto flex flex-col border-b border-l border-r border-t border-gray-300`}
     >
       <img
-        className="h-40 w-40 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
+        className="mx-auto h-40 w-40 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
         src={product.images[0]}
         alt="gallery-photo"
         onClick={() => openModal(product.images)}
       />
-      <div className="flex flex-grow flex-col justify-between bg-white p-2">
+      <div className="mx-auto flex flex-grow flex-col justify-between bg-white p-2">
         <p className="text-lg font-bold">{product.name}</p>
         <p className="text-sm">{product.description}</p>
         <p className="text-base font-bold">${product.price} MXN</p>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="mx-auto flex items-center justify-between">
         <ButtonGroup className="mb-3 flex items-center">
           <Button
             className="rounded-l"
@@ -46,7 +46,7 @@ function LabProduct({ product, openModal }) {
           </Button>
         </ButtonGroup>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="mx-auto flex items-center justify-between">
         <Button color="blue" className="flex items-center">
           Agregarlo al carrito
           <ShoppingCartIcon className="ml-2 h-5 w-5" />
