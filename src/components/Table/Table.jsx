@@ -22,10 +22,12 @@ import { TABLE_HEAD, TABLE_ROWS } from "../../data/LabInventory";
 
 function Table() {
   const [searchProduct, setSearchProduct] = useState("");
+  const [tableData, setTableData] = useState(TABLE_ROWS);
+  const [fullData, setFullData] = useState(TABLE_ROWS);
   const [selectedEntries, setSelectedEntries] = useState(10);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(TABLE_ROWS.length / selectedEntries);
+  const totalPages = Math.ceil(tableData.length / selectedEntries);
   const numberOfPages = [];
 
   for (let page = 1; page <= totalPages; page++) {
@@ -39,7 +41,7 @@ function Table() {
   const handleLastPage = () => setCurrentPage(totalPages);
 
   const handleSelectionChange = (e) => {
-    setSelectedEntries(1);
+    setSelectedEntries(e.target.value);
     setCurrentPage(1);
   };
 
@@ -47,7 +49,7 @@ function Table() {
     (data) => {
       return data.filter(
         (item) =>
-          item.product.toLowerCase().includes(searchProduct.toLowerCase()) ||
+          item.name.toLowerCase().includes(searchProduct.toLowerCase()) ||
           item.description.toLowerCase().includes(searchProduct.toLowerCase()),
       );
     },
@@ -55,13 +57,13 @@ function Table() {
   );
 
   const currentTableData = useMemo(() => {
-    const filteredData = filterFunction(TABLE_ROWS);
+    const filteredData = filterFunction(tableData);
 
     const firstPageIndex = (currentPage - 1) * selectedEntries;
     const lastPageIndex = firstPageIndex + selectedEntries;
 
     return filteredData.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, selectedEntries, TABLE_ROWS, filterFunction]);
+  }, [currentPage, selectedEntries, tableData, filterFunction]);
 
   return (
     <Card className="h-full w-full">
@@ -125,18 +127,18 @@ function Table() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map((data, index) => {
-              const isLast = index === TABLE_ROWS.length - 1;
+            {currentTableData.map((product, index) => {
+              const isLast = index === fullData.length - 1;
               const classes = isLast
                 ? "p-4"
                 : "p-4 border-b border-blue-gray-50";
               return (
-                <tr key={data.id}>
+                <tr key={product.id}>
                   <td className={classes}>
                     <div className="flex items-center gap-3">
                       <Avatar
-                        src={data.images[0]}
-                        alt={data.product}
+                        src={product.images[0]}
+                        alt={product.images[0]}
                         size="md"
                         className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
                       />
@@ -145,7 +147,7 @@ function Table() {
                         color="blue-gray"
                         className="font-bold"
                       >
-                        {data.product}
+                        {product.name}
                       </Typography>
                     </div>
                   </td>
@@ -155,7 +157,7 @@ function Table() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {data.description}
+                      {product.description}
                     </Typography>
                   </td>
                   <td className={classes}>
@@ -164,7 +166,7 @@ function Table() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      ${data.price} MXN
+                      ${product.price} MXN
                     </Typography>
                   </td>
                   <td className={classes}>
@@ -172,11 +174,11 @@ function Table() {
                       <Chip
                         size="sm"
                         variant="ghost"
-                        value={data.status}
+                        value={product.status}
                         color={
-                          data.status === "disponible"
+                          product.status === "disponible"
                             ? "green"
-                            : data.status === "no disponible"
+                            : product.status === "no disponible"
                               ? "red"
                               : "amber"
                         }

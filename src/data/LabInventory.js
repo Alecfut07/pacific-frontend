@@ -41,7 +41,7 @@ export const TABLE_ROWS = [
   {
     id: 1,
     images: [...MicroscopioOpticoImages],
-    product: "Microscopio óptico",
+    name: "Microscopio óptico",
     description: "Microscopio de alta calidad con aumento de hasta 1000x",
     price: "5,000",
     status: "disponible",
@@ -49,7 +49,7 @@ export const TABLE_ROWS = [
   {
     id: 2,
     images: [...BalanzaAnaliticaImages],
-    product: "Balanza analítica",
+    name: "Balanza analítica",
     description: "Precisa y sensible balanza para mediciones de laboratorio.",
     price: "8,500",
     status: "no disponible",
@@ -57,7 +57,7 @@ export const TABLE_ROWS = [
   {
     id: 3,
     images: [...AgitadorMagneticoImages],
-    product: "Agitador magnético",
+    name: "Agitador magnético",
     description: "Equipo para agitar líquidos en recipientes de laboratorio.",
     price: "2,200",
     status: "disponible",
@@ -65,7 +65,7 @@ export const TABLE_ROWS = [
   {
     id: 4,
     images: [...CentrifugaMesaImages],
-    product: "Centrífuga de mesa",
+    name: "Centrífuga de mesa",
     description: "Centrífuga compacta para separación de muestras biológicas.",
     price: "7,000",
     status: "disponible",
@@ -73,7 +73,7 @@ export const TABLE_ROWS = [
   {
     id: 5,
     images: [...AutoClaveImages],
-    product: "Autoclave",
+    name: "Autoclave",
     description:
       "Esterilizador a vapor para equipos y materiales de laboratorio.",
     price: "15,000",
@@ -82,7 +82,7 @@ export const TABLE_ROWS = [
   {
     id: 6,
     images: [...EspectrofotometroImages],
-    product: "Espectrofotómetro",
+    name: "Espectrofotómetro",
     description:
       "Instrumento para medir la absorbancia y transmitancia de muestras líquidas.",
     price: "12,500",
@@ -91,7 +91,7 @@ export const TABLE_ROWS = [
   {
     id: 7,
     images: [...TermocicladorPCRImages],
-    product: "Termociclador PCR",
+    name: "Termociclador PCR",
     description:
       "Equipo para realizar la reacción en cadena de la polimerasa (PCR).",
     price: "20,000",
@@ -100,7 +100,7 @@ export const TABLE_ROWS = [
   {
     id: 8,
     images: [...MicropipetaImages],
-    product: "Micropipeta",
+    name: "Micropipeta",
     description:
       "Instrumento de precisión para medir volúmenes pequeños de líquidos.",
     price: "1,500",
@@ -109,7 +109,7 @@ export const TABLE_ROWS = [
   {
     id: 9,
     images: [...BathMariaImages],
-    product: "Baño María",
+    name: "Baño María",
     description:
       "Equipo para calentar y mantener la temperatura de muestras líquidas.",
     price: "3,500",
@@ -118,7 +118,7 @@ export const TABLE_ROWS = [
   {
     id: 10,
     images: [...MicrocentrifugaImages],
-    product: "Microcentrífuga",
+    name: "Microcentrífuga",
     description:
       "Centrífuga de alta velocidad para pequeñas muestras biológicas.",
     price: "6,500",
@@ -127,7 +127,7 @@ export const TABLE_ROWS = [
   {
     id: 11,
     images: [...CampanaExtraccionImages],
-    product: "Campana de extracción",
+    name: "Campana de extracción",
     description:
       "Sistema para proteger al usuario de vapores y gases tóxicos en el laboratorio.",
     price: "9,000",
@@ -136,7 +136,7 @@ export const TABLE_ROWS = [
   {
     id: 12,
     images: [...DestiladorAguaImages],
-    product: "Destilador de agua",
+    name: "Destilador de agua",
     description: "Equipo para obtener agua destilada de alta pureza.",
     price: "4,800",
     status: "disponible",
@@ -144,7 +144,7 @@ export const TABLE_ROWS = [
   {
     id: 13,
     images: [...MicroscopioElectronicoImages],
-    product: "Microscopio electrónico",
+    name: "Microscopio electrónico",
     description:
       "Microscopio de alta resolución para observar estructuras a nivel celular.",
     price: "50,000",
@@ -153,7 +153,7 @@ export const TABLE_ROWS = [
   {
     id: 14,
     images: [...CamaraCultivoImages],
-    product: "Cámara de cultivo",
+    name: "Cámara de cultivo",
     description:
       "Recipiente para el crecimiento y mantenimiento de cultivos celulares.",
     price: "3,200",
@@ -162,7 +162,7 @@ export const TABLE_ROWS = [
   {
     id: 15,
     images: [...LiofilizadoraImages],
-    product: "Liofilizadora",
+    name: "Liofilizadora",
     description:
       "Equipo para la deshidratación de muestras biológicas mediante sublimación.",
     price: "25,000",
@@ -171,7 +171,7 @@ export const TABLE_ROWS = [
   {
     id: 16,
     images: [...MicrocentrifugaRefrigeradaImages],
-    product: "Microcentrífuga refrigerada",
+    name: "Microcentrífuga refrigerada",
     description:
       "Centrífuga con control de temperatura para muestras sensibles.",
     price: "8,700",
@@ -180,7 +180,7 @@ export const TABLE_ROWS = [
   {
     id: 17,
     images: [...HornoSecadoImages],
-    product: "Horno de secado",
+    name: "Horno de secado",
     description: "Equipo para secar muestras a temperaturas controladas.",
     price: "6,000",
     status: "disponible",
@@ -188,7 +188,7 @@ export const TABLE_ROWS = [
   {
     id: 18,
     images: [...TermometroDigitalImages],
-    product: "Termómetro digital",
+    name: "Termómetro digital",
     description: "Instrumento de medición de temperatura con pantalla LCD.",
     price: "500",
     status: "disponible",
@@ -196,7 +196,7 @@ export const TABLE_ROWS = [
   {
     id: 19,
     images: [...IncubadoraImages],
-    product: "Incubadora",
+    name: "Incubadora",
     description: "Equipo para el cultivo y mantenimiento de microorganismos.",
     price: "7,800",
     status: "disponible",
@@ -204,7 +204,7 @@ export const TABLE_ROWS = [
   {
     id: 20,
     images: [...MicroscopioFluorescenciaImages],
-    product: "Microscopio de fluorescencia",
+    name: "Microscopio de fluorescencia",
     description:
       "Microscopio especializado para observar fluorescencia en muestras biológicas.",
     price: "18,000",
@@ -213,7 +213,7 @@ export const TABLE_ROWS = [
   {
     id: 21,
     images: [...PlacaCalefactoraImages],
-    product: "Placa calefactora",
+    name: "Placa calefactora",
     description:
       "Superficie de calentamiento para calentar matraces y recipientes en el laboratorio.",
     price: "1,200",
@@ -222,7 +222,7 @@ export const TABLE_ROWS = [
   {
     id: 22,
     images: [...PhmetroImages],
-    product: "Phmetro",
+    name: "Phmetro",
     description:
       "Medidor de pH para la determinación precisa del pH de soluciones.",
     price: "2,300",
@@ -231,7 +231,7 @@ export const TABLE_ROWS = [
   {
     id: 23,
     images: [...CabinaPCRImages],
-    product: "Cabina de PCR",
+    name: "Cabina de PCR",
     description:
       "Cabina para realizar PCR con condiciones de esterilidad y seguridad.",
     price: "12,000",
@@ -240,7 +240,7 @@ export const TABLE_ROWS = [
   {
     id: 24,
     images: [...MicroscopioContrasteFasesImages],
-    product: "Microscopio de contraste de fases",
+    name: "Microscopio de contraste de fases",
     description:
       "Microscopio para observar detalles de muestras transparentes.",
     price: "15,500",
@@ -249,7 +249,7 @@ export const TABLE_ROWS = [
   {
     id: 25,
     images: [...BathAgitacionImages],
-    product: "Bañomaría de agitación",
+    name: "Bañomaría de agitación",
     description:
       "Baño María con función de agitación para mezclar muestras homogéneamente.",
     price: "4,500",
@@ -258,7 +258,7 @@ export const TABLE_ROWS = [
   {
     id: 26,
     images: [...BathUltraSonicoImages],
-    product: "Baño ultrasónico",
+    name: "Baño ultrasónico",
     description:
       "Equipo para la limpieza de instrumentos de laboratorio mediante ultrasonidos.",
     price: "3,000",
@@ -267,7 +267,7 @@ export const TABLE_ROWS = [
   {
     id: 27,
     images: [...MicroscopioCampoOscuroImages],
-    product: "Microscopio de campo oscuro",
+    name: "Microscopio de campo oscuro",
     description:
       "Ideal para observar organismos transparentes que no pueden ser vistos con un microscopio convencional.",
     price: "1,500",
@@ -276,7 +276,7 @@ export const TABLE_ROWS = [
   {
     id: 28,
     images: [...CentrifugaAltaCapacidadImages],
-    product: "Centrífuga de alta capacidad",
+    name: "Centrífuga de alta capacidad",
     description:
       "Perfecta para procesar grandes volúmenes de muestras biológicas en poco tiempo.",
     price: "3,000",
@@ -285,7 +285,7 @@ export const TABLE_ROWS = [
   {
     id: 29,
     images: [...CamaraPCRImages],
-    product: "Cámara de PCR en tiempo real",
+    name: "Cámara de PCR en tiempo real",
     description:
       "Para la detección y cuantificación precisa del ADN amplificado durante la PCR en tiempo real.",
     price: "45,000",
@@ -294,7 +294,7 @@ export const TABLE_ROWS = [
   {
     id: 30,
     images: [...AnalizadorEspectroImages],
-    product: "Analizador de espectro UV-Vis",
+    name: "Analizador de espectro UV-Vis",
     description:
       "Utilizado para determinar la concentración de compuestos químicos en solución mediante la absorción de luz ultravioleta-visible.",
     price: "13,50",
