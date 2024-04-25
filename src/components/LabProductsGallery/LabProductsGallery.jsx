@@ -1,12 +1,18 @@
 import React, { useState, useMemo, useCallback } from "react";
 import {
+  Button,
   Card,
   CardHeader,
   CardBody,
   CardFooter,
+  IconButton,
   Input,
 } from "@material-tailwind/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 import LabProduct from "../LabProduct/LabProduct";
 import ImagesModal from "../ImagesModal/ImagesModal";
 import { LabProducts } from "../../data/LabInventory";
@@ -114,6 +120,65 @@ function LabProductsGallery() {
             />
           </div>
         </CardBody>
+        <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
+          <div className="flex items-center justify-center gap-2">
+            <Button
+              variant="text"
+              size="sm"
+              className="flex items-center rounded-full"
+              onClick={() => handleFirstPage()}
+              disabled={currentPage === 1}
+            >
+              Primera
+            </Button>
+            <Button
+              variant="text"
+              size="sm"
+              className="flex items-center rounded-full"
+              onClick={() => handlePreviousPage()}
+              disabled={currentPage === 1}
+            >
+              <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Anterior
+            </Button>
+            <div className="flex items-center gap-2">
+              {currentProductsData.length !== 0 &&
+                numberOfPages.map((page, index) => (
+                  <IconButton
+                    key={index}
+                    variant={currentPage === index + 1 ? "filled" : "text"}
+                    size="sm"
+                    className="rounded-full"
+                    onClick={() => handlePageClick(page)}
+                  >
+                    {page}
+                  </IconButton>
+                ))}
+            </div>
+            <Button
+              variant="text"
+              size="sm"
+              className="flex items-center rounded-full"
+              onClick={() => handleNextPage()}
+              disabled={
+                currentPage === totalPages || numberOfPages.length === 0
+              }
+            >
+              Siguiente
+              <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="text"
+              size="sm"
+              className="flex items-center rounded-full"
+              onClick={() => handleLastPage()}
+              disabled={
+                currentPage === totalPages || numberOfPages.length === 0
+              }
+            >
+              Último
+            </Button>
+          </div>
+        </CardFooter>
       </Card>
     </div>
   );
