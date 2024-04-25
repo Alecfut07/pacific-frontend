@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Carousel } from "@material-tailwind/react";
 
-function ImageModal({ isOpen, onClose, images }) {
+function ImagesModal({ isOpen, onClose, images }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isOpen && !event.target.closest("#modal-content")) {
@@ -56,4 +56,4 @@ function ImageModal({ isOpen, onClose, images }) {
   );
 }
 
-export default ImageModal;
+export default ImagesModal;

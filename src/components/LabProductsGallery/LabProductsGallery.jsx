@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LabProducts } from "../../data/LabInventory";
-import ImageModal from "../ImageModal/ImageModal";
+import ImagesModal from "../ImagesModal/ImagesModal";
 
 function LabProductsGallery() {
   const [labProducts, setLabProducts] = useState(LabProducts);
@@ -53,7 +53,7 @@ function LabProductsGallery() {
           </div>
         </div>
       ))}
-      <ImageModal
+      <ImagesModal
         isOpen={modalOpen}
         onClose={closeModal}
         images={labProductImages}
