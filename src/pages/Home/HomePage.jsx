@@ -1,6 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+import homeBackgroundImage from "../../images/Home/home-background.png";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -10,26 +11,22 @@ function HomePage() {
     navigate("/industrial-inventory");
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center justify-center p-8">
-        <Typography className="mb-4 text-3xl font-bold">
-          ¡Bienvenido a nuestro sitio web de demostración!
-        </Typography>
-        <div className="mb-4">
-          <Button
-            variant="filled"
-            className="mr-2"
-            onClick={handleLabInventoryClick}
-          >
-            Inventario de laboratorio
-          </Button>
-          <Button
-            variant="outlined"
-            className="mr-2"
-            onClick={handleIndustrialInventoryClick}
-          >
-            Inventario industrial
-          </Button>
+    <div className="bg-gray-200">
+      <div className="mx-auto overflow-hidden bg-white shadow-md">
+        <div className="relative">
+          <img
+            className="w-full"
+            src={homeBackgroundImage}
+            alt="Imagen de fondo"
+          />
+          <div className="absolute left-0 top-0 bg-black bg-opacity-50 p-4">
+            <h1 className="text-xl font-bold text-white">
+              ¡Controla tus productos!
+            </h1>
+            <p className="text-white">
+              Gestiona tu inventario de manera eficiente
+            </p>
+          </div>
         </div>
       </div>
     </div>
