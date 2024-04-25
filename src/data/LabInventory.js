@@ -37,7 +37,7 @@ export const TABLE_HEAD = [
   "Agregar al carrito",
 ];
 
-export const TABLE_ROWS = [
+export const LabProducts = [
   {
     id: 1,
     images: [...MicroscopioOpticoImages],

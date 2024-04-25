@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { Carousel } from "@material-tailwind/react";
 
-function ImageModal({ isOpen, onClose, image }) {
+function ImageModal({ isOpen, onClose, images }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isOpen && !event.target.closest("#modal-content")) {
@@ -43,7 +44,13 @@ function ImageModal({ isOpen, onClose, image }) {
             <path d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
-        <img src={image} alt="Product" className="w-full" />
+        <Carousel>
+          {images.map((image, index) => (
+            <div key={index}>
+              <img src={image} className="w-full" />
+            </div>
+          ))}
+        </Carousel>
       </div>
     </div>
   );

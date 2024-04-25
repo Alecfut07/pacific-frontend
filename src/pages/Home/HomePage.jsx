@@ -1,5 +1,4 @@
-import { Typography } from "@material-tailwind/react";
-import { Button } from "@material-tailwind/react";
+import { Button, Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import homeBackgroundImage from "../../images/Home/home-background.png";
 

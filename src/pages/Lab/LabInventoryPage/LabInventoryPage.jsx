@@ -1,9 +1,10 @@
-import Table from "../../../components/Table/Table";
+// import Table from "../../../components/Table/Table";
+import LabProductsGallery from "../../../components/LabProductsGallery/LabProductsGallery";
 
 function LabInventoryPage() {
   return (
     <div>
-      <Table />
+      <LabProductsGallery />
     </div>
   );
 }
