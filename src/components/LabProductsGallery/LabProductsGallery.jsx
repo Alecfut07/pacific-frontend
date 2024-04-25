@@ -69,25 +69,7 @@ function LabProductsGallery() {
     return filteredData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, selectedEntries, labProducts, filterFunction]);
 
-  // Version 6 --> OK
-  //   return (
-  //     <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3">
-  //       {labProducts.map((labProduct) => (
-  //         <LabProduct
-  //           key={labProduct.id}
-  //           product={labProduct}
-  //           openModal={openModal}
-  //         />
-  //       ))}
-  //       <ImagesModal
-  //         isOpen={modalOpen}
-  //         onClose={closeModal}
-  //         images={labProductImages}
-  //       />
-  //     </div>
-  //   );
-
-  // Version 7 --> PENDIENTE
+  // Version 7 --> OK
   return (
     <div>
       <Card className="h-full w-full">
