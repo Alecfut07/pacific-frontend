@@ -15,7 +15,9 @@ function LabProduct({ product, openModal }) {
   const handleIncreaseItemClick = () => setAmount(amount + 1);
 
   return (
-    <div className={`relative flex flex-col border-r border-gray-300`}>
+    <div
+      className={`relative flex flex-col border-b border-l border-r border-t border-gray-300`}
+    >
       <img
         className="h-40 w-40 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
         src={product.images[0]}
