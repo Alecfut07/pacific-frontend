@@ -18,6 +18,7 @@ import {
   MagnifyingGlassIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
+import ImageModal from "../ImageModal/ImageModal";
 import { TABLE_HEAD, TABLE_ROWS } from "../../data/LabInventory";
 
 function Table() {
@@ -25,6 +26,19 @@ function Table() {
   const [tableData, setTableData] = useState(TABLE_ROWS);
   const [fullData, setFullData] = useState(TABLE_ROWS);
   const [selectedEntries, setSelectedEntries] = useState(10);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage("");
+    setModalOpen(false);
+  };
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(tableData.length / selectedEntries);
@@ -141,6 +155,7 @@ function Table() {
                         alt={product.images[0]}
                         size="md"
                         className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                        onClick={() => openModal(product.images[0])}
                       />
                       <Typography
                         variant="small"
@@ -252,6 +267,11 @@ function Table() {
           </Button>
         </div>
       </CardFooter>
+      <ImageModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        image={selectedImage}
+      />
     </Card>
   );
 }
