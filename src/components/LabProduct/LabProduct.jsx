@@ -22,7 +22,7 @@ function LabProduct({ product, openModal }) {
         alt="gallery-photo"
         onClick={() => openModal(product.images)}
       />
-      <div className="mx-auto flex flex-grow flex-col justify-between bg-white p-2">
+      <div className="mx-auto flex flex-grow flex-col justify-between bg-white bg-opacity-75 p-2 mix-blend-multiply">
         <p className="text-lg font-bold">{product.name}</p>
         <p className="text-sm">{product.description}</p>
         <p className="text-base font-bold">${product.price} MXN</p>

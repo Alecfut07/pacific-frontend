@@ -17,6 +17,8 @@ import LabProduct from "../LabProduct/LabProduct";
 import ImagesModal from "../ImagesModal/ImagesModal";
 import { LabProducts } from "../../data/LabInventory";
 
+import "./LabProductsGallery.css";
+
 function LabProductsGallery() {
   const [searchProduct, setSearchProduct] = useState("");
   const [labProducts, setLabProducts] = useState(LabProducts);
@@ -70,14 +72,19 @@ function LabProductsGallery() {
   }, [currentPage, selectedEntries, labProducts, filterFunction]);
 
   return (
-    <div>
-      <Card className="h-full w-full">
-        <CardHeader floated={false} shadow={false} className="rounded-none">
+    <div className="lab-gradient-background">
+      <Card className="lab-gradient-background h-full w-full">
+        <CardHeader
+          floated={false}
+          shadow={false}
+          className="mx-auto rounded-none"
+        >
           <div className="flex w-full shrink-0 gap-2 md:w-max">
             <div className="w-full md:w-96">
               <Input
-                label="Buscar"
+                placeholder="Buscar"
                 color="blue"
+                className="rounded-none"
                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                 value={searchProduct}
                 onChange={(e) => setSearchProduct(e.target.value)}

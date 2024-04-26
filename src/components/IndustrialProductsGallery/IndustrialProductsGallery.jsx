@@ -17,6 +17,8 @@ import IndustrialProduct from "../IndustrialProduct/IndustrialProduct";
 import ImagesModal from "../ImagesModal/ImagesModal";
 import { IndustrialProducts } from "../../data/IndustrialInventory";
 
+import "./IndustrialProductsGallery.css";
+
 function IndustrialProductsGallery() {
   const [searchProduct, setSearchProduct] = useState("");
   const [industrialProducts, setIndustrialProducts] =
@@ -71,14 +73,19 @@ function IndustrialProductsGallery() {
   }, [currentPage, selectedEntries, industrialProducts, filterFunction]);
 
   return (
-    <div>
-      <Card className="h-full w-full">
-        <CardHeader floated={false} shadow={false} className="rounded-none">
+    <div className="industrial-gradient-background">
+      <Card className="industrial-gradient-background h-full w-full">
+        <CardHeader
+          floated={false}
+          shadow={false}
+          className="mx-auto rounded-none"
+        >
           <div className="flex w-full shrink-0 gap-2 md:w-max">
             <div className="w-full md:w-96">
               <Input
-                label="Buscar"
+                placeholder="Buscar"
                 color="blue"
+                className="rounded-none"
                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                 value={searchProduct}
                 onChange={(e) => setSearchProduct(e.target.value)}

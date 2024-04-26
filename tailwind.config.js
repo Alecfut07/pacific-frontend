@@ -7,8 +7,7 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        "custom-purple": "#563696",
-        "custom-black": "#001737",
+        "custom-box-table-body-color": "#f5dcb1",
       },
     },
   },
