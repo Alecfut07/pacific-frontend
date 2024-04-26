@@ -1,5 +1,5 @@
 import LabProductsGallery from "../../../components/LabProductsGallery/LabProductsGallery";
-import labInventoryBackgroundImage from "../../../images/LabInventory/LabInventoryPage/lab-inventory-background.jpeg";
+import labInventoryBackgroundImage from "../../../images/LabInventory/LabInventoryPage/lab-inventory-background.png";
 
 function LabInventoryPage() {
   return (
