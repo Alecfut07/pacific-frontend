@@ -1,14 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
-
 import { ThemeProvider } from "@material-tailwind/react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CustomNavbar from "./components/CustomNavbar/CustomNavbar";
+import CustomFooter from "./components/CustomFooter/CustomFooter";
+import HomePage from "./pages/Home/HomePage";
+import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
+import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
+
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <BrowserRouter>
+        <CustomNavbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/lab-inventory" element={<LabInventoryPage />} />
+          <Route
+            path="/industrial-inventory"
+            element={<IndustrialInventoryPage />}
+          />
+        </Routes>
+      </BrowserRouter>
+      {/* <CustomFooter /> */}
     </ThemeProvider>
   </React.StrictMode>,
 );
