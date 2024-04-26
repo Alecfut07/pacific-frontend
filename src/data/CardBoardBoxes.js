@@ -11,8 +11,8 @@ import S11367Image from "../images/CardBoardBoxes/S-11367/S-11367-image.png";
 
 export const TABLE_HEAD = [
   "MODELO NO.",
-  "DIMS. INTERIORES LARGO X ANCHO X ALTO",
-  "PROFUNDIDAD VARIABLE / DESCRIPCIÓN",
+  "LARGO X ANCHO X ALTO",
+  "DESCRIPCIÓN",
   "PRECIO POR CAJA (MXN)",
   "25",
   "100",

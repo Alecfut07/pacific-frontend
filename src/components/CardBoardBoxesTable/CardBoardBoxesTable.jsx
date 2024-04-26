@@ -15,11 +15,11 @@ function CardBoardBoxesTable() {
   const [tableData, setTableData] = useState(CardBoardBoxesData);
 
   return (
-    <Card className="h-full w-full">
+    <Card className="flex h-full w-full items-center">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <img src={BoxGuidedBanner} />
       </CardHeader>
-      <CardBody className="px-0">
+      <CardBody className="px-4">
         <table className="table-auto text-center">
           <thead>
             <tr>
@@ -61,7 +61,10 @@ function CardBoardBoxesTable() {
             </tr>
             {/* Subfila para los valores de "PRECIO POR CAJA (MXN)" */}
             <tr>
-              <th colSpan={3} />
+              <th
+                colSpan={3}
+                className="border-blue-gray-100 bg-blue-gray-50/50"
+              />
               {TABLE_HEAD.slice(4, 9).map((value, index) => (
                 <th
                   key={index}
