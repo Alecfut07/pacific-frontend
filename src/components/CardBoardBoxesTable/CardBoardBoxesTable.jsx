@@ -20,7 +20,7 @@ function CardBoardBoxesTable() {
         <img src={BoxGuidedBanner} />
       </CardHeader>
       <CardBody className="px-0">
-        <table className="table-auto text-left">
+        <table className="table-auto text-center">
           <thead>
             <tr>
               {TABLE_HEAD.slice(0, 3).map((head, index) => (
@@ -123,7 +123,7 @@ function CardBoardBoxesTable() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {boxData.prices[25]}
+                      ${boxData.prices[25]}
                     </Typography>
                   </td>
                   <td>
@@ -132,7 +132,7 @@ function CardBoardBoxesTable() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {boxData.prices[100]}
+                      ${boxData.prices[100]}
                     </Typography>
                   </td>
                   <td>
@@ -141,7 +141,7 @@ function CardBoardBoxesTable() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {boxData.prices[250]}
+                      ${boxData.prices[250]}
                     </Typography>
                   </td>
                   <td>
@@ -150,7 +150,7 @@ function CardBoardBoxesTable() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {boxData.prices[500]}
+                      ${boxData.prices[500]}
                     </Typography>
                   </td>
                   <td>
@@ -159,12 +159,12 @@ function CardBoardBoxesTable() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {boxData.prices[1000]}
+                      ${boxData.prices[1000]}
                     </Typography>
                   </td>
-                  <td>
+                  <td className="flex items-center">
                     <input className="h-10 w-20 text-center" value={25} />
-                    <Button color="blue" className="flex items-center">
+                    <Button color="blue">
                       <ShoppingCartIcon className="h-5 w-5" />
                     </Button>
                   </td>
