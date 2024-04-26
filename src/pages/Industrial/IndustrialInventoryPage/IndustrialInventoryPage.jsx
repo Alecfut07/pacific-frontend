@@ -1,4 +1,6 @@
-import { Card, CardBody } from "@material-tailwind/react";
+import { useState } from "react";
+import { Card, CardHeader, CardBody } from "@material-tailwind/react";
+import CustomTabs from "../../../components/CustomTabs/CustomTabs";
 import IndustrialProductsGallery from "../../../components/IndustrialProductsGallery/IndustrialProductsGallery";
 import industrialInventoryBackgroundImage from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
 import ampliaGama from "../../../images/Home/amplia-gama.png";
@@ -6,6 +8,10 @@ import completoInventario from "../../../images/Home/completo-inventario.jpeg";
 import eficiencia from "../../../images/Home/eficiencia.png";
 
 function IndustrialInventoryPage() {
+  const [activeTab, setActiveTab] = useState("Cajas de cartón");
+
+  const handleTabChange = (value) => setActiveTab(value);
+
   return (
     <div>
       <div className="relative">
@@ -74,6 +80,13 @@ function IndustrialInventoryPage() {
             </Card>
           </div>
         </div>
+      </div>
+      <div className="mt-12">
+        <Card>
+          <CardHeader>
+            <CustomTabs activeTab={activeTab} onChange={handleTabChange} />
+          </CardHeader>
+        </Card>
       </div>
       <IndustrialProductsGallery />
     </div>
