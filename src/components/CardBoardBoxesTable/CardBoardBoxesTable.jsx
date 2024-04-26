@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import ImageModal from "../ImageModal/ImageModal";
 import BoxGuidedBanner from "../../images/CardBoardBoxes/boxguided-banner.jpg";
 import { TABLE_HEAD, CardBoardBoxesData } from "../../data/CardBoardBoxes";
 
@@ -15,6 +16,19 @@ import "csshake/dist/csshake.min.css";
 
 function CardBoardBoxesTable() {
   const [tableData, setTableData] = useState(CardBoardBoxesData);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage("");
+    setModalOpen(false);
+  };
 
   return (
     <Card className="flex h-full w-full items-center">
@@ -83,6 +97,7 @@ function CardBoardBoxesTable() {
                         alt={boxData.image}
                         size="md"
                         className="shake-slow border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
+                        onClick={() => openModal(boxData.image)}
                       />
                       <Typography
                         variant="small"
@@ -168,6 +183,11 @@ function CardBoardBoxesTable() {
           </tbody>
         </table>
       </CardBody>
+      <ImageModal
+        isOpen={modalOpen}
+        onClose={closeModal}
+        image={selectedImage}
+      />
     </Card>
   );
 }
