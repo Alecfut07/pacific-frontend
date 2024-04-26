@@ -86,9 +86,16 @@ function IndustrialInventoryPage() {
           <CardHeader>
             <CustomTabs activeTab={activeTab} onChange={handleTabChange} />
           </CardHeader>
+          <CardBody>
+            {activeTab === "Cajas de cartón" ? (
+              <p>Tabla</p>
+            ) : (
+              <IndustrialProductsGallery />
+            )}
+          </CardBody>
         </Card>
       </div>
-      <IndustrialProductsGallery />
+      {/* <IndustrialProductsGallery /> */}
     </div>
   );
 }
