@@ -19,15 +19,13 @@ function CardBoardBoxesTable() {
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <img src={BoxGuidedBanner} />
       </CardHeader>
-      <CardBody className="px-4">
+      <CardBody className="bg-custom-box-table-body-color px-4">
         <table className="table-auto text-center">
           <thead>
             <tr>
               {TABLE_HEAD.slice(0, 3).map((head, index) => (
-                <th
-                  key={index}
-                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
-                >
+                <th key={index} className="p-4">
+                  {/* className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4" */}
                   <Typography
                     variant="lead"
                     color="blue-gray"
@@ -37,10 +35,7 @@ function CardBoardBoxesTable() {
                   </Typography>
                 </th>
               ))}
-              <th
-                colSpan={6}
-                className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
-              >
+              <th colSpan={6} className="p-4">
                 <Typography
                   variant="lead"
                   color="blue-gray"
@@ -49,7 +44,7 @@ function CardBoardBoxesTable() {
                   {TABLE_HEAD[3]}
                 </Typography>
               </th>
-              <th className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
+              <th className="p-4">
                 <Typography
                   variant="lead"
                   color="blue-gray"
@@ -61,15 +56,9 @@ function CardBoardBoxesTable() {
             </tr>
             {/* Subfila para los valores de "PRECIO POR CAJA (MXN)" */}
             <tr>
-              <th
-                colSpan={3}
-                className="border-blue-gray-100 bg-blue-gray-50/50"
-              />
+              <th colSpan={3} />
               {TABLE_HEAD.slice(4, 9).map((value, index) => (
-                <th
-                  key={index}
-                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
-                >
+                <th key={index} className="p-4">
                   <Typography
                     variant="lead"
                     color="blue-gray"
@@ -81,7 +70,7 @@ function CardBoardBoxesTable() {
               ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody className="border-y">
             {tableData.map((boxData, index) => {
               return (
                 <tr key={boxData.id}>
