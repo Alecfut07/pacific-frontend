@@ -70,11 +70,11 @@ function CardBoardBoxesTable() {
               ))}
             </tr>
           </thead>
-          <tbody className="border-y">
+          <tbody className="border-y border-white">
             {tableData.map((boxData, index) => {
               return (
                 <tr key={boxData.id}>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <div className="flex items-center gap-3">
                       <Avatar
                         src={boxData.image}
@@ -91,7 +91,7 @@ function CardBoardBoxesTable() {
                       </Typography>
                     </div>
                   </td>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -100,7 +100,7 @@ function CardBoardBoxesTable() {
                       {boxData.dimensions}
                     </Typography>
                   </td>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -109,7 +109,7 @@ function CardBoardBoxesTable() {
                       {boxData.descriptions}
                     </Typography>
                   </td>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -118,7 +118,7 @@ function CardBoardBoxesTable() {
                       ${boxData.prices[25]}
                     </Typography>
                   </td>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -127,7 +127,7 @@ function CardBoardBoxesTable() {
                       ${boxData.prices[100]}
                     </Typography>
                   </td>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -136,7 +136,7 @@ function CardBoardBoxesTable() {
                       ${boxData.prices[250]}
                     </Typography>
                   </td>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -145,7 +145,7 @@ function CardBoardBoxesTable() {
                       ${boxData.prices[500]}
                     </Typography>
                   </td>
-                  <td>
+                  <td className="border-x border-y border-white">
                     <Typography
                       variant="small"
                       color="blue-gray"
