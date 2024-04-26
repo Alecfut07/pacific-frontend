@@ -13,30 +13,31 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import LabProduct from "../LabProduct/LabProduct";
+import IndustrialProduct from "../IndustrialProduct/IndustrialProduct";
 import ImagesModal from "../ImagesModal/ImagesModal";
-import { LabProducts } from "../../data/LabInventory";
+import { IndustrialProducts } from "../../data/IndustrialInventory";
 
-function LabProductsGallery() {
+function IndustrialProductsGallery() {
   const [searchProduct, setSearchProduct] = useState("");
-  const [labProducts, setLabProducts] = useState(LabProducts);
-  const [fullData, setFullData] = useState(LabProducts);
+  const [industrialProducts, setIndustrialProducts] =
+    useState(IndustrialProducts);
+  const [fullData, setFullData] = useState(IndustrialProducts);
   const [selectedEntries, setSelectedEntries] = useState(6);
   const [modalOpen, setModalOpen] = useState(false);
-  const [labProductImages, setLabProductImages] = useState(null);
+  const [industrialProductImages, setIndustrialProductImages] = useState(null);
 
   const openModal = (images) => {
-    setLabProductImages(images);
+    setIndustrialProductImages(images);
     setModalOpen(true);
   };
 
   const closeModal = () => {
-    setLabProductImages(null);
+    setIndustrialProductImages(null);
     setModalOpen(false);
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(labProducts.length / selectedEntries);
+  const totalPages = Math.ceil(industrialProducts.length / selectedEntries);
   const numberOfPages = [];
 
   for (let page = 1; page < totalPages; page++) {
@@ -61,13 +62,13 @@ function LabProductsGallery() {
   );
 
   const currentProductsData = useMemo(() => {
-    const filteredData = filterFunction(labProducts);
+    const filteredData = filterFunction(industrialProducts);
 
     const firstPageIndex = (currentPage - 1) * selectedEntries;
     const lastPageIndex = firstPageIndex + selectedEntries;
 
     return filteredData.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, selectedEntries, labProducts, filterFunction]);
+  }, [currentPage, selectedEntries, industrialProducts, filterFunction]);
 
   return (
     <div>
@@ -87,17 +88,17 @@ function LabProductsGallery() {
         </CardHeader>
         <CardBody>
           <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3">
-            {currentProductsData.map((labProduct) => (
-              <LabProduct
-                key={labProduct.id}
-                product={labProduct}
+            {currentProductsData.map((industrialProduct) => (
+              <IndustrialProduct
+                key={industrialProduct.id}
+                product={industrialProduct}
                 openModal={openModal}
               />
             ))}
             <ImagesModal
               isOpen={modalOpen}
               onClose={closeModal}
-              images={labProductImages}
+              images={industrialProductImages}
             />
           </div>
         </CardBody>
@@ -165,4 +166,4 @@ function LabProductsGallery() {
   );
 }
 
-export default LabProductsGallery;
+export default IndustrialProductsGallery;

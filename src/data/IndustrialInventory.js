@@ -3,7 +3,7 @@ import { MartilloImages } from "../images/IndustrialInventory/Products/Martillo/
 import { SierraElectricaImages } from "../images/IndustrialInventory/Products/SierraElectrica/SierraElectrica";
 import { LlaveTuboImages } from "../images/IndustrialInventory/Products/LlaveTubo/LlaveTubo";
 import { CintaMetricaImages } from "../images/IndustrialInventory/Products/CintaMetrica/CintaMetrica";
-import { GatoHidraulicoImages } from "../images/IndustrialInventory/Products/gato";
+import { GatoHidraulicoImages } from "../images/IndustrialInventory/Products/GatoHidraulico/GatoHidraulico";
 import { PistolaCalorImages } from "../images/IndustrialInventory/Products/PistolaCalor/PistolaCalor";
 import { NivelBurbujaImages } from "../images/IndustrialInventory/Products/NivelBurbuja/NivelBurbuja";
 import { SierraManoImages } from "../images/IndustrialInventory/Products/SierraMano/SierraMano";
