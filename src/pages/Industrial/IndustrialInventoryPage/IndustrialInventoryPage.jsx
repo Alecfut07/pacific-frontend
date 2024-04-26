@@ -4,6 +4,7 @@ import CustomTabs from "../../../components/CustomTabs/CustomTabs";
 import CardBoardBoxesTable from "../../../components/CardBoardBoxesTable/CardBoardBoxesTable";
 import IndustrialProductsGallery from "../../../components/IndustrialProductsGallery/IndustrialProductsGallery";
 import industrialInventoryBackgroundImage from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
+import BoxGuidedBanner from "../../../images/CardBoardBoxes/boxguided-banner.jpg";
 import ampliaGama from "../../../images/Home/amplia-gama.png";
 import completoInventario from "../../../images/Home/completo-inventario.jpeg";
 import eficiencia from "../../../images/Home/eficiencia.png";
@@ -14,7 +15,11 @@ function IndustrialInventoryPage() {
   const handleTabChange = (value) => setActiveTab(value);
 
   return (
-    <div>
+    <div
+      className="relative"
+      style={{ backgroundImage: `url(${BoxGuidedBanner})` }}
+    >
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative">
         <img src={industrialInventoryBackgroundImage} className="w-full" />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -96,7 +101,6 @@ function IndustrialInventoryPage() {
           </CardBody>
         </Card>
       </div>
-      {/* <IndustrialProductsGallery /> */}
     </div>
   );
 }

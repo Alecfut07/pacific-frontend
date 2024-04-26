@@ -9,7 +9,6 @@ import {
 } from "@material-tailwind/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import ImageModal from "../ImageModal/ImageModal";
-import BoxGuidedBanner from "../../images/CardBoardBoxes/boxguided-banner.jpg";
 import { TABLE_HEAD, CardBoardBoxesData } from "../../data/CardBoardBoxes";
 
 import "csshake/dist/csshake.min.css";
@@ -31,10 +30,10 @@ function CardBoardBoxesTable() {
   };
 
   return (
-    <Card className="flex h-full w-full items-center">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
+    <Card className="bg-custom-box-table-body-color flex h-full w-full items-center">
+      {/* <CardHeader floated={false} shadow={false} className="rounded-none">
         <img src={BoxGuidedBanner} />
-      </CardHeader>
+      </CardHeader> */}
       <CardBody className="bg-custom-box-table-body-color px-4">
         <table className="table-auto text-center">
           <thead>
