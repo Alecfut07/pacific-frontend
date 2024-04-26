@@ -11,6 +11,8 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import BoxGuidedBanner from "../../images/CardBoardBoxes/boxguided-banner.jpg";
 import { TABLE_HEAD, CardBoardBoxesData } from "../../data/CardBoardBoxes";
 
+import "csshake/dist/csshake.min.css";
+
 function CardBoardBoxesTable() {
   const [tableData, setTableData] = useState(CardBoardBoxesData);
 
@@ -80,7 +82,7 @@ function CardBoardBoxesTable() {
                         src={boxData.image}
                         alt={boxData.image}
                         size="md"
-                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
+                        className="shake-slow border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
                       />
                       <Typography
                         variant="small"
