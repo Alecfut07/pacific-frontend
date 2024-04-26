@@ -8,7 +8,6 @@ module.exports = withMT({
     extend: {
       colors: {
         "custom-box-table-body-color": "#f5dcb1",
-        "custom-lab-products": "#5AFFE9",
       },
     },
   },
