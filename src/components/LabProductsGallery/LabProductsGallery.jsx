@@ -72,8 +72,8 @@ function LabProductsGallery() {
   }, [currentPage, selectedEntries, labProducts, filterFunction]);
 
   return (
-    <div className="gradient-background">
-      <Card className="gradient-background h-full w-full">
+    <div className="lab-gradient-background">
+      <Card className="lab-gradient-background h-full w-full">
         <CardHeader
           floated={false}
           shadow={false}
