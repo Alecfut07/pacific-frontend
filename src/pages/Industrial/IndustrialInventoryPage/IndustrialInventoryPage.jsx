@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardHeader, CardBody } from "@material-tailwind/react";
 import CustomTabs from "../../../components/CustomTabs/CustomTabs";
+import CardBoardBoxesTable from "../../../components/CardBoardBoxesTable/CardBoardBoxesTable";
 import IndustrialProductsGallery from "../../../components/IndustrialProductsGallery/IndustrialProductsGallery";
 import industrialInventoryBackgroundImage from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
 import ampliaGama from "../../../images/Home/amplia-gama.png";
@@ -88,7 +89,7 @@ function IndustrialInventoryPage() {
           </CardHeader>
           <CardBody>
             {activeTab === "Cajas de cartón" ? (
-              <p>Tabla</p>
+              <CardBoardBoxesTable />
             ) : (
               <IndustrialProductsGallery />
             )}
