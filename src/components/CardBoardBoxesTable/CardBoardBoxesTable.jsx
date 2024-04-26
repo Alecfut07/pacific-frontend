@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import BoxGuidedBanner from "../../images/CardBoardBoxes/boxguided-banner.png";
+import BoxGuidedBanner from "../../images/CardBoardBoxes/boxguided-banner.jpg";
 import { TABLE_HEAD, CardBoardBoxesData } from "../../data/CardBoardBoxes";
 
 function CardBoardBoxesTable() {
@@ -155,7 +155,7 @@ function CardBoardBoxesTable() {
                     </Typography>
                   </td>
                   <td className="flex items-center">
-                    <input className="h-10 w-20 text-center" value={25} />
+                    <input className="mr-10 h-10 w-20 text-center" value={25} />
                     <Button color="blue">
                       <ShoppingCartIcon className="h-5 w-5" />
                     </Button>
