@@ -1,6 +1,8 @@
-import { Button, Card, CardBody, Typography } from "@material-tailwind/react";
-import { useNavigate } from "react-router-dom";
+import { Card, CardBody } from "@material-tailwind/react";
 import homeBackgroundImage from "../../images/Home/home-background.png";
+import ampliaGama from "../../images/Home/amplia-gama.png";
+import completoInventario from "../../images/Home/completo-inventario.jpeg";
+import eficiencia from "../../images/Home/eficiencia.png";
 
 function HomePage() {
   return (
@@ -26,30 +28,51 @@ function HomePage() {
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-1">
             <Card>
-              <img className="h-64 w-full object-cover" src="" alt="imagen 1" />
+              <img
+                className="h-64 w-full object-contain"
+                src={ampliaGama}
+                alt="imagen 1"
+              />
               <CardBody>
                 <div className="bg-blue-500 p-4 text-white">
-                  <p>Texto del cuadrante 1</p>
+                  <p>
+                    Descubre nuestra amplia gama de productos para laboratorio e
+                    industria: ¡todo lo que necesitas en un solo lugar!
+                  </p>
                 </div>
               </CardBody>
             </Card>
           </div>
           <div className="col-span-1">
             <Card>
-              <img className="h-64 w-full object-cover" src="" alt="imagen 2" />
+              <img
+                className="h-64 w-full object-contain"
+                src={completoInventario}
+                alt="imagen 2"
+              />
               <CardBody>
                 <div className="bg-blue-500 p-4 text-white">
-                  <p>Texto del cuadrante 2</p>
+                  <p>
+                    Optimiza tu flujo de trabajo con nuestro completo inventario
+                    de productos industriales y de laboratorio.
+                  </p>
                 </div>
               </CardBody>
             </Card>
           </div>
           <div className="col-span-1">
             <Card>
-              <img className="h-64 w-full object-cover" src="" alt="imagen 3" />
+              <img
+                className="h-64 w-full object-contain"
+                src={eficiencia}
+                alt="imagen 3"
+              />
               <CardBody>
                 <div className="bg-blue-500 p-4 text-white">
-                  <p>Texto del cuadrante 3</p>
+                  <p>
+                    Eficiencia garantizada: encuentra todo lo que necesitas en
+                    nuestro inventario para laboratorio e industria.
+                  </p>
                 </div>
               </CardBody>
             </Card>
