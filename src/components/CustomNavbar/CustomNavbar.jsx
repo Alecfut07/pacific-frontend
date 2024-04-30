@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Badge,
-  IconButton,
   Collapse,
+  IconButton,
   Navbar,
   Switch,
   Typography,
@@ -11,7 +11,7 @@ import {
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import InventoriesLogo from "../../assets/inventories.svg";
 
-function CustomNavbar() {
+function CustomNavbar({ openDrawerTop }) {
   const [openNav, setOpenNav] = useState(false);
   const [inventoryType, setInventoryType] = useState("");
 
@@ -34,8 +34,6 @@ function CustomNavbar() {
       navigateToLabInventory();
     }
   };
-
-  const handleClick = () => {};
 
   useEffect(() => {
     window.addEventListener(
@@ -109,7 +107,10 @@ function CustomNavbar() {
             <Switch onChange={(e) => handleSwitchChange(e)} />
           </div>
           <Badge content="5">
-            <ShoppingCartIcon className="ml-4 mr-4 h-6 w-6 hover:text-blue-500 focus:text-blue-500" />
+            <ShoppingCartIcon
+              className="ml-4 mr-4 h-6 w-6 hover:text-blue-500 focus:text-blue-500"
+              onClick={openDrawerTop}
+            />
           </Badge>
           <IconButton
             variant="text"
