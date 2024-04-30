@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  Badge,
   IconButton,
   Collapse,
   Navbar,
   Switch,
   Typography,
 } from "@material-tailwind/react";
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import InventoriesLogo from "../../assets/inventories.svg";
 
 function CustomNavbar() {
@@ -104,6 +106,9 @@ function CustomNavbar() {
             <Typography className="mr-4">{inventoryType}</Typography>
             <Switch onChange={(e) => handleSwitchChange(e)} />
           </div>
+          <Badge content="5">
+            <ShoppingCartIcon className="ml-4 mr-4 h-6 w-6" />
+          </Badge>
           <IconButton
             variant="text"
             className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
