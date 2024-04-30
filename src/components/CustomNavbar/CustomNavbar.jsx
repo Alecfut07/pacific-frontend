@@ -35,6 +35,8 @@ function CustomNavbar() {
     }
   };
 
+  const handleClick = () => {};
+
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -107,7 +109,7 @@ function CustomNavbar() {
             <Switch onChange={(e) => handleSwitchChange(e)} />
           </div>
           <Badge content="5">
-            <ShoppingCartIcon className="ml-4 mr-4 h-6 w-6" />
+            <ShoppingCartIcon className="ml-4 mr-4 h-6 w-6 hover:text-blue-500 focus:text-blue-500" />
           </Badge>
           <IconButton
             variant="text"
