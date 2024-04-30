@@ -45,6 +45,9 @@ export const LabProducts = [
     description: "Microscopio de alta calidad con aumento de hasta 1000x",
     price: "5,000",
     status: "disponible",
+    quantity: 0, // Inicialmente no está en el carrito.
+    inCart: false, // Indica si está en el carrito o no.
+    subtotal: 0, // Costo total basado en precio y cantidad en el carrito.
   },
   {
     id: 2,
@@ -53,6 +56,9 @@ export const LabProducts = [
     description: "Precisa y sensible balanza para mediciones de laboratorio.",
     price: "8,500",
     status: "no disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 3,
@@ -61,6 +67,9 @@ export const LabProducts = [
     description: "Equipo para agitar líquidos en recipientes de laboratorio.",
     price: "2,200",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 4,
@@ -69,6 +78,9 @@ export const LabProducts = [
     description: "Centrífuga compacta para separación de muestras biológicas.",
     price: "7,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 5,
@@ -78,6 +90,9 @@ export const LabProducts = [
       "Esterilizador a vapor para equipos y materiales de laboratorio.",
     price: "15,000",
     status: "no disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 6,
@@ -87,6 +102,9 @@ export const LabProducts = [
       "Instrumento para medir la absorbancia y transmitancia de muestras líquidas.",
     price: "12,500",
     status: "no disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 7,
@@ -96,6 +114,9 @@ export const LabProducts = [
       "Equipo para realizar la reacción en cadena de la polimerasa (PCR).",
     price: "20,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 8,
@@ -105,6 +126,9 @@ export const LabProducts = [
       "Instrumento de precisión para medir volúmenes pequeños de líquidos.",
     price: "1,500",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 9,
@@ -114,6 +138,9 @@ export const LabProducts = [
       "Equipo para calentar y mantener la temperatura de muestras líquidas.",
     price: "3,500",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 10,
@@ -123,6 +150,9 @@ export const LabProducts = [
       "Centrífuga de alta velocidad para pequeñas muestras biológicas.",
     price: "6,500",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 11,
@@ -132,6 +162,9 @@ export const LabProducts = [
       "Sistema para proteger al usuario de vapores y gases tóxicos en el laboratorio.",
     price: "9,000",
     status: "no disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 12,
@@ -140,6 +173,9 @@ export const LabProducts = [
     description: "Equipo para obtener agua destilada de alta pureza.",
     price: "4,800",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 13,
@@ -149,6 +185,9 @@ export const LabProducts = [
       "Microscopio de alta resolución para observar estructuras a nivel celular.",
     price: "50,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 14,
@@ -158,6 +197,9 @@ export const LabProducts = [
       "Recipiente para el crecimiento y mantenimiento de cultivos celulares.",
     price: "3,200",
     status: "no disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 15,
@@ -167,6 +209,9 @@ export const LabProducts = [
       "Equipo para la deshidratación de muestras biológicas mediante sublimación.",
     price: "25,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 16,
@@ -176,6 +221,9 @@ export const LabProducts = [
       "Centrífuga con control de temperatura para muestras sensibles.",
     price: "8,700",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 17,
@@ -184,6 +232,9 @@ export const LabProducts = [
     description: "Equipo para secar muestras a temperaturas controladas.",
     price: "6,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 18,
@@ -192,6 +243,9 @@ export const LabProducts = [
     description: "Instrumento de medición de temperatura con pantalla LCD.",
     price: "500",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 19,
@@ -200,6 +254,9 @@ export const LabProducts = [
     description: "Equipo para el cultivo y mantenimiento de microorganismos.",
     price: "7,800",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 20,
@@ -209,6 +266,9 @@ export const LabProducts = [
       "Microscopio especializado para observar fluorescencia en muestras biológicas.",
     price: "18,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 21,
@@ -218,6 +278,9 @@ export const LabProducts = [
       "Superficie de calentamiento para calentar matraces y recipientes en el laboratorio.",
     price: "1,200",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 22,
@@ -227,6 +290,9 @@ export const LabProducts = [
       "Medidor de pH para la determinación precisa del pH de soluciones.",
     price: "2,300",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 23,
@@ -236,6 +302,9 @@ export const LabProducts = [
       "Cabina para realizar PCR con condiciones de esterilidad y seguridad.",
     price: "12,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 24,
@@ -245,6 +314,9 @@ export const LabProducts = [
       "Microscopio para observar detalles de muestras transparentes.",
     price: "15,500",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 25,
@@ -254,6 +326,9 @@ export const LabProducts = [
       "Baño María con función de agitación para mezclar muestras homogéneamente.",
     price: "4,500",
     status: "no disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 26,
@@ -263,6 +338,9 @@ export const LabProducts = [
       "Equipo para la limpieza de instrumentos de laboratorio mediante ultrasonidos.",
     price: "3,000",
     status: "no disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 27,
@@ -272,6 +350,9 @@ export const LabProducts = [
       "Ideal para observar organismos transparentes que no pueden ser vistos con un microscopio convencional.",
     price: "1,500",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 28,
@@ -281,6 +362,9 @@ export const LabProducts = [
       "Perfecta para procesar grandes volúmenes de muestras biológicas en poco tiempo.",
     price: "3,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 29,
@@ -290,6 +374,9 @@ export const LabProducts = [
       "Para la detección y cuantificación precisa del ADN amplificado durante la PCR en tiempo real.",
     price: "45,000",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
   {
     id: 30,
@@ -299,5 +386,8 @@ export const LabProducts = [
       "Utilizado para determinar la concentración de compuestos químicos en solución mediante la absorción de luz ultravioleta-visible.",
     price: "13,50",
     status: "disponible",
+    quantity: 0,
+    inCart: false,
+    subtotal: 0,
   },
 ];
