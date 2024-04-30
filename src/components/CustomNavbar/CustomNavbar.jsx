@@ -7,6 +7,7 @@ import {
   Switch,
   Typography,
 } from "@material-tailwind/react";
+import InventoriesLogo from "../../assets/inventories.svg";
 
 function CustomNavbar() {
   const [openNav, setOpenNav] = useState(false);
@@ -87,13 +88,16 @@ function CustomNavbar() {
   return (
     <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="/"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
-        >
-          Inventario - DEMO
-        </Typography>
+        <div className="flex items-center gap-x-4">
+          <img src={InventoriesLogo} width="20px" height="20px" />
+          <Typography
+            as="a"
+            href="/"
+            className="mr-4 cursor-pointer py-1.5 font-medium"
+          >
+            Inventarios
+          </Typography>
+        </div>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
           <div className="flex items-center gap-x-1">
@@ -103,7 +107,7 @@ function CustomNavbar() {
           <IconButton
             variant="text"
             className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-            ripple={false}
+            ripple={true}
             onClick={() => setOpenNav(!openNav)}
           >
             {openNav ? (
