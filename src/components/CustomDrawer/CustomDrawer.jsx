@@ -10,7 +10,7 @@ function CustomDrawer({ placement, open, onClose }) {
     <Drawer placement={placement} open={open} onClose={onClose} className="p-4">
       <div className="mb-6 flex items-center justify-between">
         <Typography variant="h5" color="blue-gray">
-          Material Tailwind
+          "Cantidad" productos en el carrito
         </Typography>
         <IconButton variant="text" color="blue-gray" onClick={onClose}>
           <svg
@@ -30,14 +30,12 @@ function CustomDrawer({ placement, open, onClose }) {
         </IconButton>
       </div>
       <Typography color="gray" className="mb-8 pr-4 font-normal">
-        Material Tailwind features multiple React and HTML components, all
-        written with Tailwind CSS classes and Material Design guidelines.
+        Subtotal: $0.00 MXN
       </Typography>
-      <div className="flex gap-2">
+      <div className="flex">
         <Button size="sm" variant="outlined">
-          Documentation
+          Ver y editar carrito
         </Button>
-        <Button size="sm">Get Started</Button>
       </div>
     </Drawer>
   );
