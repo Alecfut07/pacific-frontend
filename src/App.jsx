@@ -14,6 +14,11 @@ function App() {
     0,
   );
 
+  const subtotalSum = cartItems.reduce(
+    (subtotal, item) => subtotal + item.product.subtotal,
+    0,
+  );
+
   const openDrawerTop = () => setOpenDrawer(true);
 
   const closeDrawerTop = () => setOpenDrawer(false);
@@ -67,6 +72,8 @@ function App() {
         placement="left"
         open={openDrawer}
         onClose={closeDrawerTop}
+        totalQuantitySum={totalQuantitySum}
+        subtotalSum={subtotalSum}
       />
       <Routes>
         <Route path="/" element={<LabInventoryPage addToCart={addToCart} />} />
