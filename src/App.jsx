@@ -9,6 +9,11 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
 
+  const totalQuantitySum = cartItems.reduce(
+    (total, item) => total + item.totalQuantity,
+    0,
+  );
+
   const openDrawerTop = () => setOpenDrawer(true);
 
   const closeDrawerTop = () => setOpenDrawer(false);
@@ -50,9 +55,14 @@ function App() {
     }
   };
 
+  console.log(cartItems);
+
   return (
     <>
-      <CustomNavbar openDrawerTop={openDrawerTop} />
+      <CustomNavbar
+        openDrawerTop={openDrawerTop}
+        totalQuantitySum={totalQuantitySum}
+      />
       <CustomDrawer
         placement="left"
         open={openDrawer}

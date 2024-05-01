@@ -11,7 +11,7 @@ import {
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import InventoriesLogo from "../../assets/inventories.svg";
 
-function CustomNavbar({ openDrawerTop }) {
+function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
   const [openNav, setOpenNav] = useState(false);
   const [inventoryType, setInventoryType] = useState("");
 
@@ -106,7 +106,7 @@ function CustomNavbar({ openDrawerTop }) {
             <Typography className="mr-4">{inventoryType}</Typography>
             <Switch onChange={(e) => handleSwitchChange(e)} />
           </div>
-          <Badge content="5">
+          <Badge content={totalQuantitySum}>
             <ShoppingCartIcon
               className="ml-4 mr-4 h-6 w-6 hover:text-blue-500 focus:text-blue-500"
               onClick={openDrawerTop}
