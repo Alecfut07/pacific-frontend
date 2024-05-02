@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Button,
   Drawer,
@@ -5,6 +6,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
+import CreateQuote from "../CreateQuote/CreateQuote";
 
 function CustomDrawer({
   placement,
@@ -30,6 +33,27 @@ function CustomDrawer({
       console.log("Cargando mas elementos...");
     }
   };
+
+  // const handleCreateQuote = () => {
+  //   // Generar la URL del PDF.
+  //   const blob = new Blob([<CreateQuote />], { type: "application/pdf" });
+  //   const url = URL.createObjectURL(blob);
+
+  //   // Abre el PDF en una nueva pestaña.
+  //   window.open(url, "_blank");
+
+  //   // Liberar recursos.
+  //   URL.revokeObjectURL(url);
+  // };
+
+  // const handleCreateQuote = () => {
+  //   // Renderiza el componente CreateQuote dentro de PDFViewer.
+  //   return (
+  //     <PDFViewer width="100%" height="500px">
+  //       <CreateQuote />
+  //     </PDFViewer>
+  //   );
+  // };
 
   return (
     <Drawer placement={placement} open={open} onClose={onClose} className="p-4">
