@@ -39,7 +39,7 @@ export const TABLE_HEAD = [
 
 export const LabProducts = [
   {
-    id: 1,
+    id: 31,
     images: [...MicroscopioOpticoImages],
     name: "Microscopio óptico",
     description: "Microscopio de alta calidad con aumento de hasta 1000x",
@@ -50,7 +50,7 @@ export const LabProducts = [
     subtotal: 0, // Costo total basado en precio y cantidad en el carrito.
   },
   {
-    id: 2,
+    id: 32,
     images: [...BalanzaAnaliticaImages],
     name: "Balanza analítica",
     description: "Precisa y sensible balanza para mediciones de laboratorio.",
@@ -61,7 +61,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 3,
+    id: 33,
     images: [...AgitadorMagneticoImages],
     name: "Agitador magnético",
     description: "Equipo para agitar líquidos en recipientes de laboratorio.",
@@ -72,7 +72,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 4,
+    id: 34,
     images: [...CentrifugaMesaImages],
     name: "Centrífuga de mesa",
     description: "Centrífuga compacta para separación de muestras biológicas.",
@@ -83,7 +83,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 5,
+    id: 35,
     images: [...AutoClaveImages],
     name: "Autoclave",
     description:
@@ -95,7 +95,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 6,
+    id: 36,
     images: [...EspectrofotometroImages],
     name: "Espectrofotómetro",
     description:
@@ -107,7 +107,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 7,
+    id: 37,
     images: [...TermocicladorPCRImages],
     name: "Termociclador PCR",
     description:
@@ -119,7 +119,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 8,
+    id: 38,
     images: [...MicropipetaImages],
     name: "Micropipeta",
     description:
@@ -131,7 +131,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 9,
+    id: 39,
     images: [...BathMariaImages],
     name: "Baño María",
     description:
@@ -143,7 +143,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 10,
+    id: 40,
     images: [...MicrocentrifugaImages],
     name: "Microcentrífuga",
     description:
@@ -155,7 +155,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 11,
+    id: 41,
     images: [...CampanaExtraccionImages],
     name: "Campana de extracción",
     description:
@@ -167,7 +167,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 12,
+    id: 42,
     images: [...DestiladorAguaImages],
     name: "Destilador de agua",
     description: "Equipo para obtener agua destilada de alta pureza.",
@@ -178,7 +178,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 13,
+    id: 43,
     images: [...MicroscopioElectronicoImages],
     name: "Microscopio electrónico",
     description:
@@ -190,7 +190,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 14,
+    id: 44,
     images: [...CamaraCultivoImages],
     name: "Cámara de cultivo",
     description:
@@ -202,7 +202,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 15,
+    id: 45,
     images: [...LiofilizadoraImages],
     name: "Liofilizadora",
     description:
@@ -214,7 +214,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 16,
+    id: 46,
     images: [...MicrocentrifugaRefrigeradaImages],
     name: "Microcentrífuga refrigerada",
     description:
@@ -226,7 +226,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 17,
+    id: 47,
     images: [...HornoSecadoImages],
     name: "Horno de secado",
     description: "Equipo para secar muestras a temperaturas controladas.",
@@ -237,7 +237,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 18,
+    id: 48,
     images: [...TermometroDigitalImages],
     name: "Termómetro digital",
     description: "Instrumento de medición de temperatura con pantalla LCD.",
@@ -248,7 +248,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 19,
+    id: 49,
     images: [...IncubadoraImages],
     name: "Incubadora",
     description: "Equipo para el cultivo y mantenimiento de microorganismos.",
@@ -259,7 +259,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 20,
+    id: 50,
     images: [...MicroscopioFluorescenciaImages],
     name: "Microscopio de fluorescencia",
     description:
@@ -271,7 +271,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 21,
+    id: 51,
     images: [...PlacaCalefactoraImages],
     name: "Placa calefactora",
     description:
@@ -283,7 +283,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 22,
+    id: 52,
     images: [...PhmetroImages],
     name: "Phmetro",
     description:
@@ -295,7 +295,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 23,
+    id: 53,
     images: [...CabinaPCRImages],
     name: "Cabina de PCR",
     description:
@@ -307,7 +307,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 24,
+    id: 54,
     images: [...MicroscopioContrasteFasesImages],
     name: "Microscopio de contraste de fases",
     description:
@@ -319,7 +319,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 25,
+    id: 55,
     images: [...BathAgitacionImages],
     name: "Bañomaría de agitación",
     description:
@@ -331,7 +331,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 26,
+    id: 56,
     images: [...BathUltraSonicoImages],
     name: "Baño ultrasónico",
     description:
@@ -343,7 +343,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 27,
+    id: 57,
     images: [...MicroscopioCampoOscuroImages],
     name: "Microscopio de campo oscuro",
     description:
@@ -355,7 +355,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 28,
+    id: 58,
     images: [...CentrifugaAltaCapacidadImages],
     name: "Centrífuga de alta capacidad",
     description:
@@ -367,7 +367,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 29,
+    id: 59,
     images: [...CamaraPCRImages],
     name: "Cámara de PCR en tiempo real",
     description:
@@ -379,7 +379,7 @@ export const LabProducts = [
     subtotal: 0,
   },
   {
-    id: 30,
+    id: 60,
     images: [...AnalizadorEspectroImages],
     name: "Analizador de espectro UV-Vis",
     description:

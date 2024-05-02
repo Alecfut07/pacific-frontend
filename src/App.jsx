@@ -116,7 +116,7 @@ function App() {
         />
         <Route
           path="/industrial-inventory"
-          element={<IndustrialInventoryPage />}
+          element={<IndustrialInventoryPage addToCart={addToCart} />}
         />
       </Routes>
       {/* <CustomFooter /> */}

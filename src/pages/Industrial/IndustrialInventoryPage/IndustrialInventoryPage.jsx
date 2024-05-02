@@ -9,7 +9,7 @@ import ampliaGama from "../../../images/Home/amplia-gama.png";
 import completoInventario from "../../../images/Home/completo-inventario.jpeg";
 import eficiencia from "../../../images/Home/eficiencia.png";
 
-function IndustrialInventoryPage() {
+function IndustrialInventoryPage({ addToCart }) {
   const [activeTab, setActiveTab] = useState("Cajas de cartón");
 
   const handleTabChange = (value) => setActiveTab(value);
@@ -96,7 +96,7 @@ function IndustrialInventoryPage() {
             {activeTab === "Cajas de cartón" ? (
               <CardBoardBoxesTable />
             ) : (
-              <IndustrialProductsGallery />
+              <IndustrialProductsGallery addToCart={addToCart} />
             )}
           </CardBody>
         </Card>
