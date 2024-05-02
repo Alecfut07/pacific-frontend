@@ -74,6 +74,7 @@ function App() {
         onClose={closeDrawerTop}
         totalQuantitySum={totalQuantitySum}
         subtotalSum={subtotalSum}
+        cartItems={cartItems}
       />
       <Routes>
         <Route path="/" element={<LabInventoryPage addToCart={addToCart} />} />

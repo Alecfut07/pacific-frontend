@@ -4,6 +4,7 @@ import {
   IconButton,
   Typography,
 } from "@material-tailwind/react";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 function CustomDrawer({
   placement,
@@ -11,6 +12,7 @@ function CustomDrawer({
   onClose,
   totalQuantitySum,
   subtotalSum,
+  cartItems,
 }) {
   const formatNumberWithCommas = (value) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -46,6 +48,32 @@ function CustomDrawer({
         <Button size="sm" variant="outlined">
           Ver y editar carrito
         </Button>
+      </div>
+      <div className="mt-4 flex flex-col gap-4">
+        {cartItems.map((item) => (
+          <div key={item.product.id} className="flex gap-4">
+            <img
+              src={item.product.images[0]}
+              alt={item.product.images[0]}
+              className="h-20 w-20 rounded-lg"
+            />
+            <div className="flex flex-col">
+              <Typography variant="h6">{item.product.name}</Typography>
+              <Typography color="gray">${item.product.price} MXN</Typography>
+              <div className="flex items-center gap-2">
+                <Typography color="gray">Cantidad:</Typography>
+                <input
+                  type="number"
+                  value={item.product.quantity}
+                  className="w-16 rounded-md border border-blue-gray-300 px-2 py-1"
+                />
+                <IconButton variant="text" color="red">
+                  <TrashIcon className="h-5 w-5" />
+                </IconButton>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </Drawer>
   );
