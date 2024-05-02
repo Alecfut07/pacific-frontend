@@ -60,6 +60,35 @@ function App() {
     }
   };
 
+  const updateQuantity = (productId, newQuantity) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.product.id === productId) {
+        const price = parseFloat(item.product.price.replace(/,/g, ""));
+        const subtotal = price * newQuantity;
+        return {
+          ...item,
+          totalQuantity: newQuantity,
+          product: {
+            ...item.product,
+            quantity: newQuantity,
+            subtotal: subtotal,
+          },
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
+  const removeItemFromCart = (productId) => {
+    const updatedCartItems = cartItems.filter(
+      (item) => item.product.id !== productId,
+    );
+    setCartItems(updatedCartItems);
+  };
+
+  const clearCart = () => setCartItems([]);
+
   console.log(cartItems);
 
   return (
@@ -75,6 +104,9 @@ function App() {
         totalQuantitySum={totalQuantitySum}
         subtotalSum={subtotalSum}
         cartItems={cartItems}
+        updateQuantity={updateQuantity}
+        removeItemFromCart={removeItemFromCart}
+        clearCart={clearCart}
       />
       <Routes>
         <Route path="/" element={<LabInventoryPage addToCart={addToCart} />} />

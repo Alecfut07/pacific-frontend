@@ -13,6 +13,9 @@ function CustomDrawer({
   totalQuantitySum,
   subtotalSum,
   cartItems,
+  updateQuantity,
+  removeItemFromCart,
+  clearCart,
 }) {
   const formatNumberWithCommas = (value) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -88,8 +91,15 @@ function CustomDrawer({
                   type="number"
                   value={item.product.quantity}
                   className="w-16 rounded-md border border-blue-gray-300 px-2 py-1"
+                  onChange={(e) =>
+                    updateQuantity(item.product.id, parseInt(e.target.value))
+                  }
                 />
-                <IconButton variant="text" color="red">
+                <IconButton
+                  variant="text"
+                  color="red"
+                  onClick={() => removeItemFromCart(item.product.id)}
+                >
                   <TrashIcon className="h-5 w-5" />
                 </IconButton>
               </div>
@@ -98,7 +108,12 @@ function CustomDrawer({
         ))}
       </div>
       <div className="mt-4 flex justify-center">
-        <Button color="red" size="lg" disabled={cartItems.length === 0}>
+        <Button
+          color="red"
+          size="lg"
+          onClick={() => clearCart()}
+          disabled={cartItems.length === 0}
+        >
           Limpiar el carrito
         </Button>
       </div>
