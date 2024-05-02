@@ -18,6 +18,16 @@ function CustomDrawer({
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
+  const handleScroll = (event) => {
+    const container = event.target;
+    if (
+      container.scrollHeight - container.scrollTop ===
+      container.clientHeight
+    ) {
+      console.log("Cargando mas elementos...");
+    }
+  };
+
   return (
     <Drawer placement={placement} open={open} onClose={onClose} className="p-4">
       <div className="mb-6 flex items-center justify-between">
@@ -49,7 +59,11 @@ function CustomDrawer({
           Ver y editar carrito
         </Button>
       </div>
-      <div className="mt-4 flex flex-col gap-4">
+      <div
+        className="mt-4 flex flex-col gap-4 overflow-y-auto"
+        onScroll={handleScroll}
+        style={{ maxHeight: "calc(100vh - 300px)" }}
+      >
         {cartItems.map((item) => (
           <div key={item.product.id} className="flex gap-4">
             <img
@@ -60,7 +74,7 @@ function CustomDrawer({
             <div className="flex flex-col">
               <Typography variant="h6">{item.product.name}</Typography>
               <Typography color="gray">${item.product.price} MXN</Typography>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 <Typography color="gray">Cantidad:</Typography>
                 <input
                   type="number"
