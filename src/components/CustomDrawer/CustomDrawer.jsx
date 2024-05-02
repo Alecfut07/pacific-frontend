@@ -55,12 +55,20 @@ function CustomDrawer({
         Subtotal: ${formatNumberWithCommas(subtotalSum)} MXN
       </Typography>
       <div className="flex">
-        <Button size="sm" variant="outlined">
+        <Button
+          className="mr-2"
+          size="sm"
+          variant="outlined"
+          disabled={cartItems.length === 0}
+        >
           Ver y editar carrito
+        </Button>
+        <Button size="sm" variant="outlined" disabled={cartItems.length === 0}>
+          Crear cotización
         </Button>
       </div>
       <div
-        className="mt-4 flex flex-col gap-4 overflow-y-auto"
+        className="mt-4 flex flex-col gap-4 overflow-y-auto overflow-x-hidden"
         onScroll={handleScroll}
         style={{ maxHeight: "calc(100vh - 300px)" }}
       >
@@ -88,6 +96,11 @@ function CustomDrawer({
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-4 flex justify-center">
+        <Button color="red" size="lg" disabled={cartItems.length === 0}>
+          Limpiar el carrito
+        </Button>
       </div>
     </Drawer>
   );
