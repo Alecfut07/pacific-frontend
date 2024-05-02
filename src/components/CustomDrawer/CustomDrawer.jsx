@@ -69,7 +69,15 @@ function CustomDrawer({
         >
           Ver y editar carrito
         </Button>
-        <PDFDownloadLink document={<CreateQuote />} fileName="cotizacion.pdf">
+        <PDFDownloadLink
+          document={
+            <CreateQuote
+              cartItems={cartItems}
+              total={formatNumberWithCommas(subtotalSum)}
+            />
+          }
+          fileName="cotizacion.pdf"
+        >
           {({ blob, url, loading, error }) =>
             loading ? (
               "Cargando documento..."
@@ -84,13 +92,6 @@ function CustomDrawer({
             )
           }
         </PDFDownloadLink>
-        {/* <Button
-          size="sm"
-          variant="outlined"
-          disabled={cartItems.length === 0}
-        >
-          Crear cotización
-        </Button> */}
       </div>
       <div
         className="mt-4 flex flex-col gap-4 overflow-y-auto overflow-x-hidden"

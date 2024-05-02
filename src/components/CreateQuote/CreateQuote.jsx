@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function CreateQuote() {
+function CreateQuote({ cartItems, total }) {
   return (
     <Document>
       <Page style={styles.body}>
@@ -146,57 +146,25 @@ function CreateQuote() {
               <Text>Subtotal</Text>
             </View>
           </View>
-          <View style={styles.tableRow}>
-            <View style={styles.tableCell}>
-              <Text>1</Text>
+          {cartItems.map((item) => (
+            <View key={item.product.id} style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text>{item.product.id}</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text>{item.product.name}</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text>{item.product.quantity}</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text>${item.product.price} MXN</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text>${item.product.subtotal} MXN</Text>
+              </View>
             </View>
-            <View style={styles.tableCell}>
-              <Text>Producto A</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>2</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>$20.00</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>$40.00</Text>
-            </View>
-          </View>
-          <View style={styles.tableRow}>
-            <View style={styles.tableCell}>
-              <Text>2</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>Producto B</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>1</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>$15.00</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>$15.00</Text>
-            </View>
-          </View>
-          <View style={styles.tableRow}>
-            <View style={styles.tableCell}>
-              <Text>3</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>Producto C</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>3</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>$30.00</Text>
-            </View>
-            <View style={styles.tableCell}>
-              <Text>$90.00</Text>
-            </View>
-          </View>
+          ))}
           <View style={styles.tableRow}>
             <View style={[styles.tableCell, styles.tableFooter]}></View>
             <View style={styles.tableCell}></View>
@@ -205,7 +173,7 @@ function CreateQuote() {
               <Text style={{ textAlign: "right" }}>Total:</Text>
             </View>
             <View style={styles.tableCell}>
-              <Text>$145.00</Text>
+              <Text>${total} MXN</Text>
             </View>
           </View>
         </View>
@@ -228,7 +196,7 @@ function CreateQuote() {
           <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
             Visita nuestro sitio web: www.Pacific.com.mx
           </Text>
-          <Text style={styles.date}>Fecha:</Text>
+          <Text style={styles.date}>Fecha de la cotización:</Text>
           <Text style={styles.pageNumber}>pageNumber / totalPages</Text>
         </View>
       </Page>
