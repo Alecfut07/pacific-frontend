@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function CreateQuote({ cartItems, total }) {
+function CreateQuote({ cartItems, total, currentDateTime }) {
   return (
     <Document>
       <Page style={styles.body}>
@@ -196,7 +196,9 @@ function CreateQuote({ cartItems, total }) {
           <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
             Visita nuestro sitio web: www.Pacific.com.mx
           </Text>
-          <Text style={styles.date}>Fecha de la cotización:</Text>
+          <Text style={styles.date}>
+            Fecha de la cotización: {currentDateTime}
+          </Text>
           <Text style={styles.pageNumber}>pageNumber / totalPages</Text>
         </View>
       </Page>

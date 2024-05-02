@@ -20,6 +20,12 @@ function CustomDrawer({
   removeItemFromCart,
   clearCart,
 }) {
+  const options = { timeZone: "America/Tijuana", hour12: true };
+  const currentDateTime = new Date().toLocaleString("es-MX", options);
+
+  // Reemplazar caracteres no permitidos en nombres de archivo
+  const formattedDateTime = currentDateTime.replace(/[/: ]/g, "_");
+
   const formatNumberWithCommas = (value) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -74,9 +80,10 @@ function CustomDrawer({
             <CreateQuote
               cartItems={cartItems}
               total={formatNumberWithCommas(subtotalSum)}
+              currentDateTime={currentDateTime}
             />
           }
-          fileName="cotizacion.pdf"
+          fileName={`cotizacion_${formattedDateTime}.pdf`}
         >
           {({ blob, url, loading, error }) =>
             loading ? (
