@@ -199,7 +199,6 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
           <Text style={styles.date}>
             Fecha de la cotización: {currentDateTime}
           </Text>
-          <Text style={styles.pageNumber}>pageNumber / totalPages</Text>
         </View>
       </Page>
     </Document>
