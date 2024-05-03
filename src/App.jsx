@@ -109,7 +109,10 @@ function App() {
         clearCart={clearCart}
       />
       <Routes>
-        <Route path="/" element={<LabInventoryPage addToCart={addToCart} />} />
+        <Route
+          path="/"
+          element={<IndustrialInventoryPage addToCart={addToCart} />}
+        />
         <Route
           path="/lab-inventory"
           element={<LabInventoryPage addToCart={addToCart} />}
