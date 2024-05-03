@@ -33,7 +33,7 @@ function IndustrialInventoryPage({ addToCart }) {
         </div>
       </div>
       <div className="container mx-auto mt-8">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 items-center gap-4">
           <div className="col-span-1">
             <Card>
               <img
@@ -41,14 +41,6 @@ function IndustrialInventoryPage({ addToCart }) {
                 src={ampliaGama}
                 alt="imagen 1"
               />
-              <CardBody>
-                <div className="bg-blue-500 p-4 text-white">
-                  <p>
-                    Descubre nuestra amplia gama de productos para laboratorio e
-                    industria: ¡todo lo que necesitas en un solo lugar!
-                  </p>
-                </div>
-              </CardBody>
             </Card>
           </div>
           <div className="col-span-1">
@@ -58,14 +50,6 @@ function IndustrialInventoryPage({ addToCart }) {
                 src={completoInventario}
                 alt="imagen 2"
               />
-              <CardBody>
-                <div className="bg-blue-500 p-4 text-white">
-                  <p>
-                    Optimiza tu flujo de trabajo con nuestro completo inventario
-                    de productos industriales y de laboratorio.
-                  </p>
-                </div>
-              </CardBody>
             </Card>
           </div>
           <div className="col-span-1">
@@ -75,14 +59,6 @@ function IndustrialInventoryPage({ addToCart }) {
                 src={eficiencia}
                 alt="imagen 3"
               />
-              <CardBody>
-                <div className="bg-blue-500 p-4 text-white">
-                  <p>
-                    Eficiencia garantizada: encuentra todo lo que necesitas en
-                    nuestro inventario para laboratorio e industria.
-                  </p>
-                </div>
-              </CardBody>
             </Card>
           </div>
         </div>
