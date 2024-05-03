@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import {
   Button,
   Drawer,
@@ -39,6 +39,20 @@ function CustomDrawer({
       console.log("Cargando mas elementos...");
     }
   };
+
+  // Agregar efecto secundario para deshabilitar el scroll en el cuerpo
+  // cuando el Drawer está abierto
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    // Limpiar el efecto secundario cuando el componente se desmonta
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
 
   return (
     <>
