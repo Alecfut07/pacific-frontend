@@ -1,16 +1,32 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardHeader, CardBody } from "@material-tailwind/react";
 import CustomTabs from "../../../components/CustomTabs/CustomTabs";
 import CardBoardBoxesTable from "../../../components/CardBoardBoxesTable/CardBoardBoxesTable";
 import IndustrialProductsGallery from "../../../components/IndustrialProductsGallery/IndustrialProductsGallery";
 import industrialInventoryBackgroundImage from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
 import BoxGuidedBanner from "../../../images/CardBoardBoxes/boxguided-banner.jpg";
-import ampliaGama from "../../../images/Home/amplia-gama.png";
-import completoInventario from "../../../images/Home/completo-inventario.jpeg";
+import labIcon from "../../../images/IndustrialInventory/IndustrialIventoryPage/labIcon_transparent2.png";
+import industrialIcon from "../../../images/Home/completo-inventario.jpeg";
 import eficiencia from "../../../images/Home/eficiencia.png";
 
-function IndustrialInventoryPage() {
+function IndustrialInventoryPage({ addToCart }) {
   const [activeTab, setActiveTab] = useState("Cajas de cartón");
+
+  const navigate = useNavigate();
+
+  const navigateToLabInventory = () => {
+    navigate("/lab-inventory");
+    // setInventoryType("Inventario de laboratorio");
+  };
+  const navigateToIndustrialInventory = () => {
+    setActiveTab("Productos");
+    // setInventoryType("Inventario industrial");
+    const targetElement = document.getElementById("industrial-section");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleTabChange = (value) => setActiveTab(value);
 
@@ -33,61 +49,64 @@ function IndustrialInventoryPage() {
         </div>
       </div>
       <div className="container mx-auto mt-8">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 items-center gap-4">
           <div className="col-span-1">
-            <Card>
+            <Card
+              className="transition-opacity hover:opacity-50"
+              onClick={navigateToLabInventory}
+            >
               <img
                 className="h-64 w-full object-contain"
-                src={ampliaGama}
+                src={labIcon}
                 alt="imagen 1"
               />
-              <CardBody>
-                <div className="bg-blue-500 p-4 text-white">
-                  <p>
-                    Descubre nuestra amplia gama de productos para laboratorio e
-                    industria: ¡todo lo que necesitas en un solo lugar!
+              <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center opacity-0 transition-opacity hover:opacity-100">
+                <div className="bg-white">
+                  <p className="text-3xl font-bold text-black">
+                    Inventario de laboratorio
                   </p>
                 </div>
-              </CardBody>
+              </div>
             </Card>
           </div>
           <div className="col-span-1">
-            <Card>
+            <Card
+              className="transition-opacity hover:opacity-50"
+              onClick={navigateToIndustrialInventory}
+            >
               <img
                 className="h-64 w-full object-contain"
-                src={completoInventario}
+                src={industrialIcon}
                 alt="imagen 2"
               />
-              <CardBody>
-                <div className="bg-blue-500 p-4 text-white">
-                  <p>
-                    Optimiza tu flujo de trabajo con nuestro completo inventario
-                    de productos industriales y de laboratorio.
+              <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center opacity-0 transition-opacity hover:opacity-100">
+                <div className="bg-white">
+                  <p className="text-3xl font-bold text-black">
+                    Inventario Industrial
                   </p>
                 </div>
-              </CardBody>
+              </div>
             </Card>
           </div>
           <div className="col-span-1">
-            <Card>
+            <Card className="transition-opacity hover:opacity-50">
               <img
                 className="h-64 w-full object-contain"
                 src={eficiencia}
                 alt="imagen 3"
               />
-              <CardBody>
-                <div className="bg-blue-500 p-4 text-white">
-                  <p>
-                    Eficiencia garantizada: encuentra todo lo que necesitas en
-                    nuestro inventario para laboratorio e industria.
+              <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center opacity-0 transition-opacity hover:opacity-100">
+                <div className="bg-white">
+                  <p className="text-3xl font-bold text-black">
+                    Tercer inventario
                   </p>
                 </div>
-              </CardBody>
+              </div>
             </Card>
           </div>
         </div>
       </div>
-      <div className="mt-12">
+      <div className="mt-12" id="industrial-section">
         <Card>
           <CardHeader>
             <CustomTabs activeTab={activeTab} onChange={handleTabChange} />
@@ -96,7 +115,7 @@ function IndustrialInventoryPage() {
             {activeTab === "Cajas de cartón" ? (
               <CardBoardBoxesTable />
             ) : (
-              <IndustrialProductsGallery />
+              <IndustrialProductsGallery addToCart={addToCart} />
             )}
           </CardBody>
         </Card>

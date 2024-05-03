@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ButtonGroup, Button } from "@material-tailwind/react";
 import {
   PlusCircleIcon,
@@ -6,13 +6,13 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
 
-function LabProduct({ product, openModal }) {
-  const [amount, setAmount] = useState(0);
+function LabProduct({ product, openModal, addToCart }) {
+  const [quantity, setQuantity] = useState(product.quantity);
 
   const handleDecreaseItemClick = () => {
-    if (amount !== 0) setAmount(amount - 1);
+    if (quantity > 0) setQuantity(quantity - 1);
   };
-  const handleIncreaseItemClick = () => setAmount(amount + 1);
+  const handleIncreaseItemClick = () => setQuantity(quantity + 1);
 
   return (
     <div className={`relative mx-auto flex flex-col`}>
@@ -35,7 +35,7 @@ function LabProduct({ product, openModal }) {
           >
             <MinusCircleIcon className="h-5 w-5" />
           </Button>
-          <input className="h-10 w-20 text-center" value={amount} />
+          <input className="h-10 w-20 text-center" value={quantity} readOnly />
           <Button
             className="rounded-r"
             onClick={() => handleIncreaseItemClick()}
@@ -45,7 +45,12 @@ function LabProduct({ product, openModal }) {
         </ButtonGroup>
       </div>
       <div className="mx-auto flex items-center justify-between">
-        <Button color="blue" className="flex items-center">
+        <Button
+          color="blue"
+          className="flex items-center"
+          onClick={() => addToCart(product, quantity)}
+          disabled={quantity === 0}
+        >
           Agregarlo al carrito
           <ShoppingCartIcon className="ml-2 h-5 w-5" />
         </Button>

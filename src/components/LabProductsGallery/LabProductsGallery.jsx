@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback } from "react";
 import {
   Button,
   Card,
@@ -19,7 +19,7 @@ import { LabProducts } from "../../data/LabInventory";
 
 import "./LabProductsGallery.css";
 
-function LabProductsGallery() {
+function LabProductsGallery({ addToCart }) {
   const [searchProduct, setSearchProduct] = useState("");
   const [labProducts, setLabProducts] = useState(LabProducts);
   const [fullData, setFullData] = useState(LabProducts);
@@ -99,6 +99,7 @@ function LabProductsGallery() {
                 key={labProduct.id}
                 product={labProduct}
                 openModal={openModal}
+                addToCart={addToCart}
               />
             ))}
             <ImagesModal

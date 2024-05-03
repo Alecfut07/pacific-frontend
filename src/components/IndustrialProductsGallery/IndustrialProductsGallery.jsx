@@ -19,7 +19,7 @@ import { IndustrialProducts } from "../../data/IndustrialInventory";
 
 import "./IndustrialProductsGallery.css";
 
-function IndustrialProductsGallery() {
+function IndustrialProductsGallery({ addToCart }) {
   const [searchProduct, setSearchProduct] = useState("");
   const [industrialProducts, setIndustrialProducts] =
     useState(IndustrialProducts);
@@ -100,6 +100,7 @@ function IndustrialProductsGallery() {
                 key={industrialProduct.id}
                 product={industrialProduct}
                 openModal={openModal}
+                addToCart={addToCart}
               />
             ))}
             <ImagesModal

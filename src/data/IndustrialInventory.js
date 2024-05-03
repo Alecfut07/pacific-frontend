@@ -36,6 +36,8 @@ export const IndustrialProducts = [
     name: "Destornillador Phillips",
     description: "Destornillador con punta en forma de cruz.",
     price: "50",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 2,
@@ -43,6 +45,8 @@ export const IndustrialProducts = [
     name: "Martillo",
     description: "Martillo de tamaño mediano.",
     price: "120",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 3,
@@ -50,6 +54,8 @@ export const IndustrialProducts = [
     name: "Sierra eléctrica",
     description: "Sierra eléctrica para cortes precisos.",
     price: "800",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 4,
@@ -57,6 +63,8 @@ export const IndustrialProducts = [
     name: "Llave de tubo",
     description: "Llave para apretar o aflojar tuercas y tornillos.",
     price: "80",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 5,
@@ -64,6 +72,8 @@ export const IndustrialProducts = [
     name: "Cinta métrica",
     description: "Cinta para medir longitudes y distancias.",
     price: "40",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 6,
@@ -71,6 +81,8 @@ export const IndustrialProducts = [
     name: "Gato hidráulico",
     description: "Gato para elevar vehículos y objetos pesados.",
     price: "500",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 7,
@@ -79,6 +91,8 @@ export const IndustrialProducts = [
     description:
       "Herramienta para aplicar calor en trabajos de soldadura y desoldadura.",
     price: "300",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 8,
@@ -87,6 +101,8 @@ export const IndustrialProducts = [
     description:
       "Instrumento para verificar la horizontalidad o verticalidad de superficies.",
     price: "60",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 9,
@@ -94,6 +110,8 @@ export const IndustrialProducts = [
     name: "Sierra de mano",
     description: "Sierra manual para cortes precisos en materiales diversos.",
     price: "90",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 10,
@@ -102,6 +120,8 @@ export const IndustrialProducts = [
     description:
       "Llave para apretar o aflojar tornillos de gran tamaño con facilidad.",
     price: "250",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 11,
@@ -110,6 +130,8 @@ export const IndustrialProducts = [
     description:
       "Pinzas aisladas para trabajos con cables y conexiones eléctricas.",
     price: "70",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 12,
@@ -118,6 +140,8 @@ export const IndustrialProducts = [
     description:
       "Instrumento para trazar ángulos rectos en trabajos de carpintería y construcción.",
     price: "35",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 13,
@@ -125,6 +149,8 @@ export const IndustrialProducts = [
     name: "Taladro eléctrico",
     description: "Taladro para perforar distintos materiales con precisión.",
     price: "200",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 14,
@@ -133,6 +159,8 @@ export const IndustrialProducts = [
     description:
       "Alicates versátiles para diversos trabajos de agarre y corte.",
     price: "50",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 15,
@@ -140,6 +168,8 @@ export const IndustrialProducts = [
     name: "Llave allen",
     description: "Llave hexagonal para tornillos con cabezas hexagonales.",
     price: "30",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 16,
@@ -148,6 +178,8 @@ export const IndustrialProducts = [
     description:
       "Herramienta para realizar cortes o marcas en materiales duros.",
     price: "25",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 17,
@@ -156,6 +188,8 @@ export const IndustrialProducts = [
     description:
       "Cepillo de alambre para limpiar superficies oxidadas o sucias.",
     price: "15",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 18,
@@ -164,6 +198,8 @@ export const IndustrialProducts = [
     description:
       "Serrucho manual para cortar madera u otros materiales blandos.",
     price: "40",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 19,
@@ -171,6 +207,8 @@ export const IndustrialProducts = [
     name: "Pala",
     description: "Pala de mano para cavar o mover tierra, arena, o escombros.",
     price: "70",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 20,
@@ -179,6 +217,8 @@ export const IndustrialProducts = [
     description:
       "Lámpara portátil para iluminar áreas de trabajo con poca luz.",
     price: "120",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 21,
@@ -186,6 +226,8 @@ export const IndustrialProducts = [
     name: "Tijeras de corte",
     description: "Tijeras para cortar distintos materiales con precisión.",
     price: "20",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 22,
@@ -193,6 +235,8 @@ export const IndustrialProducts = [
     name: "Llave de cadena",
     description: "Llave ajustable con cadena para tuberías o piezas redondas.",
     price: "100",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 23,
@@ -201,6 +245,8 @@ export const IndustrialProducts = [
     description:
       "Herramienta para lijar superficies de manera rápida y uniforme.",
     price: "150",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 24,
@@ -208,6 +254,8 @@ export const IndustrialProducts = [
     name: "Niple",
     description: "Pieza roscada para unir tuberías o conexiones.",
     price: "5",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 25,
@@ -215,6 +263,8 @@ export const IndustrialProducts = [
     name: "Maza",
     description: "Martillo grande para golpear superficies o herramientas.",
     price: "80",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 26,
@@ -223,6 +273,8 @@ export const IndustrialProducts = [
     description:
       "Alicate con sistema de sujeción ajustable para trabajos de agarre.",
     price: "60",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 27,
@@ -230,6 +282,8 @@ export const IndustrialProducts = [
     name: "Destornillador plano",
     description: "Destornillador con punta plana para tornillos de ranura.",
     price: "40",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 28,
@@ -238,6 +292,8 @@ export const IndustrialProducts = [
     description:
       "Herramienta para aplicar calor en trabajos de soldadura o desoldadura.",
     price: "70",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 29,
@@ -246,6 +302,8 @@ export const IndustrialProducts = [
     description:
       "Punta de diamante para cortar vidrio u otros materiales duros.",
     price: "100",
+    quantity: 0,
+    subtotal: 0,
   },
   {
     id: 30,
@@ -254,5 +312,7 @@ export const IndustrialProducts = [
     description:
       "Grapadora robusta para uso intensivo en trabajos de embalaje.",
     price: "50",
+    quantity: 0,
+    subtotal: 0,
   },
 ];

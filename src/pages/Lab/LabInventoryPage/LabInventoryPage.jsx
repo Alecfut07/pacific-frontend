@@ -1,7 +1,7 @@
 import LabProductsGallery from "../../../components/LabProductsGallery/LabProductsGallery";
 import labInventoryBackgroundImage from "../../../images/LabInventory/LabInventoryPage/lab-inventory-background.png";
 
-function LabInventoryPage() {
+function LabInventoryPage({ addToCart }) {
   return (
     <div>
       <div className="relative">
@@ -16,7 +16,7 @@ function LabInventoryPage() {
           </div>
         </div>
       </div>
-      <LabProductsGallery />
+      <LabProductsGallery addToCart={addToCart} />
     </div>
   );
 }
