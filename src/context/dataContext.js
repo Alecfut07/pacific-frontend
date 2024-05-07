@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 const DataContext = createContext({
-  usuario: "",
   token: "",
+  setToken: () => {},
 });
 
 export default DataContext;

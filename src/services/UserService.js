@@ -1,4 +1,6 @@
 import axios from "axios";
+import { host } from "../api/host";
+import { API_TOKEN } from "../utils/data";
 
 export const login = async (username, password) => {
   const body = {
@@ -6,13 +8,11 @@ export const login = async (username, password) => {
     password,
   };
   try {
-    const { data } = await axios.post(
-      "http://ciberserenosmx.com:996/api/token/",
-      body,
-    );
+    const response = await axios.post(`${host}${API_TOKEN}`, body);
 
-    const accessToken = data.access;
-    localStorage.setItem("accessToken", accessToken);
+    return response;
+    // const accessToken = response.data;
+    // localStorage.setItem("accessToken", accessToken);
   } catch (error) {
     console.error(error);
   }
