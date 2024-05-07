@@ -4,6 +4,7 @@ import CustomNavbar from "./components/CustomNavbar/CustomNavbar";
 import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
 import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
 import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
+import LoginPage from "./pages/Login/LoginPage/LoginPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -109,6 +110,7 @@ function App() {
         clearCart={clearCart}
       />
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
