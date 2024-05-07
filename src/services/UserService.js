@@ -8,9 +8,8 @@ export const login = async (username, password) => {
     password,
   };
   try {
-    const response = await axios.post(`${host}${API_TOKEN}`, body);
-
-    return response;
+    const { data } = await axios.post(`${host}${API_TOKEN}`, body);
+    return data;
     // const accessToken = response.data;
     // localStorage.setItem("accessToken", accessToken);
   } catch (error) {

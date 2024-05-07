@@ -13,19 +13,24 @@ import LabInventoryBackground from "../../../images/LabInventory/LabInventoryPag
 import IndustrialInventoryBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
 
 function LoginPage() {
-  const { setToken } = useContext(DataContext).setToken;
+  const token = useContext(DataContext).token;
+  const setToken = useContext(DataContext).setToken;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleUsernameChange = (e) => setUsername(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+
   const handleLogin = async () => {
     try {
-      const response = await login(username, password);
-      console.log("response: ", response);
-      // localStorage.setItem("accessToken", accessToken);
-      // setToken(data.access);
+      const data = await login(username, password);
+      localStorage.setItem("accessToken", data.access);
+      setToken(data.access);
       // Manejar redireccionamineto o cualquier otra lógica después del inicio de sesión exitoso
     } catch (error) {
       console.log(error);
+      setUsername("");
+      setPassword("");
       // Manejar errores de inicio de sesión.
     }
   };
@@ -69,6 +74,7 @@ function LoginPage() {
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
+                  onChange={(e) => handleUsernameChange(e)}
                 />
                 <Typography variant="h6" color="blue-gray" className="-mb-3">
                   Contraseña:
@@ -81,6 +87,7 @@ function LoginPage() {
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
+                  onChange={(e) => handlePasswordChange(e)}
                 />
               </div>
               <Button type="submit" className="mt-6" fullWidth>
