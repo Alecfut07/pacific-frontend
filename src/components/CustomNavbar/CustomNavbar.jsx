@@ -18,6 +18,8 @@ import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
 import InventoriesLogo from "../../assets/inventories.svg";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
+  const token = localStorage.getItem("accessToken");
+
   const [openNav, setOpenNav] = useState(false);
   const [inventoryType, setInventoryType] = useState("");
 
@@ -130,23 +132,30 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
               onClick={openDrawerTop}
             />
           </Badge>
-          <div className="flex items-center gap-x-1">
-            <Button
-              variant="text"
-              size="sm"
-              className="hidden lg:inline-block"
-              onClick={navigateToLogIn}
-            >
-              <span>Iniciar Sesión</span>
-            </Button>
-            <Button
-              variant="gradient"
-              size="sm"
-              className="hidden lg:inline-block"
-            >
-              <span>Registrarse</span>
-            </Button>
-          </div>
+          {token ? (
+            <div>
+              <UserIcon className="h-6 w-6 hover:text-blue-500 focus:text-blue-500" />
+            </div>
+          ) : (
+            <div className="flex items-center gap-x-1">
+              <Button
+                variant="text"
+                size="sm"
+                className="hidden lg:inline-block"
+                onClick={navigateToLogIn}
+              >
+                <span>Iniciar Sesión</span>
+              </Button>
+              <Button
+                variant="gradient"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <span>Registrarse</span>
+              </Button>
+            </div>
+          )}
+
           <IconButton
             variant="text"
             className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -188,20 +197,22 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
       </div>
       <Collapse open={openNav}>
         {navList}
-        <div className="flex items-center gap-x-1">
-          <Button
-            fullWidth
-            variant="text"
-            size="sm"
-            className=""
-            onClick={navigateToLogIn}
-          >
-            <span>Iniciar Sesión</span>
-          </Button>
-          <Button fullWidth variant="gradient" size="sm" className="">
-            <span>Registrarse</span>
-          </Button>
-        </div>
+        {!token && (
+          <div className="flex items-center gap-x-1">
+            <Button
+              fullWidth
+              variant="text"
+              size="sm"
+              className=""
+              onClick={navigateToLogIn}
+            >
+              <span>Iniciar Sesión</span>
+            </Button>
+            <Button fullWidth variant="gradient" size="sm" className="">
+              <span>Registrarse</span>
+            </Button>
+          </div>
+        )}
       </Collapse>
     </Navbar>
   );
