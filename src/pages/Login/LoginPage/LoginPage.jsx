@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from "../../../services/UserService";
 import DataContext from "../../../context/dataContext";
 import {
@@ -13,10 +14,11 @@ import LabInventoryBackground from "../../../images/LabInventory/LabInventoryPag
 import IndustrialInventoryBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
 
 function LoginPage() {
-  const token = useContext(DataContext).token;
   const setToken = useContext(DataContext).setToken;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -26,6 +28,9 @@ function LoginPage() {
       const data = await login(username, password);
       localStorage.setItem("accessToken", data.access);
       setToken(data.access);
+      setUsername("");
+      setPassword("");
+      navigate("/");
       // Manejar redireccionamineto o cualquier otra lógica después del inicio de sesión exitoso
     } catch (error) {
       console.log(error);
