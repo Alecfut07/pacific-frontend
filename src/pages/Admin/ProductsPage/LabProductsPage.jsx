@@ -13,21 +13,26 @@ import {
   Dialog,
   DialogHeader,
   DialogBody,
+  DialogFooter,
   IconButton,
   Input,
   Typography,
 } from "@material-tailwind/react";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
-import { getItemsLab, getItemLab } from "../../../services/ItemLabService";
+import {
+  getItemsLab,
+  getItemLab,
+  deleteItemLab,
+} from "../../../services/ItemLabService";
 import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
 import FormUpdateLabProduct from "../../../components/FormUpdateLabProduct/FormUpdateLabProduct";
+import DeleteLabProduct from "../../../components/DeleteLabProduct/DeleteLabProduct";
 
 function LabProductsPage() {
   const [searchProduct, setSearchProduct] = useState("");
   const [tableItemsLab, setTableItemsLab] = useState([]);
   const [fullData, setFullData] = useState([]);
-  const [editingProductUrl, setEditingProductUrl] = useState(null);
   const [labProduct, setLabProduct] = useState({});
 
   const [loading, setLoading] = useState(true);
@@ -37,6 +42,9 @@ function LabProductsPage() {
 
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const handleOpenEditDialog = () => setOpenEditDialog(!openEditDialog);
+
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const handleDeleteDialog = () => setOpenDeleteDialog(!openDeleteDialog);
 
   const [selectedEntriesValue, setSelectedEntriesValue] = useState(10);
 
@@ -71,6 +79,29 @@ function LabProductsPage() {
       console.log("itemLab: ", itemLab);
       setLabProduct(itemLab);
       handleOpenEditDialog();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleShowDeleteDialogClick = async (url) => {
+    try {
+      const itemLab = await getItemLab(url);
+      console.log("itemLab: ", itemLab);
+      setLabProduct(itemLab);
+      handleDeleteDialog();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeleteConfirmClick = async (url) => {
+    try {
+      await deleteItemLab(url);
+      setTableItemsLab((prevItems) =>
+        prevItems.filter((item) => item.url !== url),
+      );
+      handleDeleteDialog();
     } catch (error) {
       console.log(error);
     }
@@ -303,7 +334,12 @@ function LabProductsPage() {
                       </Button>
                     </td>
                     <td className={classes}>
-                      <Button color="red">Eliminar</Button>
+                      <Button
+                        color="red"
+                        onClick={() => handleShowDeleteDialogClick(itemLab.url)}
+                      >
+                        Eliminar
+                      </Button>
                     </td>
                   </tr>
                 );
@@ -350,6 +386,32 @@ function LabProductsPage() {
             labProduct={labProduct}
           />
         </DialogBody>
+      </Dialog>
+      <Dialog open={openDeleteDialog} handler={handleDeleteDialog}>
+        <DialogHeader>Eliminar producto de laboratorio</DialogHeader>
+        <DialogBody>
+          <DeleteLabProduct
+            handleOpen={handleDeleteDialog}
+            labProduct={labProduct}
+          />
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={handleDeleteDialog}
+            className="mr-1"
+          >
+            <span>Cancelar</span>
+          </Button>
+          <Button
+            variant="gradient"
+            color="green"
+            onClick={() => handleDeleteConfirmClick(labProduct.url)}
+          >
+            <span>Confirmar</span>
+          </Button>
+        </DialogFooter>
       </Dialog>
       <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
         <div className="flex items-center justify-center gap-2">
