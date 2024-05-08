@@ -27,7 +27,7 @@ export const createNewItemLab = async (
   main_image,
   description,
   quantity_available,
-  is_feature,
+  is_featured,
 ) => {
   const body = {
     name,
@@ -36,8 +36,10 @@ export const createNewItemLab = async (
     main_image,
     description,
     quantity_available,
-    is_feature,
+    is_featured,
   };
+
+  console.log("body: ", body);
 
   const axiosConfig = {
     headers: {
@@ -67,7 +69,7 @@ export const updateItemLab = async (
   main_image,
   description,
   quantity_available,
-  is_feature,
+  is_featured,
   created_at,
 ) => {
   const body = {
@@ -77,7 +79,7 @@ export const updateItemLab = async (
     main_image,
     description,
     quantity_available,
-    is_feature,
+    is_featured,
     created_at,
   };
 

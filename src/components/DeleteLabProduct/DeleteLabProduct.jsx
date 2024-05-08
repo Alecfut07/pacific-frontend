@@ -1,4 +1,5 @@
 function DeleteLabProduct({ handleOpen, labProduct }) {
+  console.log(labProduct);
   return (
     <>
       <div className="mb-4">
@@ -33,7 +34,7 @@ function DeleteLabProduct({ handleOpen, labProduct }) {
       </div>
       <div className="mb-4 block font-bold">
         <label className="mb-1 block font-bold">
-          Es destacado: {labProduct.is_featured}
+          Es destacado: {labProduct.is_featured ? "True" : "False"}
         </label>
       </div>
       <div className="mb-4 block font-bold">
