@@ -20,6 +20,7 @@ import {
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
 import { getItemsLab } from "../../../services/ItemLabService";
+import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
 
 function LabProductsPage() {
   const [searchProduct, setSearchProduct] = useState("");
@@ -139,6 +140,9 @@ function LabProductsPage() {
                   </svg>
                 </IconButton>
               </DialogHeader>
+              <DialogBody>
+                <FormUploadLabProduct handleOpen={handleOpen} />
+              </DialogBody>
             </Dialog>
             <div className="flex items-center">
               <label className="block text-sm font-medium text-gray-700">
