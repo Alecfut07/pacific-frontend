@@ -17,6 +17,7 @@ import {
   IconButton,
   Input,
   Typography,
+  Checkbox,
 } from "@material-tailwind/react";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
@@ -312,13 +313,11 @@ function LabProductsPage() {
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {itemLab.is_featured.toString()}
-                      </Typography>
+                      <Checkbox
+                        checked={itemLab.is_featured}
+                        color={itemLab.is_featured && "green"}
+                        ripple={false}
+                      />
                     </td>
                     <td className={classes}>
                       <Typography
