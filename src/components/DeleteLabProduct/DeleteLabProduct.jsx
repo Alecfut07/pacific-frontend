@@ -2,9 +2,6 @@ function DeleteLabProduct({ handleOpen, labProduct }) {
   return (
     <>
       <div className="mb-4">
-        <label className="mb-1 block font-bold">URL: {labProduct.url}</label>
-      </div>
-      <div className="mb-4">
         <label className="mb-1 block font-bold">
           Nombre: {labProduct.name}
         </label>
