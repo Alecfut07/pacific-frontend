@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import CustomNavbar from "./components/CustomNavbar/CustomNavbar";
 import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
 import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
@@ -10,6 +10,9 @@ import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
+  // const navigate = useNavigate();
 
   const totalQuantitySum = cartItems.reduce(
     (total, item) => total + item.totalQuantity,
@@ -91,14 +94,25 @@ function App() {
 
   const clearCart = () => setCartItems([]);
 
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem("accessToken");
+  //   if (accessToken) {
+  //     setIsLoggedIn(true);
+  //   } else {
+  //     navigate("/admin", { replace: true });
+  //   }
+  // }, [navigate]);
+
   console.log(cartItems);
 
   return (
     <>
-      <CustomNavbar
-        openDrawerTop={openDrawerTop}
-        totalQuantitySum={totalQuantitySum}
-      />
+      {location.pathname !== "/admin/lab-products" && (
+        <CustomNavbar
+          openDrawerTop={openDrawerTop}
+          totalQuantitySum={totalQuantitySum}
+        />
+      )}
       <CustomDrawer
         placement="left"
         open={openDrawer}
@@ -111,11 +125,11 @@ function App() {
         clearCart={clearCart}
       />
       <Routes>
-        <Route path="/admin" element={<LoginPage />} />
         <Route
           path="/"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
         />
+        <Route path="/admin" element={<LoginPage />} />
         <Route path="/admin/lab-products" element={<LabProductsPage />} />
         <Route
           path="/lab-inventory"
