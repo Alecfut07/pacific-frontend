@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -10,13 +10,80 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  IconButton,
   Input,
   Typography,
 } from "@material-tailwind/react";
+import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminProductsTable";
+import { getItemsLab } from "../../../services/ItemLabService";
 
 function ProductsPage() {
   const [searchProduct, setSearchProduct] = useState("");
+  const [tableItemsLab, setTableItemsLab] = useState([]);
+  const [fullData, setFullData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [selectedEntriesValue, setSelectedEntriesValue] = useState(10);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(tableItemsLab.length / selectedEntriesValue);
+
+  const numberOfPages = [];
+
+  for (let page = 1; page <= totalPages; page++) {
+    numberOfPages.push(page);
+  }
+
+  const handleFirstPage = () => setCurrentPage(1);
+
+  const handlePreviousPage = () => setCurrentPage(currentPage - 1);
+
+  const handlePageClick = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleNextPage = () => setCurrentPage(currentPage + 1);
+
+  const handleLastPage = () => setCurrentPage(totalPages);
+
+  const handleSelectionChange = (e) => {
+    setSelectedEntriesValue(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const filterFunction = useCallback(
+    (data) => {
+      return data.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchProduct.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchProduct.toLowerCase()),
+      );
+    },
+    [searchProduct],
+  );
+
+  const currentTableItemsLab = useMemo(() => {
+    const filteredData = filterFunction(tableItemsLab);
+
+    const firstPageIndex = (currentPage - 1) * selectedEntriesValue;
+    const lastPageIndex = firstPageIndex + selectedEntriesValue;
+
+    return filteredData.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, selectedEntriesValue, tableItemsLab, filterFunction]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const itemsLab = await getItemsLab();
+        setTableItemsLab(itemsLab);
+        setFullData(itemsLab);
+        setLoading(false);
+      } catch (error) {
+        setTableItemsLab([]);
+        setFullData([]);
+      }
+    })();
+  }, []);
 
   return (
     <Card className="h-full w-full">
@@ -36,7 +103,8 @@ function ProductsPage() {
               </label>
               <select
                 className="mt-1 block rounded-md border border-gray-300 bg-white px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-                value=""
+                value={selectedEntriesValue}
+                onChange={handleSelectionChange}
               >
                 <option value={10}>10</option>
                 <option value={25}>25</option>
@@ -78,7 +146,97 @@ function ProductsPage() {
               ))}
             </tr>
           </thead>
-          <tbody></tbody>
+          {currentTableItemsLab.length === 0 ? (
+            <p className="flex- justify-center">
+              No se encontraron resultados para la búsqueda actual.
+            </p>
+          ) : (
+            <tbody>
+              {currentTableItemsLab.map((itemLab, index) => {
+                const isLast = index === fullData.length - 1;
+                const classes = isLast
+                  ? "p-4"
+                  : "p-4 border-b border-blue-gray-50";
+
+                return (
+                  <tr key={index} className="even:bg-blue-gray-50/50">
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {itemLab.name}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {itemLab.price}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {itemLab.category}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <img src={itemLab.main_image} alt="imagen" />
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {itemLab.description}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {itemLab.quantity_available}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {itemLab.is_featured.toString()}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {itemLab.created_at}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Button color="amber">Editar Manual</Button>
+                    </td>
+                    <td className={classes}>
+                      <Button color="red">Eliminar</Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          )}
         </table>
       </CardBody>
       <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
@@ -87,6 +245,8 @@ function ProductsPage() {
             variant="text"
             size="sm"
             className="flex items-center rounded-full"
+            onClick={() => handleFirstPage()}
+            disabled={currentPage === 1}
           >
             Primera
           </Button>
@@ -94,14 +254,31 @@ function ProductsPage() {
             variant="text"
             size="sm"
             className="flex items-center rounded-full"
+            onClick={() => handlePreviousPage()}
+            disabled={currentPage === 1}
           >
             <ArrowLeftIcon strokeWidth={2} className="mr-2 h-4 w-4" /> Anterior
           </Button>
-          <div className="flex items-center gap-2"></div>
+          <div className="flex items-center gap-2">
+            {currentTableItemsLab.length !== 0 &&
+              numberOfPages.map((page, index) => (
+                <IconButton
+                  key={index}
+                  variant={currentPage === index + 1 ? "filled" : "text"}
+                  size="sm"
+                  className="rounded-full"
+                  onClick={() => handlePageClick(page)}
+                >
+                  {page}
+                </IconButton>
+              ))}
+          </div>
           <Button
             variant="text"
             size="sm"
             className="flex items-center rounded-full"
+            onClick={() => handleNextPage()}
+            disabled={currentPage === totalPages || numberOfPages.length === 0}
           >
             Siguiente
             <ArrowRightIcon strokeWidth={2} className="ml-2 h-4 w-4" />
@@ -110,6 +287,8 @@ function ProductsPage() {
             variant="text"
             size="sm"
             className="flex items-center rounded-full"
+            onClick={() => handleLastPage()}
+            disabled={currentPage === totalPages || numberOfPages.length === 0}
           >
             Último
           </Button>
