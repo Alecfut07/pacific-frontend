@@ -28,7 +28,6 @@ export const createNewItemLab = async (
   description,
   quantity_available,
   is_feature,
-  created_at,
 ) => {
   const body = {
     name,
@@ -38,7 +37,6 @@ export const createNewItemLab = async (
     description,
     quantity_available,
     is_feature,
-    created_at,
   };
 
   const axiosConfig = {
@@ -55,6 +53,7 @@ export const createNewItemLab = async (
       body,
       axiosConfig,
     );
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
