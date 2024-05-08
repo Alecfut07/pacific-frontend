@@ -18,10 +18,10 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
-import { headers } from "../../../data/AdminProductsTable";
+import { headers } from "../../../data/AdminLabProductsTable";
 import { getItemsLab } from "../../../services/ItemLabService";
 
-function ProductsPage() {
+function LabProductsPage() {
   const [searchProduct, setSearchProduct] = useState("");
   const [tableItemsLab, setTableItemsLab] = useState([]);
   const [fullData, setFullData] = useState([]);
@@ -102,7 +102,7 @@ function ProductsPage() {
               color="blue-gray"
               className="mb-5 font-bold"
             >
-              Admin - Inventario de productos
+              Admin - Inventario productos de laboratorio
             </Typography>
             <Button color="blue" className="mb-5" onClick={handleOpen}>
               Crear nuevo producto lab
@@ -270,7 +270,7 @@ function ProductsPage() {
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <Button color="amber">Editar Manual</Button>
+                      <Button color="amber">Editar</Button>
                     </td>
                     <td className={classes}>
                       <Button color="red">Eliminar</Button>
@@ -341,4 +341,4 @@ function ProductsPage() {
   );
 }
 
-export default ProductsPage;
+export default LabProductsPage;

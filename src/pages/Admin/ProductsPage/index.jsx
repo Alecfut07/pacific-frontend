@@ -1,3 +1,3 @@
-import ProductsPage from "./ProductsPage";
+import LabProductsPage from "./LabProductsPage";
 
-export default ProductsPage;
+export default LabProductsPage;

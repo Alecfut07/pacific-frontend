@@ -5,7 +5,7 @@ import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
 import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
 import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
 import LoginPage from "./pages/Login/LoginPage/LoginPage";
-import ProductsPage from "./pages/Admin/ProductsPage/ProductsPage";
+import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -116,7 +116,7 @@ function App() {
           path="/"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
         />
-        <Route path="/admin/products" element={<ProductsPage />} />
+        <Route path="/admin/lab-products" element={<LabProductsPage />} />
         <Route
           path="/lab-inventory"
           element={<LabInventoryPage addToCart={addToCart} />}
