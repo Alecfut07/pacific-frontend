@@ -53,7 +53,6 @@ export const createNewItemLab = async (
       body,
       axiosConfig,
     );
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -61,6 +60,7 @@ export const createNewItemLab = async (
 };
 
 export const updateItemLab = async (
+  url,
   name,
   price,
   category,
@@ -90,11 +90,7 @@ export const updateItemLab = async (
     },
   };
   try {
-    const { data } = await axios.put(
-      `${host}${ITEM_LAB_VIEW_SET}`,
-      body,
-      axiosConfig,
-    );
+    const { data } = await axios.put(url, body, axiosConfig);
     return data;
   } catch (error) {
     console.log(error);

@@ -53,6 +53,7 @@ function FormUpdateLabProduct({ handleOpen, labProduct }) {
     values.main_image = file;
     try {
       await updateItemLab(
+        labProduct.url,
         values.name,
         values.price,
         values.category,

@@ -111,7 +111,7 @@ function App() {
         clearCart={clearCart}
       />
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin" element={<LoginPage />} />
         <Route
           path="/"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
