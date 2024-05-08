@@ -19,6 +19,7 @@ import {
   Typography,
   Checkbox,
 } from "@material-tailwind/react";
+import moment from "moment";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
 import {
@@ -325,7 +326,9 @@ function LabProductsPage() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {itemLab.created_at}
+                        {moment(itemLab.created_at).format(
+                          "D [de] MMMM [de] YYYY h:mm A",
+                        )}
                       </Typography>
                     </td>
                     <td className={classes}>
