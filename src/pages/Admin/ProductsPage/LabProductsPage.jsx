@@ -287,7 +287,11 @@ function LabProductsPage() {
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <img src={itemLab.main_image} alt="imagen" />
+                      <img
+                        src={itemLab.main_image}
+                        alt="imagen"
+                        className="mx-auto w-20 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                      />
                     </td>
                     <td className={classes}>
                       <Typography
