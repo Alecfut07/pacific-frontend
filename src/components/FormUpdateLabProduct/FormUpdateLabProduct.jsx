@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { createNewItemLab } from "../../services/ItemLabService";
+import { updateItemLab } from "../../services/ItemLabService";
 
-function FormUploadLabProduct({ handleOpen }) {
+function FormUpdateLabProduct({ handleOpen, labProduct }) {
   const [file, setFile] = useState(null);
 
   const validationSchema = Yup.object().shape({
@@ -20,13 +20,13 @@ function FormUploadLabProduct({ handleOpen }) {
   });
 
   const initialValues = {
-    name: "",
-    price: "",
-    category: "",
-    main_image: null,
-    description: "",
-    quantity_available: "",
-    is_featured: false,
+    name: labProduct.name,
+    price: labProduct.price,
+    category: labProduct.category,
+    main_image: labProduct.main_image,
+    description: labProduct.description,
+    quantity_available: labProduct.quantity_available,
+    is_featured: labProduct.is_featured,
   };
 
   const handleFileChange = (e) => {
@@ -52,7 +52,7 @@ function FormUploadLabProduct({ handleOpen }) {
   const handleSubmit = async (values) => {
     values.main_image = file;
     try {
-      await createNewItemLab(
+      await updateItemLab(
         values.name,
         values.price,
         values.category,
@@ -187,4 +187,4 @@ function FormUploadLabProduct({ handleOpen }) {
   );
 }
 
-export default FormUploadLabProduct;
+export default FormUpdateLabProduct;

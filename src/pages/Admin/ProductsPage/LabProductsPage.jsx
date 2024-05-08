@@ -19,18 +19,24 @@ import {
 } from "@material-tailwind/react";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
-import { getItemsLab } from "../../../services/ItemLabService";
+import { getItemsLab, getItemLab } from "../../../services/ItemLabService";
 import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
+import FormUpdateLabProduct from "../../../components/FormUpdateLabProduct/FormUpdateLabProduct";
 
 function LabProductsPage() {
   const [searchProduct, setSearchProduct] = useState("");
   const [tableItemsLab, setTableItemsLab] = useState([]);
   const [fullData, setFullData] = useState([]);
+  const [editingProductUrl, setEditingProductUrl] = useState(null);
+  const [labProduct, setLabProduct] = useState({});
 
   const [loading, setLoading] = useState(true);
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+  const [openCreateDialog, setOpenCreateDialog] = useState(false);
+  const handleOpenCreateDialog = () => setOpenCreateDialog(!openCreateDialog);
+
+  const [openEditDialog, setOpenEditDialog] = useState(false);
+  const handleOpenEditDialog = () => setOpenEditDialog(!openEditDialog);
 
   const [selectedEntriesValue, setSelectedEntriesValue] = useState(10);
 
@@ -57,6 +63,17 @@ function LabProductsPage() {
   const handleSelectionChange = (e) => {
     setSelectedEntriesValue(e.target.value);
     setCurrentPage(1);
+  };
+
+  const handleEditClick = async (url) => {
+    try {
+      const itemLab = await getItemLab(url);
+      console.log("itemLab: ", itemLab);
+      setLabProduct(itemLab);
+      handleOpenEditDialog();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const filterFunction = useCallback(
@@ -105,12 +122,16 @@ function LabProductsPage() {
             >
               Admin - Inventario productos de laboratorio
             </Typography>
-            <Button color="blue" className="mb-5" onClick={handleOpen}>
+            <Button
+              color="blue"
+              className="mb-5"
+              onClick={handleOpenCreateDialog}
+            >
               Crear nuevo producto lab
             </Button>
             <Dialog
-              open={open}
-              handler={handleOpen}
+              open={openCreateDialog}
+              handler={handleOpenCreateDialog}
               size="lg"
               className="fixed inset-0 overflow-y-auto"
             >
@@ -122,7 +143,7 @@ function LabProductsPage() {
                   color="red"
                   size="sm"
                   variant="text"
-                  onClick={handleOpen}
+                  onClick={handleOpenCreateDialog}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +162,7 @@ function LabProductsPage() {
                 </IconButton>
               </DialogHeader>
               <DialogBody>
-                <FormUploadLabProduct handleOpen={handleOpen} />
+                <FormUploadLabProduct handleOpen={handleOpenCreateDialog} />
               </DialogBody>
             </Dialog>
             <div className="flex items-center">
@@ -274,7 +295,12 @@ function LabProductsPage() {
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <Button color="amber">Editar</Button>
+                      <Button
+                        color="amber"
+                        onClick={() => handleEditClick(itemLab.url)}
+                      >
+                        Editar
+                      </Button>
                     </td>
                     <td className={classes}>
                       <Button color="red">Eliminar</Button>
@@ -286,6 +312,45 @@ function LabProductsPage() {
           )}
         </table>
       </CardBody>
+      <Dialog
+        open={openEditDialog}
+        handler={handleOpenEditDialog}
+        size="lg"
+        className="fixed inset-0 overflow-y-auto"
+      >
+        <DialogHeader className="justify-between">
+          <Typography variant="h5" color="blue-gray">
+            Editar producto de laboratorio
+          </Typography>
+          <IconButton
+            color="red"
+            size="sm"
+            variant="text"
+            onClick={handleOpenEditDialog}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </IconButton>
+        </DialogHeader>
+        <DialogBody>
+          <FormUpdateLabProduct
+            handleOpen={handleOpenEditDialog}
+            labProduct={labProduct}
+          />
+        </DialogBody>
+      </Dialog>
       <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
         <div className="flex items-center justify-center gap-2">
           <Button
