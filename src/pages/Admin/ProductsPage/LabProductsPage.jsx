@@ -20,13 +20,14 @@ import {
   Checkbox,
 } from "@material-tailwind/react";
 import moment from "moment";
-import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
+// import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
 import {
   getItemsLab,
   getItemLab,
   deleteItemLab,
 } from "../../../services/ItemLabService";
+import { logout } from "../../../services/UserService";
 import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
 import FormUpdateLabProduct from "../../../components/FormUpdateLabProduct/FormUpdateLabProduct";
 import DeleteLabProduct from "../../../components/DeleteLabProduct/DeleteLabProduct";
@@ -129,6 +130,10 @@ function LabProductsPage() {
     return filteredData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, selectedEntriesValue, tableItemsLab, filterFunction]);
 
+  const handleSignOutClick = async () => {
+    await logout();
+  };
+
   useEffect(() => {
     (async () => {
       try {
@@ -155,9 +160,12 @@ function LabProductsPage() {
             >
               Admin - Inventario productos de laboratorio
             </Typography>
+            <Button color="black" className="mr-5" onClick={handleSignOutClick}>
+              Cerrar sesión
+            </Button>
             <Button
               color="blue"
-              className="mb-5"
+              className="mb-0"
               onClick={handleOpenCreateDialog}
             >
               Crear nuevo producto lab
@@ -198,7 +206,7 @@ function LabProductsPage() {
                 <FormUploadLabProduct handleOpen={handleOpenCreateDialog} />
               </DialogBody>
             </Dialog>
-            <div className="flex items-center">
+            <div className="mt-4 flex items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Mostrar entradas:&nbsp;
               </label>
