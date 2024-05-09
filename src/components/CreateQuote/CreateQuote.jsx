@@ -131,9 +131,6 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
         <View style={styles.table}>
           <View style={styles.tableRow}>
             <View style={[styles.tableCell, styles.tableHeader]}>
-              <Text># Item</Text>
-            </View>
-            <View style={[styles.tableCell, styles.tableHeader]}>
               <Text>Concepto</Text>
             </View>
             <View style={[styles.tableCell, styles.tableHeader]}>
@@ -147,10 +144,7 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
             </View>
           </View>
           {cartItems.map((item) => (
-            <View key={item.product.id} style={styles.tableRow}>
-              <View style={styles.tableCell}>
-                <Text>{item.product.id}</Text>
-              </View>
+            <View key={item.product.url} style={styles.tableRow}>
               <View style={styles.tableCell}>
                 <Text>{item.product.name}</Text>
               </View>
@@ -167,7 +161,7 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
           ))}
           <View style={styles.tableRow}>
             <View style={[styles.tableCell, styles.tableFooter]}></View>
-            <View style={styles.tableCell}></View>
+            {/* <View style={styles.tableCell}></View> */}
             <View style={styles.tableCell}></View>
             <View style={styles.tableCell}>
               <Text style={{ textAlign: "right" }}>Total:</Text>

@@ -136,10 +136,10 @@ function CustomDrawer({
           style={{ maxHeight: "calc(100vh - 300px)" }}
         >
           {cartItems.map((item) => (
-            <div key={item.product.id} className="flex gap-4">
+            <div key={item.product.url} className="flex gap-4">
               <img
-                src={item.product.images[0]}
-                alt={item.product.images[0]}
+                src={item.product.main_image}
+                alt={item.product.main_image}
                 className="h-20 w-20 rounded-lg"
               />
               <div className="flex flex-col">
@@ -152,13 +152,13 @@ function CustomDrawer({
                     value={item.product.quantity}
                     className="w-16 rounded-md border border-blue-gray-300 px-2 py-1"
                     onChange={(e) =>
-                      updateQuantity(item.product.id, parseInt(e.target.value))
+                      updateQuantity(item.product.url, parseInt(e.target.value))
                     }
                   />
                   <IconButton
                     variant="text"
                     color="red"
-                    onClick={() => removeItemFromCart(item.product.id)}
+                    onClick={() => removeItemFromCart(item.product.url)}
                   >
                     <TrashIcon className="h-5 w-5" />
                   </IconButton>

@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 function LabProduct({ product, openModal, addToCart }) {
-  const [quantity, setQuantity] = useState(product.quantity);
+  const [quantity, setQuantity] = useState(product.quantity_available);
 
   const handleDecreaseItemClick = () => {
     if (quantity > 0) setQuantity(quantity - 1);
@@ -18,9 +18,9 @@ function LabProduct({ product, openModal, addToCart }) {
     <div className={`relative mx-auto flex flex-col`}>
       <img
         className="mx-auto h-40 w-40 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
-        src={product.images[0]}
+        src={product.main_image}
         alt="gallery-photo"
-        onClick={() => openModal(product.images)}
+        onClick={() => openModal(product.main_image)}
       />
       <div className="mx-auto flex flex-grow flex-col justify-between bg-white bg-opacity-75 p-2 mix-blend-multiply">
         <p className="text-lg font-bold">{product.name}</p>

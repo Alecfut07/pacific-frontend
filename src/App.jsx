@@ -33,7 +33,7 @@ function App() {
     const price = parseFloat(product.price.replace(/,/g, ""));
 
     const existingItemIndex = cartItems.findIndex(
-      (item) => item.product && item.product.id === product.id,
+      (item) => item.product && item.product.url === product.url,
     );
 
     if (existingItemIndex !== -1) {
@@ -65,9 +65,9 @@ function App() {
     }
   };
 
-  const updateQuantity = (productId, newQuantity) => {
+  const updateQuantity = (productUrl, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
-      if (item.product.id === productId) {
+      if (item.product.url === productUrl) {
         const price = parseFloat(item.product.price.replace(/,/g, ""));
         const subtotal = price * newQuantity;
         return {
@@ -85,9 +85,9 @@ function App() {
     setCartItems(updatedCartItems);
   };
 
-  const removeItemFromCart = (productId) => {
+  const removeItemFromCart = (productUrl) => {
     const updatedCartItems = cartItems.filter(
-      (item) => item.product.id !== productId,
+      (item) => item.product.url !== productUrl,
     );
     setCartItems(updatedCartItems);
   };
