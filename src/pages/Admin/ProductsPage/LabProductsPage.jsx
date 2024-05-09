@@ -20,7 +20,8 @@ import {
   Typography,
   Checkbox,
 } from "@material-tailwind/react";
-import moment from "moment";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 // import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
 import {
@@ -338,8 +339,12 @@ function LabProductsPage() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {moment(itemLab.created_at).format(
-                          "D [de] MMMM [de] YYYY h:mm A",
+                        {format(
+                          itemLab.created_at,
+                          "d 'de' MMMM 'de' yyyy h:mm a",
+                          {
+                            locale: es,
+                          },
                         )}
                       </Typography>
                     </td>

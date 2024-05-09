@@ -1,5 +1,6 @@
 import { Checkbox } from "@material-tailwind/react";
-import moment from "moment";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 
 function DeleteLabProduct({ handleOpen, labProduct }) {
   console.log(labProduct);
@@ -49,7 +50,9 @@ function DeleteLabProduct({ handleOpen, labProduct }) {
       <div className="mb-4 block font-bold">
         <label className="mb-1 block font-bold">
           Creado en:{" "}
-          {moment(labProduct.created_at).format("D [de] MMMM [de] YYYY h:mm A")}
+          {format(labProduct.created_at, "d 'de' MMMM 'de' yyyy h:mm a", {
+            locale: es,
+          })}
         </label>
       </div>
     </>
