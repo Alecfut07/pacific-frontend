@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -37,6 +38,8 @@ function LabProductsPage() {
   const [tableItemsLab, setTableItemsLab] = useState([]);
   const [fullData, setFullData] = useState([]);
   const [labProduct, setLabProduct] = useState({});
+
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
 
@@ -132,6 +135,7 @@ function LabProductsPage() {
 
   const handleSignOutClick = async () => {
     await logout();
+    navigate("/admin");
   };
 
   useEffect(() => {

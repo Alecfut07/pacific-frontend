@@ -10,9 +10,9 @@ import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = localStorage.getItem("accessToken");
   const location = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const totalQuantitySum = cartItems.reduce(
     (total, item) => total + item.totalQuantity,
@@ -94,14 +94,11 @@ function App() {
 
   const clearCart = () => setCartItems([]);
 
-  // useEffect(() => {
-  //   const accessToken = localStorage.getItem("accessToken");
-  //   if (accessToken) {
-  //     setIsLoggedIn(true);
-  //   } else {
-  //     navigate("/admin", { replace: true });
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    if (!isLoggedIn && location.pathname === "/admin/lab-products") {
+      navigate("/admin", { replace: true });
+    }
+  }, [isLoggedIn, location.path, navigate]);
 
   console.log(cartItems);
 
@@ -130,7 +127,11 @@ function App() {
           element={<IndustrialInventoryPage addToCart={addToCart} />}
         />
         <Route path="/admin" element={<LoginPage />} />
-        <Route path="/admin/lab-products" element={<LabProductsPage />} />
+        {/* <Route path="/admin/lab-products" element={<LabProductsPage />} /> */}
+        <Route
+          path="/admin/lab-products"
+          element={isLoggedIn ? <LabProductsPage /> : <LoginPage />}
+        />
         <Route
           path="/lab-inventory"
           element={<LabInventoryPage addToCart={addToCart} />}
