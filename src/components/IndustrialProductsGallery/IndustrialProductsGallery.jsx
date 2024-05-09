@@ -14,7 +14,7 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import IndustrialProduct from "../IndustrialProduct/IndustrialProduct";
-import ImagesModal from "../ImagesModal/ImagesModal";
+import ImageModal from "../ImageModal/ImageModal";
 import { IndustrialProducts } from "../../data/IndustrialInventory";
 
 import "./IndustrialProductsGallery.css";
@@ -97,16 +97,16 @@ function IndustrialProductsGallery({ addToCart }) {
           <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3">
             {currentProductsData.map((industrialProduct) => (
               <IndustrialProduct
-                key={industrialProduct.id}
+                key={industrialProduct.url}
                 product={industrialProduct}
                 openModal={openModal}
                 addToCart={addToCart}
               />
             ))}
-            <ImagesModal
+            <ImageModal
               isOpen={modalOpen}
               onClose={closeModal}
-              images={industrialProductImages}
+              image={industrialProductImages}
             />
           </div>
         </CardBody>
