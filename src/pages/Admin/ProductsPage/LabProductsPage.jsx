@@ -20,8 +20,6 @@ import {
   Typography,
   Checkbox,
 } from "@material-tailwind/react";
-import { format } from "date-fns";
-import { es } from "date-fns/locale";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
 import {
@@ -253,7 +251,7 @@ function LabProductsPage() {
           </div>
         </div>
       </CardHeader>
-      <CardBody className="overflow-scroll px-0">
+      <CardBody className="overflow-x-scroll">
         <LoadingSpinner
           loading={loading}
           component={

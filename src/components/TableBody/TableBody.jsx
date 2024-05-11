@@ -1,9 +1,11 @@
 import { Button, Checkbox, Typography } from "@material-tailwind/react";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 
 function TableBody({ headers, currentTableItems, fullData }) {
   return (
     <>
-      <table className="w-full min-w-max table-auto text-left">
+      <table className="w-full table-auto text-left">
         <thead>
           <tr>
             {headers.map((head, index) => (
