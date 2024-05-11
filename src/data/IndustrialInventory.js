@@ -31,8 +31,8 @@ import { GrapadoraIndustrialImages } from "../images/IndustrialInventory/Product
 
 export const IndustrialProducts = [
   {
-    id: 1,
-    images: [...DestornilladorPhillipsImages],
+    url: "1",
+    main_image: [...DestornilladorPhillipsImages][0],
     name: "Destornillador Phillips",
     description: "Destornillador con punta en forma de cruz.",
     price: "50",
@@ -40,8 +40,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 2,
-    images: [...MartilloImages],
+    url: "2",
+    main_image: [...MartilloImages][0],
     name: "Martillo",
     description: "Martillo de tamaño mediano.",
     price: "120",
@@ -49,8 +49,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 3,
-    images: [...SierraElectricaImages],
+    url: "3",
+    main_image: [...SierraElectricaImages][0],
     name: "Sierra eléctrica",
     description: "Sierra eléctrica para cortes precisos.",
     price: "800",
@@ -58,8 +58,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 4,
-    images: [...LlaveTuboImages],
+    url: "4",
+    main_image: [...LlaveTuboImages][0],
     name: "Llave de tubo",
     description: "Llave para apretar o aflojar tuercas y tornillos.",
     price: "80",
@@ -67,8 +67,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 5,
-    images: [...CintaMetricaImages],
+    url: "5",
+    main_image: [...CintaMetricaImages][0],
     name: "Cinta métrica",
     description: "Cinta para medir longitudes y distancias.",
     price: "40",
@@ -76,8 +76,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 6,
-    images: [...GatoHidraulicoImages],
+    url: "6",
+    main_image: [...GatoHidraulicoImages][0],
     name: "Gato hidráulico",
     description: "Gato para elevar vehículos y objetos pesados.",
     price: "500",
@@ -85,8 +85,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 7,
-    images: [...PistolaCalorImages],
+    url: "7",
+    main_image: [...PistolaCalorImages][0],
     name: "Pistola de calor",
     description:
       "Herramienta para aplicar calor en trabajos de soldadura y desoldadura.",
@@ -95,8 +95,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 8,
-    images: [...NivelBurbujaImages],
+    url: "8",
+    main_image: [...NivelBurbujaImages][0],
     name: "Nivel de burbuja",
     description:
       "Instrumento para verificar la horizontalidad o verticalidad de superficies.",
@@ -105,8 +105,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 9,
-    images: [...SierraManoImages],
+    url: "9",
+    main_image: [...SierraManoImages][0],
     name: "Sierra de mano",
     description: "Sierra manual para cortes precisos en materiales diversos.",
     price: "90",
@@ -114,8 +114,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 10,
-    images: [...LlaveImpactoImages],
+    url: "10",
+    main_image: [...LlaveImpactoImages][0],
     name: "Llave de impacto",
     description:
       "Llave para apretar o aflojar tornillos de gran tamaño con facilidad.",
@@ -124,8 +124,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 11,
-    images: [...PinzasElectricistaImages],
+    url: "11",
+    main_image: [...PinzasElectricistaImages][0],
     name: "Pinzas de electricista",
     description:
       "Pinzas aisladas para trabajos con cables y conexiones eléctricas.",
@@ -134,8 +134,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 12,
-    images: [...EscuadraMetalicaImages],
+    url: "12",
+    main_image: [...EscuadraMetalicaImages][0],
     name: "Escuadra metálica",
     description:
       "Instrumento para trazar ángulos rectos en trabajos de carpintería y construcción.",
@@ -144,8 +144,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 13,
-    images: [...TaladroElectricoImages],
+    url: "13",
+    main_image: [...TaladroElectricoImages][0],
     name: "Taladro eléctrico",
     description: "Taladro para perforar distintos materiales con precisión.",
     price: "200",
@@ -153,8 +153,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 14,
-    images: [...AlicatesUniversalesImages],
+    url: "14",
+    main_image: [...AlicatesUniversalesImages][0],
     name: "Alicates universales",
     description:
       "Alicates versátiles para diversos trabajos de agarre y corte.",
@@ -163,8 +163,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 15,
-    images: [...LlaveAllenImages],
+    url: "15",
+    main_image: [...LlaveAllenImages][0],
     name: "Llave allen",
     description: "Llave hexagonal para tornillos con cabezas hexagonales.",
     price: "30",
@@ -172,8 +172,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 16,
-    images: [...CincelImages],
+    url: "16",
+    main_image: [...CincelImages][0],
     name: "Cincel",
     description:
       "Herramienta para realizar cortes o marcas en materiales duros.",
@@ -182,8 +182,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 17,
-    images: [...EscobillaAlambreImages],
+    url: "17",
+    main_image: [...EscobillaAlambreImages][0],
     name: "Escobilla de alambre",
     description:
       "Cepillo de alambre para limpiar superficies oxidadas o sucias.",
@@ -192,8 +192,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 18,
-    images: [...SerruchoImages],
+    url: "18",
+    main_image: [...SerruchoImages][0],
     name: "Serrucho",
     description:
       "Serrucho manual para cortar madera u otros materiales blandos.",
@@ -202,8 +202,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 19,
-    images: [...PalaImages],
+    url: "19",
+    main_image: [...PalaImages][0],
     name: "Pala",
     description: "Pala de mano para cavar o mover tierra, arena, o escombros.",
     price: "70",
@@ -211,8 +211,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 20,
-    images: [...LamparaTrabajoImages],
+    url: "20",
+    main_image: [...LamparaTrabajoImages][0],
     name: "Lámpara de trabajo",
     description:
       "Lámpara portátil para iluminar áreas de trabajo con poca luz.",
@@ -221,8 +221,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 21,
-    images: [...TijerasCorteImages],
+    url: "21",
+    main_image: [...TijerasCorteImages][0],
     name: "Tijeras de corte",
     description: "Tijeras para cortar distintos materiales con precisión.",
     price: "20",
@@ -230,8 +230,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 22,
-    images: [...LlaveCadenaImages],
+    url: "22",
+    main_image: [...LlaveCadenaImages][0],
     name: "Llave de cadena",
     description: "Llave ajustable con cadena para tuberías o piezas redondas.",
     price: "100",
@@ -239,8 +239,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 23,
-    images: [...LijadoraElectricaImages],
+    url: "23",
+    main_image: [...LijadoraElectricaImages][0],
     name: "Lijadora eléctrica",
     description:
       "Herramienta para lijar superficies de manera rápida y uniforme.",
@@ -249,8 +249,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 24,
-    images: [...NipleImages],
+    url: "24",
+    main_image: [...NipleImages][0],
     name: "Niple",
     description: "Pieza roscada para unir tuberías o conexiones.",
     price: "5",
@@ -258,8 +258,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 25,
-    images: [...MazaImages],
+    url: "25",
+    main_image: [...MazaImages][0],
     name: "Maza",
     description: "Martillo grande para golpear superficies o herramientas.",
     price: "80",
@@ -267,8 +267,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 26,
-    images: [...AlicatePresionImages],
+    url: "26",
+    main_image: [...AlicatePresionImages][0],
     name: "Alicate de presión",
     description:
       "Alicate con sistema de sujeción ajustable para trabajos de agarre.",
@@ -277,8 +277,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 27,
-    images: [...DestornilladorPlanoImages],
+    url: "27",
+    main_image: [...DestornilladorPlanoImages][0],
     name: "Destornillador plano",
     description: "Destornillador con punta plana para tornillos de ranura.",
     price: "40",
@@ -286,8 +286,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 28,
-    images: [...SopleteGasImages],
+    url: "28",
+    main_image: [...SopleteGasImages][0],
     name: "Soplete de gas",
     description:
       "Herramienta para aplicar calor en trabajos de soldadura o desoldadura.",
@@ -296,8 +296,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 29,
-    images: [...PuntaDiamanteImages],
+    url: "29",
+    main_image: [...PuntaDiamanteImages][0],
     name: "Punta de diamante",
     description:
       "Punta de diamante para cortar vidrio u otros materiales duros.",
@@ -306,8 +306,8 @@ export const IndustrialProducts = [
     subtotal: 0,
   },
   {
-    id: 30,
-    images: [...GrapadoraIndustrialImages],
+    url: "30",
+    main_image: [...GrapadoraIndustrialImages][0],
     name: "Grapadora industrial",
     description:
       "Grapadora robusta para uso intensivo en trabajos de embalaje.",

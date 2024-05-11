@@ -1,17 +1,28 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../../services/UserService";
 import {
   Badge,
+  Button,
   Collapse,
   IconButton,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
   Navbar,
   Switch,
   Typography,
 } from "@material-tailwind/react";
-import { ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
 import InventoriesLogo from "../../assets/inventories.svg";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
+  // const token = localStorage.getItem("accessToken");
+  // const [isLoggedIn, setIsLoggedIn] = useState(token !== null);
+
+  // console.log("isLoggedIn: ", isLoggedIn);
+
   const [openNav, setOpenNav] = useState(false);
   const [inventoryType, setInventoryType] = useState("");
 
@@ -31,6 +42,8 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
     setInventoryType("Inventario industrial");
   };
 
+  const navigateToLogIn = () => navigate("/login");
+
   const handleSwitchChange = (e) => {
     const checked = e.target.checked;
     if (checked) {
@@ -38,6 +51,11 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
     } else {
       navigateToLabInventory();
     }
+  };
+
+  const handleLogOut = async () => {
+    await logout();
+    setIsLoggedIn(false);
   };
 
   useEffect(() => {
@@ -122,6 +140,37 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
               onClick={openDrawerTop}
             />
           </Badge>
+          {/* {isLoggedIn ? (
+            <div>
+              <Menu>
+                <MenuHandler>
+                  <UserIcon className="h-6 w-6 hover:text-blue-500 focus:text-blue-500" />
+                </MenuHandler>
+                <MenuList>
+                  <MenuItem>Crear nuevo producto</MenuItem>
+                  <MenuItem onClick={handleLogOut}>Salir de la sesión</MenuItem>
+                </MenuList>
+              </Menu>
+            </div>
+          ) : (
+            <div className="flex items-center gap-x-1">
+              <Button
+                variant="text"
+                size="sm"
+                className="hidden lg:inline-block"
+                onClick={navigateToLogIn}
+              >
+                <span>Iniciar Sesión</span>
+              </Button>
+              <Button
+                variant="gradient"
+                size="sm"
+                className="hidden lg:inline-block"
+              >
+                <span>Registrarse</span>
+              </Button>
+            </div>
+          )} */}
           <IconButton
             variant="text"
             className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -161,7 +210,25 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
           </IconButton>
         </div>
       </div>
-      <Collapse open={openNav}>{navList}</Collapse>
+      <Collapse open={openNav}>
+        {navList}
+        {/* {!isLoggedIn && (
+          <div className="flex items-center gap-x-1">
+            <Button
+              fullWidth
+              variant="text"
+              size="sm"
+              className=""
+              onClick={navigateToLogIn}
+            >
+              <span>Iniciar Sesión</span>
+            </Button>
+            <Button fullWidth variant="gradient" size="sm" className="">
+              <span>Registrarse</span>
+            </Button>
+          </div>
+        )} */}
+      </Collapse>
     </Navbar>
   );
 }

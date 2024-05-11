@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Button,
   Card,
@@ -13,16 +13,16 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
+import { getItemsLab } from "../../services/ItemLabService";
 import LabProduct from "../LabProduct/LabProduct";
-import ImagesModal from "../ImagesModal/ImagesModal";
-import { LabProducts } from "../../data/LabInventory";
+import ImageModal from "../ImageModal/ImageModal";
 
 import "./LabProductsGallery.css";
 
 function LabProductsGallery({ addToCart }) {
   const [searchProduct, setSearchProduct] = useState("");
-  const [labProducts, setLabProducts] = useState(LabProducts);
-  const [fullData, setFullData] = useState(LabProducts);
+  const [labProducts, setLabProducts] = useState([]);
+  const [fullData, setFullData] = useState([]);
   const [selectedEntries, setSelectedEntries] = useState(6);
   const [modalOpen, setModalOpen] = useState(false);
   const [labProductImages, setLabProductImages] = useState(null);
@@ -71,6 +71,19 @@ function LabProductsGallery({ addToCart }) {
     return filteredData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, selectedEntries, labProducts, filterFunction]);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const itemsLab = await getItemsLab();
+        setLabProducts(itemsLab);
+        setFullData(itemsLab);
+      } catch (error) {
+        setLabProducts([]);
+        setFullData([]);
+      }
+    })();
+  }, []);
+
   return (
     <div className="lab-gradient-background">
       <Card className="lab-gradient-background h-full w-full">
@@ -96,16 +109,16 @@ function LabProductsGallery({ addToCart }) {
           <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3">
             {currentProductsData.map((labProduct) => (
               <LabProduct
-                key={labProduct.id}
+                key={labProduct.url}
                 product={labProduct}
                 openModal={openModal}
                 addToCart={addToCart}
               />
             ))}
-            <ImagesModal
+            <ImageModal
               isOpen={modalOpen}
               onClose={closeModal}
-              images={labProductImages}
+              image={labProductImages}
             />
           </div>
         </CardBody>

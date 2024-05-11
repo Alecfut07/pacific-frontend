@@ -1,13 +1,18 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import CustomNavbar from "./components/CustomNavbar/CustomNavbar";
 import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
 import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
 import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
+import LoginPage from "./pages/Login/LoginPage/LoginPage";
+import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const isLoggedIn = localStorage.getItem("accessToken");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const totalQuantitySum = cartItems.reduce(
     (total, item) => total + item.totalQuantity,
@@ -28,7 +33,7 @@ function App() {
     const price = parseFloat(product.price.replace(/,/g, ""));
 
     const existingItemIndex = cartItems.findIndex(
-      (item) => item.product && item.product.id === product.id,
+      (item) => item.product && item.product.url === product.url,
     );
 
     if (existingItemIndex !== -1) {
@@ -60,9 +65,9 @@ function App() {
     }
   };
 
-  const updateQuantity = (productId, newQuantity) => {
+  const updateQuantity = (productUrl, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
-      if (item.product.id === productId) {
+      if (item.product.url === productUrl) {
         const price = parseFloat(item.product.price.replace(/,/g, ""));
         const subtotal = price * newQuantity;
         return {
@@ -80,23 +85,31 @@ function App() {
     setCartItems(updatedCartItems);
   };
 
-  const removeItemFromCart = (productId) => {
+  const removeItemFromCart = (productUrl) => {
     const updatedCartItems = cartItems.filter(
-      (item) => item.product.id !== productId,
+      (item) => item.product.url !== productUrl,
     );
     setCartItems(updatedCartItems);
   };
 
   const clearCart = () => setCartItems([]);
 
+  useEffect(() => {
+    if (!isLoggedIn && location.pathname === "/admin/lab-products") {
+      navigate("/admin", { replace: true });
+    }
+  }, [isLoggedIn, location.path, navigate]);
+
   console.log(cartItems);
 
   return (
     <>
-      <CustomNavbar
-        openDrawerTop={openDrawerTop}
-        totalQuantitySum={totalQuantitySum}
-      />
+      {location.pathname !== "/admin/lab-products" && (
+        <CustomNavbar
+          openDrawerTop={openDrawerTop}
+          totalQuantitySum={totalQuantitySum}
+        />
+      )}
       <CustomDrawer
         placement="left"
         open={openDrawer}
@@ -112,6 +125,12 @@ function App() {
         <Route
           path="/"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
+        />
+        <Route path="/admin" element={<LoginPage />} />
+        {/* <Route path="/admin/lab-products" element={<LabProductsPage />} /> */}
+        <Route
+          path="/admin/lab-products"
+          element={isLoggedIn ? <LabProductsPage /> : <LoginPage />}
         />
         <Route
           path="/lab-inventory"
