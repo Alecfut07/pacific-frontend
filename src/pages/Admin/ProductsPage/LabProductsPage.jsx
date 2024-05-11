@@ -22,7 +22,7 @@ import {
 } from "@material-tailwind/react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-// import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminLabProductsTable";
 import {
   getItemsLab,
@@ -30,6 +30,7 @@ import {
   deleteItemLab,
 } from "../../../services/ItemLabService";
 import { logout } from "../../../services/UserService";
+import TableBody from "../../../components/TableBody/TableBody";
 import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
 import FormUpdateLabProduct from "../../../components/FormUpdateLabProduct/FormUpdateLabProduct";
 import DeleteLabProduct from "../../../components/DeleteLabProduct/DeleteLabProduct";
@@ -139,6 +140,18 @@ function LabProductsPage() {
     navigate("/admin");
   };
 
+  const updateTableData = async () => {
+    try {
+      setLoading(true);
+      const items = await getItemsLab();
+      setTableItemsLab(items);
+      setFullData(items);
+    } catch (error) {
+      setTableItemsLab([]);
+      setFullData([]);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       try {
@@ -163,7 +176,7 @@ function LabProductsPage() {
               color="blue-gray"
               className="mb-5 font-bold"
             >
-              Admin - Inventario productos de laboratorio
+              Admin - Inventario productos
             </Typography>
             <Button color="black" className="mr-5" onClick={handleSignOutClick}>
               Cerrar sesión
@@ -173,7 +186,7 @@ function LabProductsPage() {
               className="mb-0"
               onClick={handleOpenCreateDialog}
             >
-              Crear nuevo producto lab
+              Crear nuevo producto
             </Button>
             <Dialog
               open={openCreateDialog}
@@ -183,7 +196,7 @@ function LabProductsPage() {
             >
               <DialogHeader className="justify-between">
                 <Typography variant="h5" color="blue-gray">
-                  Crear nuevo producto lab
+                  Crear nuevo producto
                 </Typography>
                 <IconButton
                   color="red"
@@ -241,135 +254,16 @@ function LabProductsPage() {
         </div>
       </CardHeader>
       <CardBody className="overflow-scroll px-0">
-        <table className="w-full min-w-max table-auto text-left">
-          <thead>
-            <tr>
-              {headers.map((head, index) => (
-                <th
-                  key={index}
-                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
-                >
-                  <Typography
-                    variant="lead"
-                    color="blue-gray"
-                    className="font-normal leading-none opacity-70"
-                  >
-                    {head}
-                  </Typography>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          {currentTableItemsLab.length === 0 ? (
-            <p className="flex- justify-center">
-              No se encontraron resultados para la búsqueda actual.
-            </p>
-          ) : (
-            <tbody>
-              {currentTableItemsLab.map((itemLab, index) => {
-                const isLast = index === fullData.length - 1;
-                const classes = isLast
-                  ? "p-4"
-                  : "p-4 border-b border-blue-gray-50";
-
-                return (
-                  <tr key={index} className="even:bg-blue-gray-50/50">
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {itemLab.name}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {itemLab.price}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {itemLab.category}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <img
-                        src={itemLab.main_image}
-                        alt="imagen"
-                        className="mx-auto w-20 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
-                      />
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {itemLab.description}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {itemLab.quantity_available}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Checkbox
-                        checked={itemLab.is_featured}
-                        color={itemLab.is_featured && "green"}
-                        ripple={false}
-                      />
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {format(
-                          itemLab.created_at,
-                          "d 'de' MMMM 'de' yyyy h:mm a",
-                          {
-                            locale: es,
-                          },
-                        )}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Button
-                        color="amber"
-                        onClick={() => handleEditClick(itemLab.url)}
-                      >
-                        Editar
-                      </Button>
-                    </td>
-                    <td className={classes}>
-                      <Button
-                        color="red"
-                        onClick={() => handleShowDeleteDialogClick(itemLab.url)}
-                      >
-                        Eliminar
-                      </Button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          )}
-        </table>
+        <LoadingSpinner
+          loading={loading}
+          component={
+            <TableBody
+              headers={headers}
+              currentTableItems={currentTableItemsLab}
+              fullData={fullData}
+            />
+          }
+        />
       </CardBody>
       <Dialog
         open={openEditDialog}
