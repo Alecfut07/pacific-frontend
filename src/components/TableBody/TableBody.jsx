@@ -66,7 +66,7 @@ function TableBody({ headers, currentTableItems, fullData }) {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {item.category}
+                      {item.category_page}
                     </Typography>
                   </td>
                   <td className={classes}>

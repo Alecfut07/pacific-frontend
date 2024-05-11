@@ -13,6 +13,9 @@ function FormUploadLabProduct({ handleOpen }) {
       .matches(/^\d+(\.\d{1,2})?$/, "El formato del precio es incorrecto")
       .required("El precio es requerido"),
     category: Yup.string().required("La categoria es requerida"),
+    category_page: Yup.string().required(
+      "La categoría de la página es requerida",
+    ),
     description: Yup.string().required("La descripción es requerida"),
     quantity_available: Yup.string().required(
       "La cantidad disponible es requerida",
@@ -23,6 +26,7 @@ function FormUploadLabProduct({ handleOpen }) {
     name: "",
     price: "",
     category: "",
+    category_page: "",
     main_image: null,
     description: "",
     quantity_available: "",
@@ -50,19 +54,21 @@ function FormUploadLabProduct({ handleOpen }) {
   };
 
   const handleSubmit = async (values) => {
-    values.main_image = file;
     try {
+      values.main_image = file;
+      console.log("values: ", values);
       await createNewItemLab(
         values.name,
         values.price,
         values.category,
+        values.category_page,
         values.main_image,
         values.description,
         values.quantity_available,
         values.is_featured,
       );
-      handleOpen();
-      window.location.reload();
+      // handleOpen();
+      // window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -115,6 +121,23 @@ function FormUploadLabProduct({ handleOpen }) {
               component="div"
               className="text-red-500"
             />
+          </div>
+          <div className="mb-4">
+            <label className="mb-1 block font-bold">
+              Categoría de la página:
+            </label>
+            <Field
+              as="select"
+              name="category_page"
+              className="w-full rounded border px-3 py-2"
+            >
+              <option option="" selected disabled>
+                Seleccione una categoría de la página
+              </option>
+              <option value="Quimicos">Quimicos</option>
+              <option value="Seguridad">Seguridad</option>
+              <option value="Herramientas">Herramientas</option>
+            </Field>
           </div>
           <div className="mb-4">
             <label className="mb-1 block font-bold">Imágen:</label>

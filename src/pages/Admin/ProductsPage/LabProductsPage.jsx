@@ -21,7 +21,7 @@ import {
   Checkbox,
 } from "@material-tailwind/react";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
-import { headers } from "../../../data/AdminLabProductsTable";
+import { headers } from "../../../data/AdminProductsTable";
 import {
   getItemsLab,
   getItemLab,

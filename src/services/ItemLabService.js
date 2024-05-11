@@ -24,6 +24,7 @@ export const createNewItemLab = async (
   name,
   price,
   category,
+  category_page,
   main_image,
   description,
   quantity_available,
@@ -33,6 +34,7 @@ export const createNewItemLab = async (
     name,
     price,
     category,
+    category_page,
     main_image,
     description,
     quantity_available,
@@ -49,6 +51,7 @@ export const createNewItemLab = async (
       "Content-Type": "multipart/form-data",
     },
   };
+
   try {
     const { data } = await axios.post(
       `${host}${ITEM_LAB_VIEW_SET}`,
