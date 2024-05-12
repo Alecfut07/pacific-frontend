@@ -1,8 +1,26 @@
-import { Button, Checkbox, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Checkbox,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+import FormUpdateLabProduct from "../FormUpdateLabProduct/FormUpdateLabProduct";
 
-function TableBody({ headers, currentTableItems, fullData }) {
+function TableBody({
+  headers,
+  currentTableItems,
+  fullData,
+  handleEditProductClick,
+  openEdit,
+  handlerEdit,
+  labProduct,
+  updateTableData,
+}) {
   return (
     <>
       <table className="w-full table-auto text-left">
@@ -115,7 +133,7 @@ function TableBody({ headers, currentTableItems, fullData }) {
                   <td className={classes}>
                     <Button
                       color="amber"
-                      // onClick={() => handleEditClick(item.url)}
+                      onClick={() => handleEditProductClick(item.url)}
                     >
                       Editar
                     </Button>
@@ -134,6 +152,46 @@ function TableBody({ headers, currentTableItems, fullData }) {
           </tbody>
         )}
       </table>
+      <Dialog
+        open={openEdit}
+        handler={handlerEdit}
+        size="lg"
+        className="fixed inset-0 overflow-y-auto"
+      >
+        <DialogHeader className="justify-between">
+          <Typography variant="h5" color="blue-gray">
+            Editar producto de laboratorio
+          </Typography>
+          <IconButton
+            color="red"
+            size="sm"
+            variant="text"
+            onClick={handlerEdit}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </IconButton>
+        </DialogHeader>
+        <DialogBody>
+          <FormUpdateLabProduct
+            handleOpen={handlerEdit}
+            labProduct={labProduct}
+            updateTableData={updateTableData}
+          />
+        </DialogBody>
+      </Dialog>
     </>
   );
 }

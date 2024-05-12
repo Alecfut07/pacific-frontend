@@ -30,7 +30,6 @@ import {
 import { logout } from "../../../services/UserService";
 import TableBody from "../../../components/TableBody/TableBody";
 import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
-import FormUpdateLabProduct from "../../../components/FormUpdateLabProduct/FormUpdateLabProduct";
 import DeleteLabProduct from "../../../components/DeleteLabProduct/DeleteLabProduct";
 
 function LabProductsPage() {
@@ -79,7 +78,7 @@ function LabProductsPage() {
     setCurrentPage(1);
   };
 
-  const handleEditClick = async (url) => {
+  const handleEditProductClick = async (url) => {
     try {
       const itemLab = await getItemLab(url);
       console.log("itemLab: ", itemLab);
@@ -263,49 +262,15 @@ function LabProductsPage() {
               headers={headers}
               currentTableItems={currentTableItemsLab}
               fullData={fullData}
+              handleEditProductClick={handleEditProductClick}
+              openEdit={openEditDialog}
+              handlerEdit={handleOpenEditDialog}
+              labProduct={labProduct}
+              updateTableData={updateTableData}
             />
           }
         />
       </CardBody>
-      <Dialog
-        open={openEditDialog}
-        handler={handleOpenEditDialog}
-        size="lg"
-        className="fixed inset-0 overflow-y-auto"
-      >
-        <DialogHeader className="justify-between">
-          <Typography variant="h5" color="blue-gray">
-            Editar producto de laboratorio
-          </Typography>
-          <IconButton
-            color="red"
-            size="sm"
-            variant="text"
-            onClick={handleOpenEditDialog}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-              className="h-5 w-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </IconButton>
-        </DialogHeader>
-        <DialogBody>
-          <FormUpdateLabProduct
-            handleOpen={handleOpenEditDialog}
-            labProduct={labProduct}
-          />
-        </DialogBody>
-      </Dialog>
       <Dialog open={openDeleteDialog} handler={handleDeleteDialog}>
         <DialogHeader>Eliminar producto de laboratorio</DialogHeader>
         <DialogBody>
