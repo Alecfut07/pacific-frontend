@@ -1,7 +1,35 @@
 import axios from "axios";
 import { host } from "../api/host";
-import { ITEM_LAB_VIEW_SET } from "../utils/data";
+import {
+  ITEM_LAB_VIEW_SET,
+  LAB_PRODUCTS,
+  INDUSTRIAL_PRODUCTS,
+} from "../utils/data";
 
+// PARA EL APARTADO DE LOS PRODUCTOS PÚBLICOS
+export const getLabProducts = async () => {
+  try {
+    const { data } = await axios.get(
+      `${host}${ITEM_LAB_VIEW_SET}${LAB_PRODUCTS}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getIndustrialProducts = async () => {
+  try {
+    const { data } = await axios.get(
+      `${host}${ITEM_LAB_VIEW_SET}${INDUSTRIAL_PRODUCTS}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// PARA EL APARTADO DE ADMIN/PRODUCTS
 export const getItemsLab = async () => {
   try {
     const { data } = await axios.get(`${host}${ITEM_LAB_VIEW_SET}`);
