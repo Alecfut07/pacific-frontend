@@ -89,6 +89,11 @@ function FormUploadLabProduct({ handleOpen, updateTableData }) {
       });
     } catch (error) {
       console.log(error);
+      await Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Ocurrió un error al realizar la operación",
+      });
     }
   };
 
@@ -149,7 +154,7 @@ function FormUploadLabProduct({ handleOpen, updateTableData }) {
               name="category_page"
               className="w-full rounded border px-3 py-2"
             >
-              <option option="" selected disabled>
+              <option value="" selected disabled>
                 Seleccione una categoría de la página
               </option>
               <option value="Quimicos">Quimicos</option>
