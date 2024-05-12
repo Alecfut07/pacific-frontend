@@ -2,7 +2,7 @@ import { Checkbox } from "@material-tailwind/react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
-function DeleteLabProduct({ handleOpen, labProduct }) {
+function DeleteLabProduct({ labProduct }) {
   console.log(labProduct);
   return (
     <>
@@ -19,6 +19,11 @@ function DeleteLabProduct({ handleOpen, labProduct }) {
       <div className="mb-4">
         <label className="mb-1 block font-bold">
           Categoria: {labProduct.category}
+        </label>
+      </div>
+      <div className="mb-4">
+        <label className="mb-1 block font-bold">
+          Categoria de la página: {labProduct.category_page}
         </label>
       </div>
       <div className="mb-4 flex justify-start">

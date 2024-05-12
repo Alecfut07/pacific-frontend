@@ -30,7 +30,6 @@ import {
 import { logout } from "../../../services/UserService";
 import TableBody from "../../../components/TableBody/TableBody";
 import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
-import DeleteLabProduct from "../../../components/DeleteLabProduct/DeleteLabProduct";
 
 function LabProductsPage() {
   const [searchProduct, setSearchProduct] = useState("");
@@ -103,10 +102,12 @@ function LabProductsPage() {
   const handleDeleteConfirmClick = async (url) => {
     try {
       await deleteItemLab(url);
-      setTableItemsLab((prevItems) =>
-        prevItems.filter((item) => item.url !== url),
-      );
+      // setTableItemsLab((prevItems) =>
+      //   prevItems.filter((item) => item.url !== url),
+      // );
       handleDeleteDialog();
+      await updateTableData();
+      handleFirstPage();
     } catch (error) {
       console.log(error);
     }
@@ -265,38 +266,16 @@ function LabProductsPage() {
               handleEditProductClick={handleEditProductClick}
               openEdit={openEditDialog}
               handlerEdit={handleOpenEditDialog}
+              handleShowDeleteDialogClick={handleShowDeleteDialogClick}
+              openDelete={openDeleteDialog}
+              handlerDelete={handleDeleteDialog}
+              handleDeleteConfirmClick={handleDeleteConfirmClick}
               labProduct={labProduct}
               updateTableData={updateTableData}
             />
           }
         />
       </CardBody>
-      <Dialog open={openDeleteDialog} handler={handleDeleteDialog}>
-        <DialogHeader>Eliminar producto de laboratorio</DialogHeader>
-        <DialogBody>
-          <DeleteLabProduct
-            handleOpen={handleDeleteDialog}
-            labProduct={labProduct}
-          />
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleDeleteDialog}
-            className="mr-1"
-          >
-            <span>Cancelar</span>
-          </Button>
-          <Button
-            variant="gradient"
-            color="green"
-            onClick={() => handleDeleteConfirmClick(labProduct.url)}
-          >
-            <span>Confirmar</span>
-          </Button>
-        </DialogFooter>
-      </Dialog>
       <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
         <div className="flex items-center justify-center gap-2">
           <Button

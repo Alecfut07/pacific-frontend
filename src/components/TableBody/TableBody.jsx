@@ -4,12 +4,14 @@ import {
   Dialog,
   DialogHeader,
   DialogBody,
+  DialogFooter,
   IconButton,
   Typography,
 } from "@material-tailwind/react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import FormUpdateLabProduct from "../FormUpdateLabProduct/FormUpdateLabProduct";
+import DeleteLabProduct from "../DeleteLabProduct/DeleteLabProduct";
 
 function TableBody({
   headers,
@@ -18,6 +20,10 @@ function TableBody({
   handleEditProductClick,
   openEdit,
   handlerEdit,
+  handleShowDeleteDialogClick,
+  openDelete,
+  handlerDelete,
+  handleDeleteConfirmClick,
   labProduct,
   updateTableData,
 }) {
@@ -141,7 +147,7 @@ function TableBody({
                   <td className={classes}>
                     <Button
                       color="red"
-                      // onClick={() => handleShowDeleteDialogClick(item.url)}
+                      onClick={() => handleShowDeleteDialogClick(item.url)}
                     >
                       Eliminar
                     </Button>
@@ -191,6 +197,29 @@ function TableBody({
             updateTableData={updateTableData}
           />
         </DialogBody>
+      </Dialog>
+      <Dialog open={openDelete} handler={handlerDelete}>
+        <DialogHeader>Eliminar producto de laboratorio</DialogHeader>
+        <DialogBody>
+          <DeleteLabProduct labProduct={labProduct} />
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={handlerDelete}
+            className="mr-1"
+          >
+            <span>Cancelar</span>
+          </Button>
+          <Button
+            variant="gradient"
+            color="green"
+            onClick={() => handleDeleteConfirmClick(labProduct.url)}
+          >
+            <span>Confirmar</span>
+          </Button>
+        </DialogFooter>
       </Dialog>
     </>
   );
