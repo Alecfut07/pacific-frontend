@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
 import { createNewItemLab } from "../../services/ItemLabService";
 
-function FormUploadLabProduct({ handleOpen }) {
+function FormUploadLabProduct({ handleOpen, updateTableData }) {
   const [file, setFile] = useState(null);
 
   const validationSchema = Yup.object().shape({
@@ -57,6 +58,7 @@ function FormUploadLabProduct({ handleOpen }) {
     try {
       values.main_image = file;
       console.log("values: ", values);
+
       await createNewItemLab(
         values.name,
         values.price,
@@ -67,8 +69,24 @@ function FormUploadLabProduct({ handleOpen }) {
         values.quantity_available,
         values.is_featured,
       );
-      // handleOpen();
-      // window.location.reload();
+
+      // Cerrar el Dialog
+      handleOpen();
+
+      // Mostrar mensaje de éxito después de enviar el nuevo producto.
+      await Swal.fire({
+        icon: "success",
+        title: "Nuevo producto creado con éxito",
+        showConfirmButton: true,
+      });
+
+      await updateTableData();
+
+      await Swal.fire({
+        icon: "success",
+        title: "Tabla actualizada con éxito",
+        showConfirmButton: true,
+      });
     } catch (error) {
       console.log(error);
     }

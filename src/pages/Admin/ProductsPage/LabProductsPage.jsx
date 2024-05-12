@@ -144,6 +144,7 @@ function LabProductsPage() {
       const items = await getItemsLab();
       setTableItemsLab(items);
       setFullData(items);
+      setLoading(false);
     } catch (error) {
       setTableItemsLab([]);
       setFullData([]);
@@ -219,7 +220,10 @@ function LabProductsPage() {
                 </IconButton>
               </DialogHeader>
               <DialogBody>
-                <FormUploadLabProduct handleOpen={handleOpenCreateDialog} />
+                <FormUploadLabProduct
+                  handleOpen={handleOpenCreateDialog}
+                  updateTableData={updateTableData}
+                />
               </DialogBody>
             </Dialog>
             <div className="mt-4 flex items-center">
