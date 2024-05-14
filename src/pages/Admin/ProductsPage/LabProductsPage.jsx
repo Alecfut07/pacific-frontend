@@ -23,6 +23,9 @@ import {
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { headers } from "../../../data/AdminProductsTable";
 import {
+  getLabProducts,
+  getIndustrialProducts,
+  getSecurityProducts,
   getItemsLab,
   getItemLab,
   deleteItemLab,
@@ -36,6 +39,7 @@ function LabProductsPage() {
   const [tableItemsLab, setTableItemsLab] = useState([]);
   const [fullData, setFullData] = useState([]);
   const [labProduct, setLabProduct] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const navigate = useNavigate();
 
@@ -115,13 +119,21 @@ function LabProductsPage() {
 
   const filterFunction = useCallback(
     (data) => {
-      return data.filter(
+      let filteredData = data.filter(
         (item) =>
           item.name.toLowerCase().includes(searchProduct.toLowerCase()) ||
           item.description.toLowerCase().includes(searchProduct.toLowerCase()),
       );
+
+      if (selectedCategory) {
+        filteredData = filteredData.filter(
+          (item) => item.category_page === selectedCategory,
+        );
+      }
+
+      return filteredData;
     },
-    [searchProduct],
+    [searchProduct, selectedCategory],
   );
 
   const currentTableItemsLab = useMemo(() => {
@@ -154,16 +166,29 @@ function LabProductsPage() {
   useEffect(() => {
     (async () => {
       try {
-        const itemsLab = await getItemsLab();
-        setTableItemsLab(itemsLab);
-        setFullData(itemsLab);
+        setLoading(true);
+
+        let items;
+        if (selectedCategory === "Quimicos") {
+          items = await getLabProducts();
+        } else if (selectedCategory === "Seguridad") {
+          items = await getSecurityProducts();
+        } else if (selectedCategory === "Herramientas") {
+          items = await getIndustrialProducts();
+        } else {
+          items = await getItemsLab();
+        }
+        handleFirstPage();
+        setTableItemsLab(items);
+        setFullData(items);
         setLoading(false);
       } catch (error) {
         setTableItemsLab([]);
         setFullData([]);
+        setLoading(false);
       }
     })();
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <Card className="h-full w-full">
@@ -239,6 +264,21 @@ function LabProductsPage() {
                 <option value={25}>25</option>
                 <option value={50}>50</option>
                 <option value={100}>100</option>
+              </select>
+            </div>
+            <div className="mt-4 flex items-center">
+              <label className="block text-sm font-medium text-gray-700">
+                Filtrar productos:&nbsp;
+              </label>
+              <select
+                className="mt-1 block rounded-md border border-gray-300 bg-white px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="">General</option>
+                <option value="Quimicos">Quimicos</option>
+                <option value="Seguridad">Seguridad</option>
+                <option value="Herramientas">Herramientas</option>
               </select>
             </div>
           </div>

@@ -4,6 +4,7 @@ import {
   ITEM_LAB_VIEW_SET,
   LAB_PRODUCTS,
   INDUSTRIAL_PRODUCTS,
+  SECURITY_PRODUCTS,
 } from "../utils/data";
 
 // PARA EL APARTADO DE LOS PRODUCTOS PÚBLICOS
@@ -22,6 +23,17 @@ export const getIndustrialProducts = async () => {
   try {
     const { data } = await axios.get(
       `${host}${ITEM_LAB_VIEW_SET}${INDUSTRIAL_PRODUCTS}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getSecurityProducts = async () => {
+  try {
+    const { data } = await axios.get(
+      `${host}${ITEM_LAB_VIEW_SET}${SECURITY_PRODUCTS}`,
     );
     return data;
   } catch (error) {
