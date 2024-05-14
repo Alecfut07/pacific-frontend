@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 function LabProduct({ product, openModal, addToCart }) {
-  const [quantity, setQuantity] = useState(product.quantity_available);
+  const [quantity, setQuantity] = useState(0);
 
   const handleDecreaseItemClick = () => {
     if (quantity > 0) setQuantity(quantity - 1);
