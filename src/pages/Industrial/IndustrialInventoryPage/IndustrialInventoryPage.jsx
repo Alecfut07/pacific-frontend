@@ -106,7 +106,7 @@ function IndustrialInventoryPage({ addToCart }) {
           </div>
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-8">
         <IndustrialProductsGallery addToCart={addToCart} />
       </div>
       {/* <div className="mt-12" id="industrial-section">
