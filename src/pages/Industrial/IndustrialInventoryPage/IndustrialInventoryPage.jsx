@@ -106,7 +106,10 @@ function IndustrialInventoryPage({ addToCart }) {
           </div>
         </div>
       </div>
-      <div className="mt-12" id="industrial-section">
+      <div className="mt-4">
+        <IndustrialProductsGallery addToCart={addToCart} />
+      </div>
+      {/* <div className="mt-12" id="industrial-section">
         <Card>
           <CardHeader>
             <CustomTabs activeTab={activeTab} onChange={handleTabChange} />
@@ -119,7 +122,7 @@ function IndustrialInventoryPage({ addToCart }) {
             )}
           </CardBody>
         </Card>
-      </div>
+      </div> */}
     </div>
   );
 }
