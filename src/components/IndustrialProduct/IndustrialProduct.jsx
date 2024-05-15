@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ButtonGroup, Button } from "@material-tailwind/react";
+import { ButtonGroup, Button, Chip } from "@material-tailwind/react";
 import {
   PlusCircleIcon,
   MinusCircleIcon,
@@ -26,7 +26,26 @@ function IndustrialProduct({ product, openModal, addToCart }) {
       <div className="mx-auto flex flex-grow flex-col justify-between bg-white bg-opacity-75 p-2 mix-blend-multiply">
         <p className="text-lg font-bold">{product.name}</p>
         <p className="text-sm">{product.description}</p>
-        <p className="text-base font-bold">${product.price} MXN</p>
+        <div className="flex justify-between gap-x-3">
+          <p className="text-base font-bold">${product.price} MXN</p>
+          <div className="flex justify-between">
+            <Chip
+              size="lg"
+              color={product.quantity_available !== 0 ? "green" : "red"}
+              value={
+                product.quantity_available !== 0
+                  ? "DISPONIBLE"
+                  : "NO DISPONIBLE"
+              }
+              className="text-black"
+            />
+            <Chip
+              size="lg"
+              variant="outlined"
+              value={product.quantity_available}
+            />
+          </div>
+        </div>
       </div>
       <div className="mx-auto flex items-center justify-between">
         <ButtonGroup className="mb-3 flex items-center">
