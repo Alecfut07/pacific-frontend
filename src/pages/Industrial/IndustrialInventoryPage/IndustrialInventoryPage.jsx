@@ -69,7 +69,7 @@ function IndustrialInventoryPage({ addToCart }) {
             >
               <CardHeader floated={false} shadow={false}>
                 <p className="text-center text-3xl font-bold text-black">
-                  Herramientas industrial
+                  Herramientas Industrial
                 </p>
               </CardHeader>
               <CardBody>

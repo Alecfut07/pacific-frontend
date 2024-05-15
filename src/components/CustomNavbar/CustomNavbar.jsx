@@ -42,6 +42,9 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
     setInventoryType("Inventario industrial");
   };
 
+  const navigateToMission = () => navigate("/mission");
+  const navigateToVision = () => navigate("/vision");
+
   const navigateToLogIn = () => navigate("/login");
 
   const handleSwitchChange = (e) => {
@@ -69,43 +72,21 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
-        variant="small"
+        variant="h6"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal hover:underline"
+        onClick={navigateToMission}
       >
-        <a href="#" className="flex items-center">
-          Productos
-        </a>
+        Misión
       </Typography>
       <Typography
         as="li"
-        variant="small"
+        variant="h6"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal hover:underline"
+        onClick={navigateToVision}
       >
-        <a href="#" className="flex items-center">
-          Empaquetado primario
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Soluciones personalizadas
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Sobre nosotros
-        </a>
+        Visión
       </Typography>
     </ul>
   );
