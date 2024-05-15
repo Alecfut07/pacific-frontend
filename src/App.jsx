@@ -98,7 +98,7 @@ function App() {
   const clearCart = () => setCartItems([]);
 
   useEffect(() => {
-    if (!isLoggedIn && location.pathname === "/admin/lab-products") {
+    if (!isLoggedIn && location.pathname === "/admin/productos") {
       navigate("/admin", { replace: true });
     }
   }, [isLoggedIn, location.path, navigate]);
@@ -107,7 +107,7 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/admin/lab-products" && (
+      {location.pathname !== "/admin/productos" && (
         <CustomNavbar
           openDrawerTop={openDrawerTop}
           totalQuantitySum={totalQuantitySum}
@@ -129,15 +129,15 @@ function App() {
         <Route path="/admin" element={<LoginPage />} />
         {/* <Route path="/admin/lab-products" element={<LabProductsPage />} /> */}
         <Route
-          path="/admin/lab-products"
+          path="/admin/productos"
           element={isLoggedIn ? <LabProductsPage /> : <LoginPage />}
         />
         <Route
-          path="/lab-inventory"
+          path="/productos-quimicos"
           element={<LabInventoryPage addToCart={addToCart} />}
         />
         <Route
-          path="/industrial-inventory"
+          path="/herramientas-industriales"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
         />
         <Route path="/mission" element={<Mission />} />

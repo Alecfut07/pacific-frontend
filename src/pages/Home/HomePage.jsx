@@ -12,6 +12,13 @@ import SecurityIconAnimation from "../../images/IndustrialInventory/IndustrialIv
 import ClickHereAnimation from "../../images/Home/ClickHereAnimation.gif";
 
 function HomePage() {
+  const navigate = useNavigate();
+
+  const navigateToLabInventory = () => navigate("/productos-quimicos");
+
+  const navigateToIndustrialTools = () =>
+    navigate("/herramientas-industriales");
+
   return (
     <div className="relative flex h-screen flex-col items-center justify-center">
       <div className="absolute inset-0 z-0 flex flex-col items-center justify-center">
@@ -21,9 +28,7 @@ function HomePage() {
           className="h-1/2 w-full object-cover"
         />
         <div className="h-1/2 w-full">
-          {/* flex h-1/2 w-full items-center justify-center */}
           <div className="flex justify-between overflow-hidden">
-            {/* flex overflow-hidden */}
             <div className="mr-auto flex justify-start">
               <img
                 className="h-full"
@@ -72,7 +77,10 @@ function HomePage() {
       <div className="container mx-auto">
         <div className="grid grid-cols-3 items-center gap-4">
           <div className="col-span-1">
-            <Card className="transition-opacity hover:opacity-50">
+            <Card
+              className="cursor-pointer transition-opacity hover:opacity-50"
+              onClick={navigateToLabInventory}
+            >
               <CardHeader floated={false} shadow={false}>
                 <p className="text-center text-3xl font-bold text-black">
                   Productos Químicos
@@ -100,7 +108,10 @@ function HomePage() {
             </Card>
           </div>
           <div className="col-span-1">
-            <Card className="transition-opacity hover:opacity-50">
+            <Card
+              className="cursor-pointer transition-opacity hover:opacity-50"
+              onClick={navigateToIndustrialTools}
+            >
               <CardHeader floated={false} shadow={false}>
                 <p className="text-center text-3xl font-bold text-black">
                   Herramientas Industrial
@@ -128,7 +139,7 @@ function HomePage() {
             </Card>
           </div>
           <div className="col-span-1">
-            <Card className="transition-opacity hover:opacity-50">
+            <Card className="cursor-pointer transition-opacity hover:opacity-50">
               <CardHeader floated={false} shadow={false}>
                 <p className="text-center text-3xl font-bold text-black">
                   Seguridad Industrial
