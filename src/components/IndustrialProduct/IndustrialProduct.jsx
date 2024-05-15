@@ -69,7 +69,7 @@ function IndustrialProduct({ product, openModal, addToCart }) {
           color="blue"
           className="flex items-center"
           onClick={() => addToCart(product, quantity)}
-          disabled={quantity === 0}
+          disabled={quantity === 0 || product.quantity_available === 0}
         >
           Agregarlo al carrito
           <ShoppingCartIcon className="ml-2 h-5 w-5" />
