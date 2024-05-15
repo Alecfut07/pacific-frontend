@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import CustomNavbar from "./components/CustomNavbar/CustomNavbar";
 import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
+import HomePage from "./pages/Home/HomePage";
 import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
 import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
 import Mission from "./pages/Mission/Mission";
@@ -124,10 +125,7 @@ function App() {
         clearCart={clearCart}
       />
       <Routes>
-        <Route
-          path="/"
-          element={<IndustrialInventoryPage addToCart={addToCart} />}
-        />
+        <Route path="/" element={<HomePage />} />
         <Route path="/admin" element={<LoginPage />} />
         {/* <Route path="/admin/lab-products" element={<LabProductsPage />} /> */}
         <Route
