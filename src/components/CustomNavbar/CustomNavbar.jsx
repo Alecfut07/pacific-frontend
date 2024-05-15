@@ -30,19 +30,19 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
 
   const navigateToHome = () => {
     navigate("/");
-    setInventoryType("Inventario de laboratorio");
+    setInventoryType("Productos Químicos");
   };
 
   const navigateToLabInventory = () => {
-    navigate("/lab-inventory");
-    setInventoryType("Inventario de laboratorio");
+    navigate("/productos-quimicos");
+    setInventoryType("Productos Químicos");
   };
   const navigateToIndustrialInventory = () => {
-    navigate("/industrial-inventory");
-    setInventoryType("Inventario industrial");
+    navigate("/herramientas-industriales");
+    setInventoryType("Herramientas Industriales");
   };
 
-  const navigateToMission = () => navigate("/mission");
+  const navigateToMissionAndVision = () => navigate("/misión-&-visión");
   const navigateToVision = () => navigate("/vision");
 
   const navigateToLogIn = () => navigate("/login");
@@ -75,18 +75,33 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
         variant="h6"
         color="blue-gray"
         className="p-1 font-normal hover:underline"
-        onClick={navigateToMission}
       >
-        Misión
+        Acerca de nosotros
       </Typography>
       <Typography
         as="li"
         variant="h6"
         color="blue-gray"
         className="p-1 font-normal hover:underline"
-        onClick={navigateToVision}
+        onClick={navigateToMissionAndVision}
       >
-        Visión
+        Misión & Visión
+      </Typography>
+      <Typography
+        as="li"
+        variant="h6"
+        color="blue-gray"
+        className="p-1 font-normal hover:underline"
+      >
+        Nuestros clientes
+      </Typography>
+      <Typography
+        as="li"
+        variant="h6"
+        color="blue-gray"
+        className="p-1 font-normal hover:underline"
+      >
+        Servicios
       </Typography>
     </ul>
   );
@@ -111,16 +126,15 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
         </div>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          <div className="flex items-center gap-x-1">
-            <Typography className="mr-4">{inventoryType}</Typography>
-            <Switch onChange={(e) => handleSwitchChange(e)} />
+          <div className="flex justify-between gap-x-1">
+            <Typography className="font-medium">Carrito en línea</Typography>
+            <Badge content={totalQuantitySum}>
+              <ShoppingCartIcon
+                className="ml-4 mr-4 h-6 w-6 cursor-pointer hover:text-blue-500 focus:text-blue-500"
+                onClick={openDrawerTop}
+              />
+            </Badge>
           </div>
-          <Badge content={totalQuantitySum}>
-            <ShoppingCartIcon
-              className="ml-4 mr-4 h-6 w-6 hover:text-blue-500 focus:text-blue-500"
-              onClick={openDrawerTop}
-            />
-          </Badge>
           {/* {isLoggedIn ? (
             <div>
               <Menu>

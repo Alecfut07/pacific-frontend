@@ -5,8 +5,7 @@ import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
 import HomePage from "./pages/Home/HomePage";
 import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
 import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
-import Mission from "./pages/Mission/Mission";
-import Vision from "./pages/Vision/Vision";
+import MissionVision from "./pages/MissionVision/MissionVision";
 import LoginPage from "./pages/Login/LoginPage/LoginPage";
 import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 
@@ -140,8 +139,7 @@ function App() {
           path="/herramientas-industriales"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
         />
-        <Route path="/mission" element={<Mission />} />
-        <Route path="/vision" element={<Vision />} />
+        <Route path="/misión-&-visión" element={<MissionVision />} />
       </Routes>
       {/* <CustomFooter /> */}
     </>
