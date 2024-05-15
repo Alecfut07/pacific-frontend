@@ -8,10 +8,11 @@ function LabInventoryPage({ addToCart }) {
         <img src={labInventoryBackgroundImage} className="w-full" />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="text-center text-white">
-            <h1 className="text-3xl font-bold">Inventario de laboratorio</h1>
+            <h1 className="text-3xl font-bold">Productos Químicos</h1>
             <p className="mt-2">
-              Un inventario completo y organizado de suministros y equipos para
-              laboratorio.
+              Descubre nuestra amplia selección de productos químicos y equipos
+              especializados para laboratorio, cuidadosamente organizados y
+              listos para satisfacer tus necesidades.
             </p>
           </div>
         </div>

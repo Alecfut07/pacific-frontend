@@ -114,7 +114,7 @@ function HomePage() {
             >
               <CardHeader floated={false} shadow={false}>
                 <p className="text-center text-3xl font-bold text-black">
-                  Herramientas Industrial
+                  Herramientas Industriales
                 </p>
               </CardHeader>
               <CardBody>
