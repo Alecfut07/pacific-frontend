@@ -56,6 +56,17 @@ function HomePage() {
               />
             </div>
           </div>
+          <div className="absolute bottom-0 left-0 right-0 mx-auto overflow-hidden bg-custom-yellow-color p-4 text-center">
+            <div className="absolute bottom-0 left-0 h-1/2 w-1/2 origin-bottom-left -rotate-45 transform bg-black"></div>
+            <div className="absolute bottom-0 right-0 h-1/2 w-1/2 origin-bottom-right rotate-45 transform bg-black"></div>
+            <p className="font-bold text-black">
+              PACIFIC <br />
+              Laguna Salada 22104, 14957 <br />
+              Los Santos, Tijuana B.C <br />
+              664-622-32-04 <br />
+              Carlos@Pacific.com.mx
+            </p>
+          </div>
         </div>
       </div>
       <div className="container mx-auto">
