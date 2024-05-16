@@ -30,7 +30,7 @@ function LoginPage() {
       setToken(data.access);
       setUsername("");
       setPassword("");
-      navigate("/admin/lab-products");
+      navigate("/admin/productos");
       // Manejar redireccionamineto o cualquier otra lógica después del inicio de sesión exitoso
     } catch (error) {
       console.log(error);

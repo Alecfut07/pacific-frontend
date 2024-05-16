@@ -47,6 +47,9 @@ function App() {
       // Calcula el subtotal
       updatedCartItems[existingItemIndex].product.subtotal =
         price * updatedCartItems[existingItemIndex].totalQuantity;
+
+      updatedCartItems[existingItemIndex].product.quantity_available -=
+        quantity;
       setCartItems(updatedCartItems);
     } else {
       // Si el producto no está en el carrito, agrégalo con cantidad 1.
@@ -56,6 +59,7 @@ function App() {
         ...product,
         quantity: quantity,
         subtotal: subtotal,
+        quantity_available: product.quantity_available - quantity,
       };
       setCartItems([
         ...cartItems,

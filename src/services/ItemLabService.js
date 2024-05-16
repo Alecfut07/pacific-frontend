@@ -144,6 +144,48 @@ export const updateItemLab = async (
   }
 };
 
+export const updateQuantityAvailableItemLab = async (
+  url,
+  name,
+  price,
+  category,
+  category_page,
+  main_image,
+  description,
+  quantity_available,
+  is_featured,
+  created_at,
+) => {
+  const body = {
+    name,
+    price,
+    category,
+    category_page,
+    main_image,
+    description,
+    quantity_available,
+    is_featured,
+    created_at,
+  };
+
+  delete body.main_image;
+
+  const axiosConfig = {
+    headers: {
+      accept: "application/json",
+      "x-requested-with": "XMLHttpRequest",
+      //   "x-csrftoken": `${accessToken}`,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+  try {
+    const { data } = await axios.patch(url, body, axiosConfig);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteItemLab = async (url) => {
   const axiosConfig = {
     headers: {
