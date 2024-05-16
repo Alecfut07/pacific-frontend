@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
-import InventoriesLogo from "../../assets/inventories.svg";
+import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
   // const token = localStorage.getItem("accessToken");
@@ -111,9 +111,9 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
       <div className="flex items-center justify-between text-blue-gray-900">
         <div className="flex items-center gap-x-4">
           <img
-            src={InventoriesLogo}
-            width="20px"
-            height="20px"
+            src={CompanyLogo}
+            width="40px"
+            height="40px"
             onClick={navigateToHome}
             className="cursor-pointer"
           />
@@ -121,7 +121,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
             className="mr-4 cursor-pointer py-1.5 font-medium"
             onClick={navigateToHome}
           >
-            Inventarios
+            PACIFIC
           </Typography>
         </div>
         <div className="flex items-center gap-4">
