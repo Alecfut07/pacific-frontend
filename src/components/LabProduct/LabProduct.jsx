@@ -33,9 +33,7 @@ function LabProduct({ product, openModal, addToCart }) {
       alert("No hay suficiente cantidad disponible para este producto.");
       return;
     }
-    console.log("Antes");
-    console.log("Quantity: ", quantity);
-    console.log("p.quantity_available: ", product.quantity_available);
+
     const updatedQuantityAvailable = quantityAvailable - quantity;
 
     setQuantityAvailable(updatedQuantityAvailable);
