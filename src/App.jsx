@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { updateQuantityAvailableItemLab } from "./services/ItemLabService";
+import {
+  getLabProducts,
+  updateQuantityAvailableItemLab,
+} from "./services/ItemLabService";
 import CustomNavbar from "./components/CustomNavbar/CustomNavbar";
 import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
 import HomePage from "./pages/Home/HomePage";
@@ -146,7 +149,7 @@ function App() {
         );
       }
     } catch (error) {
-      console.log("Error al actualizar la cantidad disponible: ", error);
+      console.log(error);
     }
   };
 
@@ -191,7 +194,7 @@ function App() {
 
       setCartItems([]);
     } catch (error) {
-      console.log("Error: ", error);
+      console.log(error);
     }
   };
 
