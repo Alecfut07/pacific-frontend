@@ -54,8 +54,9 @@ function App() {
 
       updatedCartItems[existingItemIndex].product.quantity_available -=
         quantity;
-      setCartItems(updatedCartItems);
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      // setCartItems(updatedCartItems);
+      // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      updateCartItemsAndLocalStorage(updatedCartItems);
     } else {
       // Si el producto no está en el carrito, agrégalo con cantidad 1.
       // Calcula el subtotal
@@ -66,14 +67,21 @@ function App() {
         subtotal: subtotal,
         quantity_available: product.quantity_available - quantity,
       };
-      setCartItems([
+      // setCartItems([
+      //   ...cartItems,
+      //   {
+      //     product: updatedProduct,
+      //     totalQuantity: quantity,
+      //   },
+      // ]);
+      // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      updateCartItemsAndLocalStorage([
         ...cartItems,
         {
           product: updatedProduct,
           totalQuantity: quantity,
         },
       ]);
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }
   };
 
@@ -110,17 +118,19 @@ function App() {
       }
       return item;
     });
-    setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    // setCartItems(updatedCartItems);
+    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    updateCartItemsAndLocalStorage(updatedCartItems);
   };
 
   const removeItemFromCart = async (productUrl) => {
     const updatedCartItems = cartItems.filter(
       (item) => item.product.url !== productUrl,
     );
-    setCartItems(updatedCartItems);
+    // setCartItems(updatedCartItems);
+    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    updateCartItemsAndLocalStorage(updatedCartItems);
 
     try {
       const removedItem = cartItems.find(
@@ -197,8 +207,9 @@ function App() {
         );
       }
 
-      setCartItems([]);
-      localStorage.removeItem("cartItems");
+      // setCartItems([]);
+      // localStorage.removeItem("cartItems");
+      updateCartItemsAndLocalStorage([]);
     } catch (error) {
       console.log(error);
     }
