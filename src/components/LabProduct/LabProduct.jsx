@@ -5,10 +5,7 @@ import {
   MinusCircleIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
-import {
-  updateItemLab,
-  updateQuantityAvailableItemLab,
-} from "../../services/ItemLabService";
+import { updateQuantityAvailableItemLab } from "../../services/ItemLabService";
 
 function LabProduct({ product, openModal, addToCart }) {
   const [quantity, setQuantity] = useState(0);
