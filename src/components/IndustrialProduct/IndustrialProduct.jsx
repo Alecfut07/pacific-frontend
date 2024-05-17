@@ -34,22 +34,22 @@ function IndustrialProduct({ product, openModal, addToCart }) {
       return;
     }
 
-    const updatedQuantityAvailable = quantityAvailable - quantity;
+    // const updatedQuantityAvailable = quantityAvailable - quantity;
 
-    setQuantityAvailable(updatedQuantityAvailable);
+    // setQuantityAvailable(updatedQuantityAvailable);
 
-    await updateQuantityAvailableItemLab(
-      product.url,
-      product.name,
-      product.price,
-      product.category,
-      product.category_page,
-      product.main_image,
-      product.description,
-      updatedQuantityAvailable,
-      product.is_featured,
-      product.created_at,
-    );
+    // await updateQuantityAvailableItemLab(
+    //   product.url,
+    //   product.name,
+    //   product.price,
+    //   product.category,
+    //   product.category_page,
+    //   product.main_image,
+    //   product.description,
+    //   updatedQuantityAvailable,
+    //   product.is_featured,
+    //   product.created_at,
+    // );
 
     addToCart(product, quantity);
   };
