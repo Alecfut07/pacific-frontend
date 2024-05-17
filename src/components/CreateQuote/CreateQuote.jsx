@@ -155,7 +155,10 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
                 <Text>${item.product.price} MXN</Text>
               </View>
               <View style={styles.tableCell}>
-                <Text>${item.product.subtotal} MXN</Text>
+                <Text>
+                  ${parseInt(item.product.price_iva) * item.product.quantity}{" "}
+                  MXN
+                </Text>
               </View>
             </View>
           ))}
