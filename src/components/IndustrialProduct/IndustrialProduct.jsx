@@ -16,7 +16,9 @@ function IndustrialProduct({ product, openModal, addToCart }) {
   const handleDecreaseItemClick = () => {
     if (quantity > 0) setQuantity(quantity - 1);
   };
-  const handleIncreaseItemClick = () => setQuantity(quantity + 1);
+  const handleIncreaseItemClick = () => {
+    if (quantity < quantityAvailable) setQuantity(quantity + 1);
+  };
 
   const verifyQuantityAvailable = async (product, quantity) => {
     if (product.quantity_available <= 0) {
