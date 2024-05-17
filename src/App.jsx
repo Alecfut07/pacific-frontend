@@ -52,8 +52,8 @@ function App() {
       updatedCartItems[existingItemIndex].product.subtotal =
         price * updatedCartItems[existingItemIndex].totalQuantity;
 
-      updatedCartItems[existingItemIndex].product.quantity_available -=
-        quantity;
+      // updatedCartItems[existingItemIndex].product.quantity_available -=
+      //   quantity;
       // setCartItems(updatedCartItems);
       // localStorage.setItem("cartItems", JSON.stringify(cartItems));
       updateCartItemsAndLocalStorage(updatedCartItems);
@@ -65,7 +65,7 @@ function App() {
         ...product,
         quantity: quantity,
         subtotal: subtotal,
-        quantity_available: product.quantity_available - quantity,
+        // quantity_available: product.quantity_available - quantity,
       };
       // setCartItems([
       //   ...cartItems,
@@ -90,21 +90,21 @@ function App() {
       if (item.product.url === productUrl) {
         const price = parseFloat(item.product.price.replace(/,/g, ""));
         const subtotal = price * newQuantity;
-        const updatedQuantityAvailable =
-          item.product.quantity_available -
-          (newQuantity - item.product.quantity);
-        updateQuantityAvailableItemLab(
-          productUrl,
-          item.product.name,
-          item.product.price,
-          item.product.category,
-          item.product.category_page,
-          item.product.main_image,
-          item.product.description,
-          updatedQuantityAvailable,
-          item.product.is_featured,
-          item.product.created_at,
-        );
+        // const updatedQuantityAvailable =
+        //   item.product.quantity_available -
+        //   (newQuantity - item.product.quantity);
+        // updateQuantityAvailableItemLab(
+        //   productUrl,
+        //   item.product.name,
+        //   item.product.price,
+        //   item.product.category,
+        //   item.product.category_page,
+        //   item.product.main_image,
+        //   item.product.description,
+        //   updatedQuantityAvailable,
+        //   item.product.is_featured,
+        //   item.product.created_at,
+        // );
         return {
           ...item,
           totalQuantity: newQuantity,
@@ -112,7 +112,7 @@ function App() {
             ...item.product,
             quantity: newQuantity,
             subtotal: subtotal,
-            quantity_available: updatedQuantityAvailable,
+            // quantity_available: updatedQuantityAvailable,
           },
         };
       }
@@ -123,7 +123,7 @@ function App() {
     updateCartItemsAndLocalStorage(updatedCartItems);
   };
 
-  const removeItemFromCart = async (productUrl) => {
+  const removeItemFromCart = (productUrl) => {
     const updatedCartItems = cartItems.filter(
       (item) => item.product.url !== productUrl,
     );
@@ -132,80 +132,80 @@ function App() {
 
     updateCartItemsAndLocalStorage(updatedCartItems);
 
-    try {
-      const removedItem = cartItems.find(
-        (item) => item.product.url === productUrl,
-      );
-      if (removedItem) {
-        const {
-          name,
-          price,
-          category,
-          category_page,
-          main_image,
-          description,
-          is_featured,
-          created_at,
-        } = removedItem.product;
-        const updatedQuantityAvailable =
-          removedItem.product.quantity_available + removedItem.totalQuantity;
+    // try {
+    //   const removedItem = cartItems.find(
+    //     (item) => item.product.url === productUrl,
+    //   );
+    //   if (removedItem) {
+    //     const {
+    //       name,
+    //       price,
+    //       category,
+    //       category_page,
+    //       main_image,
+    //       description,
+    //       is_featured,
+    //       created_at,
+    //     } = removedItem.product;
+    //     const updatedQuantityAvailable =
+    //       removedItem.product.quantity_available + removedItem.totalQuantity;
 
-        await updateQuantityAvailableItemLab(
-          productUrl,
-          name,
-          price,
-          category,
-          category_page,
-          main_image,
-          description,
-          updatedQuantityAvailable,
-          is_featured,
-          created_at,
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //     await updateQuantityAvailableItemLab(
+    //       productUrl,
+    //       name,
+    //       price,
+    //       category,
+    //       category_page,
+    //       main_image,
+    //       description,
+    //       updatedQuantityAvailable,
+    //       is_featured,
+    //       created_at,
+    //     );
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const clearCart = async () => {
     try {
       // Almacena los datos de los elementos del carrito antes de limpiarlo
-      const itemsToUpdate = [];
-      for (const item of cartItems) {
-        const { url } = item.product;
-        const { totalQuantity } = item;
-        const updatedQuantityAvailable =
-          item.product.quantity_available + totalQuantity;
-        itemsToUpdate.push({
-          url,
-          name: item.product.name,
-          price: item.product.price,
-          category: item.product.category,
-          category_page: item.product.category_page,
-          main_image: item.product.main_image,
-          description: item.product.description,
-          quantity_available: updatedQuantityAvailable,
-          is_featured: item.product.is_featured,
-          created_at: item.product.created_at,
-        });
-      }
+      // const itemsToUpdate = [];
+      // for (const item of cartItems) {
+      //   const { url } = item.product;
+      //   const { totalQuantity } = item;
+      //   const updatedQuantityAvailable =
+      //     item.product.quantity_available + totalQuantity;
+      //   itemsToUpdate.push({
+      //     url,
+      //     name: item.product.name,
+      //     price: item.product.price,
+      //     category: item.product.category,
+      //     category_page: item.product.category_page,
+      //     main_image: item.product.main_image,
+      //     description: item.product.description,
+      //     quantity_available: updatedQuantityAvailable,
+      //     is_featured: item.product.is_featured,
+      //     created_at: item.product.created_at,
+      //   });
+      // }
 
       // Actualiza la cantidad disponible para cada elemento del carrito antes de limpiarlo
-      for (const item of itemsToUpdate) {
-        await updateQuantityAvailableItemLab(
-          item.url,
-          item.name,
-          item.price,
-          item.category,
-          item.category_page,
-          item.main_image,
-          item.description,
-          item.quantity_available,
-          item.is_featured,
-          item.created_at,
-        );
-      }
+      // for (const item of itemsToUpdate) {
+      //   await updateQuantityAvailableItemLab(
+      //     item.url,
+      //     item.name,
+      //     item.price,
+      //     item.category,
+      //     item.category_page,
+      //     item.main_image,
+      //     item.description,
+      //     item.quantity_available,
+      //     item.is_featured,
+      //     item.created_at,
+      //   );
+      // }
 
       // setCartItems([]);
       // localStorage.removeItem("cartItems");
