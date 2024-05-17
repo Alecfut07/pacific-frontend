@@ -42,6 +42,18 @@ function App() {
       (item) => item.product && item.product.url === product.url,
     );
 
+    // Verifica si el producto ya llego al limite de cantidad disponible
+    if (existingItemIndex !== -1) {
+      if (
+        cartItems[existingItemIndex].product.quantity ===
+        cartItems[existingItemIndex].product.quantity_available
+      ) {
+        return alert(
+          "No puedes agregar más únidades de este producto de las disponibles.",
+        );
+      }
+    }
+
     if (existingItemIndex !== -1) {
       // Si el producto ya está en el carrito, actualiza su cantidad.
       const updatedCartItems = [...cartItems];
@@ -88,6 +100,10 @@ function App() {
   const updateQuantity = (productUrl, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.product.url === productUrl) {
+        if (newQuantity > item.product.quantity_available) {
+          newQuantity = item.product.quantity_available;
+          alert("No puedes establecer una cantidad mayor a la disponible.");
+        }
         const price = parseFloat(item.product.price.replace(/,/g, ""));
         const subtotal = price * newQuantity;
         // const updatedQuantityAvailable =
