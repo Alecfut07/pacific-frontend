@@ -176,7 +176,7 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
               <Text style={{ textAlign: "right" }}>Total:</Text>
             </View>
             <View style={styles.tableCell}>
-              <Text>${formatNumber(total)} MXN</Text>
+              <Text>${total} MXN</Text>
             </View>
           </View>
           <Text>IVA ya fue aplicado en el subtotal</Text>
