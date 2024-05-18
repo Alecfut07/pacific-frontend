@@ -46,7 +46,9 @@ function App() {
     if (existingItemIndex !== -1) {
       if (
         cartItems[existingItemIndex].product.quantity ===
-        cartItems[existingItemIndex].product.quantity_available
+          cartItems[existingItemIndex].product.quantity_available ||
+        cartItems[existingItemIndex].product.quantity + quantity >
+          cartItems[existingItemIndex].product.quantity_available
       ) {
         return alert(
           "No puedes agregar más únidades de este producto de las disponibles.",
