@@ -1,1 +1,1 @@
-export const host = "http://ciberserenosmx.com:996/";
+export const host = "http://ciberserenosmx.com:8001/";
