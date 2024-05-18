@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import LabInventoryBackground from "../../../images/LabInventory/LabInventoryPage/lab-inventory-background.png";
-import IndustrialInventoryBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
+import ToolsProductsBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/tools-products-background.jpg";
 
 function LoginPage() {
   const setToken = useContext(DataContext).setToken;
@@ -49,8 +49,8 @@ function LoginPage() {
           className="h-1/2 w-full object-cover"
         />
         <img
-          src={IndustrialInventoryBackground}
-          alt={IndustrialInventoryBackground}
+          src={ToolsProductsBackground}
+          alt={ToolsProductsBackground}
           className="h-1/2 w-full object-cover"
         />
       </div>

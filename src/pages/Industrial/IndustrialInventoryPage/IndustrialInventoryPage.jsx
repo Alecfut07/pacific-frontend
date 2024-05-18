@@ -1,12 +1,12 @@
 import { Typography } from "@material-tailwind/react";
 import IndustrialProductsGallery from "../../../components/IndustrialProductsGallery/IndustrialProductsGallery";
-import industrialInventoryBackgroundImage from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
+import ToolsProductsBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/tools-products-background.jpg";
 
 function IndustrialInventoryPage({ addToCart }) {
   return (
     <div>
       <div className="relative">
-        <img src={industrialInventoryBackgroundImage} className="w-full" />
+        <img src={ToolsProductsBackground} className="w-full" />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="text-center text-white">
             <Typography variant="h1" className="text-3xl font-bold">
