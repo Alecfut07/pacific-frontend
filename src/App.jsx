@@ -26,7 +26,8 @@ function App() {
   );
 
   const subtotalSum = cartItems.reduce(
-    (subtotal, item) => subtotal + item.product.subtotal,
+    (subtotal, item) =>
+      subtotal + item.product.price_iva * item.product.quantity,
     0,
   );
 
