@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
 import { updateItemLab } from "../../services/ItemLabService";
 
-function FormUpdateLabProduct({ handleOpen, labProduct }) {
+function FormUpdateLabProduct({ handleOpen, labProduct, updateTableData }) {
   const [file, setFile] = useState(null);
 
   const validationSchema = Yup.object().shape({
@@ -13,6 +14,9 @@ function FormUpdateLabProduct({ handleOpen, labProduct }) {
       .matches(/^\d+(\.\d{1,2})?$/, "El formato del precio es incorrecto")
       .required("El precio es requerido"),
     category: Yup.string().required("La categoria es requerida"),
+    category_page: Yup.string().required(
+      "La categoría de la página es requerida",
+    ),
     description: Yup.string().required("La descripción es requerida"),
     quantity_available: Yup.string().required(
       "La cantidad disponible es requerida",
@@ -23,6 +27,7 @@ function FormUpdateLabProduct({ handleOpen, labProduct }) {
     name: labProduct.name,
     price: labProduct.price,
     category: labProduct.category,
+    category_page: labProduct.category_page,
     main_image: labProduct.main_image,
     description: labProduct.description,
     quantity_available: labProduct.quantity_available,
@@ -50,22 +55,45 @@ function FormUpdateLabProduct({ handleOpen, labProduct }) {
   };
 
   const handleSubmit = async (values) => {
-    values.main_image = file;
     try {
+      values.main_image = file;
       await updateItemLab(
         labProduct.url,
         values.name,
         values.price,
         values.category,
+        values.category_page,
         values.main_image,
         values.description,
         values.quantity_available,
         values.is_featured,
       );
+
+      // Cerrar el Dialog
       handleOpen();
-      window.location.reload();
+
+      // Mostrar mensaje de éxito después de enviar la nueva actualización del producto.
+      await Swal.fire({
+        icon: "success",
+        title: "Actualización del producto con éxito",
+        showConfirmButton: true,
+      });
+
+      await updateTableData();
+
+      await Swal.fire({
+        icon: "success",
+        title: "Tabla actualizada con éxito",
+        showConfirmButton: true,
+      });
     } catch (error) {
       console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Ocurrió un error al realizar la operación",
+        showConfirmButton: true,
+      });
     }
   };
 
@@ -116,6 +144,21 @@ function FormUpdateLabProduct({ handleOpen, labProduct }) {
               component="div"
               className="text-red-500"
             />
+          </div>
+          <div className="mb-4">
+            <label>Categoría de la página:</label>
+            <Field
+              as="select"
+              name="category_page"
+              className="w-full rounded border px-3 py-2"
+            >
+              <option value="" selected disabled>
+                Seleccione una categoría de la página
+              </option>
+              <option value="Quimicos">Quimicos</option>
+              <option value="Seguridad">Seguridad</option>
+              <option value="Herramientas">Herramientas</option>
+            </Field>
           </div>
           <div className="mb-4">
             <label className="mb-1 block font-bold">Imágen:</label>

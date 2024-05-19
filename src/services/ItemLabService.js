@@ -1,7 +1,47 @@
 import axios from "axios";
 import { host } from "../api/host";
-import { ITEM_LAB_VIEW_SET } from "../utils/data";
+import {
+  ITEM_LAB_VIEW_SET,
+  LAB_PRODUCTS,
+  INDUSTRIAL_PRODUCTS,
+  SECURITY_PRODUCTS,
+} from "../utils/data";
 
+// PARA EL APARTADO DE LOS PRODUCTOS PÚBLICOS
+export const getLabProducts = async () => {
+  try {
+    const { data } = await axios.get(
+      `${host}${ITEM_LAB_VIEW_SET}${LAB_PRODUCTS}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getIndustrialProducts = async () => {
+  try {
+    const { data } = await axios.get(
+      `${host}${ITEM_LAB_VIEW_SET}${INDUSTRIAL_PRODUCTS}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getSecurityProducts = async () => {
+  try {
+    const { data } = await axios.get(
+      `${host}${ITEM_LAB_VIEW_SET}${SECURITY_PRODUCTS}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// PARA EL APARTADO DE ADMIN/PRODUCTS
 export const getItemsLab = async () => {
   try {
     const { data } = await axios.get(`${host}${ITEM_LAB_VIEW_SET}`);
@@ -24,6 +64,7 @@ export const createNewItemLab = async (
   name,
   price,
   category,
+  category_page,
   main_image,
   description,
   quantity_available,
@@ -33,6 +74,7 @@ export const createNewItemLab = async (
     name,
     price,
     category,
+    category_page,
     main_image,
     description,
     quantity_available,
@@ -49,6 +91,7 @@ export const createNewItemLab = async (
       "Content-Type": "multipart/form-data",
     },
   };
+
   try {
     const { data } = await axios.post(
       `${host}${ITEM_LAB_VIEW_SET}`,
@@ -66,6 +109,7 @@ export const updateItemLab = async (
   name,
   price,
   category,
+  category_page,
   main_image,
   description,
   quantity_available,
@@ -76,6 +120,7 @@ export const updateItemLab = async (
     name,
     price,
     category,
+    category_page,
     main_image,
     description,
     quantity_available,
@@ -93,6 +138,48 @@ export const updateItemLab = async (
   };
   try {
     const { data } = await axios.put(url, body, axiosConfig);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateQuantityAvailableItemLab = async (
+  url,
+  name,
+  price,
+  category,
+  category_page,
+  main_image,
+  description,
+  quantity_available,
+  is_featured,
+  created_at,
+) => {
+  const body = {
+    name,
+    price,
+    category,
+    category_page,
+    main_image,
+    description,
+    quantity_available,
+    is_featured,
+    created_at,
+  };
+
+  delete body.main_image;
+
+  const axiosConfig = {
+    headers: {
+      accept: "application/json",
+      "x-requested-with": "XMLHttpRequest",
+      //   "x-csrftoken": `${accessToken}`,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+  try {
+    const { data } = await axios.patch(url, body, axiosConfig);
     return data;
   } catch (error) {
     console.log(error);

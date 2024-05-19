@@ -119,6 +119,11 @@ const styles = StyleSheet.create({
 });
 
 function CreateQuote({ cartItems, total, currentDateTime }) {
+  const formatNumber = (number) =>
+    parseFloat(parseFloat(number).toFixed(2)).toLocaleString("es-MX", {
+      minimumFractionDigits: 2,
+    });
+
   return (
     <Document>
       <Page style={styles.body}>
@@ -155,7 +160,11 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
                 <Text>${item.product.price} MXN</Text>
               </View>
               <View style={styles.tableCell}>
-                <Text>${item.product.subtotal} MXN</Text>
+                <Text>
+                  $
+                  {formatNumber(item.product.price_iva * item.product.quantity)}{" "}
+                  MXN
+                </Text>
               </View>
             </View>
           ))}
@@ -170,6 +179,7 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
               <Text>${total} MXN</Text>
             </View>
           </View>
+          <Text>IVA ya fue aplicado en el subtotal</Text>
         </View>
         <View style={styles.footer}>
           <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>

@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
-import InventoriesLogo from "../../assets/inventories.svg";
+import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
   // const token = localStorage.getItem("accessToken");
@@ -30,17 +30,20 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
 
   const navigateToHome = () => {
     navigate("/");
-    setInventoryType("Inventario de laboratorio");
+    setInventoryType("Productos Químicos");
   };
 
   const navigateToLabInventory = () => {
-    navigate("/lab-inventory");
-    setInventoryType("Inventario de laboratorio");
+    navigate("/productos-quimicos");
+    setInventoryType("Productos Químicos");
   };
   const navigateToIndustrialInventory = () => {
-    navigate("/industrial-inventory");
-    setInventoryType("Inventario industrial");
+    navigate("/herramientas-industriales");
+    setInventoryType("Herramientas Industriales");
   };
+
+  const navigateToMissionAndVision = () => navigate("/misión-&-visión");
+  const navigateToVision = () => navigate("/vision");
 
   const navigateToLogIn = () => navigate("/login");
 
@@ -69,43 +72,36 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
-        variant="small"
+        variant="h6"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal hover:underline"
       >
-        <a href="#" className="flex items-center">
-          Productos
-        </a>
+        Acerca de nosotros
       </Typography>
       <Typography
         as="li"
-        variant="small"
+        variant="h6"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal hover:underline"
+        onClick={navigateToMissionAndVision}
       >
-        <a href="#" className="flex items-center">
-          Empaquetado primario
-        </a>
+        Misión & Visión
       </Typography>
       <Typography
         as="li"
-        variant="small"
+        variant="h6"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal hover:underline"
       >
-        <a href="#" className="flex items-center">
-          Soluciones personalizadas
-        </a>
+        Nuestros clientes
       </Typography>
       <Typography
         as="li"
-        variant="small"
+        variant="h6"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-normal hover:underline"
       >
-        <a href="#" className="flex items-center">
-          Sobre nosotros
-        </a>
+        Servicios
       </Typography>
     </ul>
   );
@@ -115,9 +111,9 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
       <div className="flex items-center justify-between text-blue-gray-900">
         <div className="flex items-center gap-x-4">
           <img
-            src={InventoriesLogo}
-            width="20px"
-            height="20px"
+            src={CompanyLogo}
+            width="40px"
+            height="40px"
             onClick={navigateToHome}
             className="cursor-pointer"
           />
@@ -125,21 +121,20 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
             className="mr-4 cursor-pointer py-1.5 font-medium"
             onClick={navigateToHome}
           >
-            Inventarios
+            PACIFIC
           </Typography>
         </div>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          <div className="flex items-center gap-x-1">
-            <Typography className="mr-4">{inventoryType}</Typography>
-            <Switch onChange={(e) => handleSwitchChange(e)} />
+          <div className="flex justify-between gap-x-1">
+            <Typography className="font-medium">Carrito en línea</Typography>
+            <Badge content={totalQuantitySum}>
+              <ShoppingCartIcon
+                className="ml-4 mr-4 h-6 w-6 cursor-pointer hover:text-blue-500 focus:text-blue-500"
+                onClick={openDrawerTop}
+              />
+            </Badge>
           </div>
-          <Badge content={totalQuantitySum}>
-            <ShoppingCartIcon
-              className="ml-4 mr-4 h-6 w-6 hover:text-blue-500 focus:text-blue-500"
-              onClick={openDrawerTop}
-            />
-          </Badge>
           {/* {isLoggedIn ? (
             <div>
               <Menu>

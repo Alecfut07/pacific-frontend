@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Button,
   Card,
@@ -13,17 +13,16 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
+import { getIndustrialProducts } from "../../services/ItemLabService";
 import IndustrialProduct from "../IndustrialProduct/IndustrialProduct";
 import ImageModal from "../ImageModal/ImageModal";
-import { IndustrialProducts } from "../../data/IndustrialInventory";
 
 import "./IndustrialProductsGallery.css";
 
 function IndustrialProductsGallery({ addToCart }) {
   const [searchProduct, setSearchProduct] = useState("");
-  const [industrialProducts, setIndustrialProducts] =
-    useState(IndustrialProducts);
-  const [fullData, setFullData] = useState(IndustrialProducts);
+  const [industrialProducts, setIndustrialProducts] = useState([]);
+  const [fullData, setFullData] = useState([]);
   const [selectedEntries, setSelectedEntries] = useState(6);
   const [modalOpen, setModalOpen] = useState(false);
   const [industrialProductImages, setIndustrialProductImages] = useState(null);
@@ -71,6 +70,19 @@ function IndustrialProductsGallery({ addToCart }) {
 
     return filteredData.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, selectedEntries, industrialProducts, filterFunction]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const itemsIndustrial = await getIndustrialProducts();
+        setIndustrialProducts(itemsIndustrial);
+        setFullData(itemsIndustrial);
+      } catch (error) {
+        setIndustrialProducts([]);
+        setFullData([]);
+      }
+    })();
+  }, []);
 
   return (
     <div className="industrial-gradient-background">

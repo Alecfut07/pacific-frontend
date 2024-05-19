@@ -2,7 +2,7 @@ export const headers = [
   // "URL",
   "Nombre",
   "Precio",
-  "Categoria",
+  "Categoria de la página",
   "Imágen principal",
   "Descripción",
   "Cantidad disponible",

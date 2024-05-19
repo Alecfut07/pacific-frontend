@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import LabInventoryBackground from "../../../images/LabInventory/LabInventoryPage/lab-inventory-background.png";
-import IndustrialInventoryBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/industrial-inventory-background.png";
+import ToolsProductsBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/tools-products-background.jpg";
 
 function LoginPage() {
   const setToken = useContext(DataContext).setToken;
@@ -30,7 +30,7 @@ function LoginPage() {
       setToken(data.access);
       setUsername("");
       setPassword("");
-      navigate("/admin/lab-products");
+      navigate("/admin/productos");
       // Manejar redireccionamineto o cualquier otra lógica después del inicio de sesión exitoso
     } catch (error) {
       console.log(error);
@@ -49,8 +49,8 @@ function LoginPage() {
           className="h-1/2 w-full object-cover"
         />
         <img
-          src={IndustrialInventoryBackground}
-          alt={IndustrialInventoryBackground}
+          src={ToolsProductsBackground}
+          alt={ToolsProductsBackground}
           className="h-1/2 w-full object-cover"
         />
       </div>

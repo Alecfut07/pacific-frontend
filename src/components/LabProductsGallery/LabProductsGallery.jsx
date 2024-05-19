@@ -13,7 +13,7 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import { getItemsLab } from "../../services/ItemLabService";
+import { getLabProducts } from "../../services/ItemLabService";
 import LabProduct from "../LabProduct/LabProduct";
 import ImageModal from "../ImageModal/ImageModal";
 
@@ -74,7 +74,7 @@ function LabProductsGallery({ addToCart }) {
   useEffect(() => {
     (async () => {
       try {
-        const itemsLab = await getItemsLab();
+        const itemsLab = await getLabProducts();
         setLabProducts(itemsLab);
         setFullData(itemsLab);
       } catch (error) {
