@@ -118,11 +118,22 @@ const styles = StyleSheet.create({
   },
 });
 
-function CreateQuote({ cartItems, total, currentDateTime }) {
+function CreateQuote({ cartItems, subtotal, currentDateTime }) {
+  const convertToNumber = (stringValue) => {
+    const stringWithoutCommas = stringValue.replace(/,/g, "");
+    const numberValue = parseFloat(stringWithoutCommas);
+    const formattedNumber = numberValue.toFixed(2);
+    return formattedNumber;
+  };
+
   const formatNumber = (number) =>
     parseFloat(parseFloat(number).toFixed(2)).toLocaleString("es-MX", {
       minimumFractionDigits: 2,
     });
+
+  const iva = formatNumber(convertToNumber(subtotal) * 0.16);
+
+  const total = formatNumber(convertToNumber(subtotal) * (1 + 0.16));
 
   return (
     <Document>
@@ -135,16 +146,40 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
         </View>
         <View style={styles.table}>
           <View style={styles.tableRow}>
-            <View style={[styles.tableCell, styles.tableHeader]}>
+            <View
+              style={[
+                styles.tableCell,
+                styles.tableHeader,
+                { textAlign: "center" },
+              ]}
+            >
               <Text>Concepto</Text>
             </View>
-            <View style={[styles.tableCell, styles.tableHeader]}>
+            <View
+              style={[
+                styles.tableCell,
+                styles.tableHeader,
+                { textAlign: "center" },
+              ]}
+            >
               <Text>Cantidad</Text>
             </View>
-            <View style={[styles.tableCell, styles.tableHeader]}>
+            <View
+              style={[
+                styles.tableCell,
+                styles.tableHeader,
+                { textAlign: "center" },
+              ]}
+            >
               <Text>Precio</Text>
             </View>
-            <View style={[styles.tableCell, styles.tableHeader]}>
+            <View
+              style={[
+                styles.tableCell,
+                styles.tableHeader,
+                { textAlign: "center" },
+              ]}
+            >
               <Text>Subtotal</Text>
             </View>
           </View>
@@ -156,30 +191,56 @@ function CreateQuote({ cartItems, total, currentDateTime }) {
               <View style={styles.tableCell}>
                 <Text>{item.product.quantity}</Text>
               </View>
-              <View style={styles.tableCell}>
-                <Text>${item.product.price} MXN</Text>
+              <View style={[styles.tableCell, { textAlign: "right" }]}>
+                <Text>${item.product.price}</Text>
               </View>
-              <View style={styles.tableCell}>
+              <View style={[styles.tableCell, { textAlign: "right" }]}>
                 <Text>
-                  $
-                  {formatNumber(item.product.price_iva * item.product.quantity)}{" "}
-                  MXN
+                  ${formatNumber(item.product.price * item.product.quantity)}
                 </Text>
               </View>
             </View>
           ))}
           <View style={styles.tableRow}>
-            <View style={[styles.tableCell, styles.tableFooter]}></View>
-            {/* <View style={styles.tableCell}></View> */}
+            <View style={[styles.tableCell, { border: 0 }]}></View>
+            <View style={styles.tableCell}></View>
+            <View style={styles.tableCell}>
+              <Text style={{ textAlign: "right" }}>Subtotal:</Text>
+            </View>
+            <View style={[styles.tableCell, { textAlign: "right" }]}>
+              <Text>${subtotal} MXN</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow}>
+            <View style={[styles.tableCell, { border: 0 }]}></View>
+            <View style={styles.tableCell}></View>
+            <View style={styles.tableCell}>
+              <Text style={{ textAlign: "right" }}>IVA (16%):</Text>
+            </View>
+            <View style={[styles.tableCell, { textAlign: "right" }]}>
+              <Text>${iva} MXN</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow}>
+            <View style={[styles.tableCell, { border: 0 }]}></View>
             <View style={styles.tableCell}></View>
             <View style={styles.tableCell}>
               <Text style={{ textAlign: "right" }}>Total:</Text>
             </View>
-            <View style={styles.tableCell}>
+            <View style={[styles.tableCell, { textAlign: "right" }]}>
               <Text>${total} MXN</Text>
             </View>
           </View>
-          <Text>IVA ya fue aplicado en el subtotal</Text>
+          <View style={styles.tableRow}>
+            <View
+              style={[styles.tableCell, { border: 0, flex: 3, fontSize: 15 }]}
+            >
+              <Text>
+                Si tiene alguna duda sobre este presupuesto no dude en
+                comunicarse con nosotros
+              </Text>
+            </View>
+          </View>
         </View>
         <View style={styles.footer}>
           <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>

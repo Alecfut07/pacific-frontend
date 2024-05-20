@@ -109,7 +109,7 @@ function CustomDrawer({
             document={
               <CreateQuote
                 cartItems={cartItems}
-                total={formatNumberWithCommas(subtotalSum)}
+                subtotal={formatNumberWithCommas(subtotalSum)}
                 currentDateTime={currentDateTime}
               />
             }
