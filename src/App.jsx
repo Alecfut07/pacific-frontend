@@ -12,6 +12,7 @@ import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/
 import MissionVision from "./pages/MissionVision/MissionVision";
 import LoginPage from "./pages/Login/LoginPage/LoginPage";
 import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
+import QuotesPage from "./pages/Admin/QuotesPage/QuotesPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -255,12 +256,13 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/admin/productos" && (
-        <CustomNavbar
-          openDrawerTop={openDrawerTop}
-          totalQuantitySum={totalQuantitySum}
-        />
-      )}
+      {location.pathname !== "/admin/productos" ||
+        (location.pathname !== "/admin/cotizaciones" && (
+          <CustomNavbar
+            openDrawerTop={openDrawerTop}
+            totalQuantitySum={totalQuantitySum}
+          />
+        ))}
       <CustomDrawer
         placement="left"
         open={openDrawer}
@@ -279,6 +281,10 @@ function App() {
         <Route
           path="/admin/productos"
           element={isLoggedIn ? <LabProductsPage /> : <LoginPage />}
+        />
+        <Route
+          path="/admin/cotizaciones"
+          element={isLoggedIn ? <QuotesPage /> : <LoginPage />}
         />
         <Route
           path="/productos-quimicos"
