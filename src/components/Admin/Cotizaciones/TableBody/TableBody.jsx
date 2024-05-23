@@ -134,7 +134,11 @@ function TableBody({
           </IconButton>
         </DialogHeader>
         <DialogBody>
-          <FormUpdateQuote />
+          <FormUpdateQuote
+            toggleEditDialog={toggleEditDialog}
+            quoteData={quoteData}
+            updateTableData={updateTableData}
+          />
         </DialogBody>
       </Dialog>
       <Dialog open={openDeleteDialog} handler={toggleDeleteDialog}>
