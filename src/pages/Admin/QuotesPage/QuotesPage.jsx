@@ -16,7 +16,10 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { logout } from "../../../services/UserService";
+import { headers } from "../../../data/AdminQuotesTable";
 import { getQuotes } from "../../../services/CotizacionLabService";
+import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
+import TableBody from "../../../components/Admin/Cotizaciones/TableBody/TableBody";
 
 function QuotesPage() {
   const [searchQuote, setSearchQuote] = useState("");
@@ -63,7 +66,7 @@ function QuotesPage() {
     [searchQuote],
   );
 
-  const currentQuoteData = useMemo(() => {
+  const currentQuotesData = useMemo(() => {
     const filteredData = filterFunction(quotesData);
 
     const firstPageIndex = (currentPage - 1) * selectedEntriesValue;
@@ -150,7 +153,18 @@ function QuotesPage() {
           </div>
         </div>
       </CardHeader>
-      <CardBody className="overflow-x-scroll"></CardBody>
+      <CardBody className="overflow-x-scroll">
+        <LoadingSpinner
+          loading={loading}
+          component={
+            <TableBody
+              headers={headers}
+              currentQuotesData={currentQuotesData}
+              fullData={fullData}
+            />
+          }
+        />
+      </CardBody>
       <CardFooter className="flex items-center justify-center border-t border-blue-gray-50 p-4">
         <div className="flex items-center justify-center gap-2">
           <Button
@@ -172,7 +186,7 @@ function QuotesPage() {
             <ArrowLeftIcon strokeWidth={2} className="mr-2 h-4 w-4" /> Anterior
           </Button>
           <div className="flex items-center gap-2">
-            {currentQuoteData.length !== 0 &&
+            {currentQuotesData.length !== 0 &&
               numberOfPages.map((page, index) => (
                 <IconButton
                   key={index}
