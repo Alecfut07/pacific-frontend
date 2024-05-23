@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useDialogState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -17,7 +23,11 @@ import {
 } from "@heroicons/react/24/outline";
 import { logout } from "../../../services/UserService";
 import { headers } from "../../../data/AdminQuotesTable";
-import { getQuotes } from "../../../services/CotizacionLabService";
+import {
+  getQuotes,
+  getQuote,
+  deleteQuote,
+} from "../../../services/CotizacionLabService";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import TableBody from "../../../components/Admin/Cotizaciones/TableBody/TableBody";
 
@@ -25,10 +35,20 @@ function QuotesPage() {
   const [searchQuote, setSearchQuote] = useState("");
   const [quotesData, setQuotesData] = useState([]);
   const [fullData, setFullData] = useState([]);
+  const [quoteData, setQuoteData] = useState({});
 
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
+
+  const useDialogState = (initialState = false) => {
+    const [isOpen, setIsOpen] = useState(initialState);
+    const toggleDialog = () => setIsOpen((prevState) => !prevState);
+    return [isOpen, toggleDialog];
+  };
+
+  const [openEditDialog, toggleEditDialog] = useDialogState();
+  const [openDeleteDialog, toggleDeleteDialog] = useDialogState();
 
   const [selectedEntriesValue, setSelectedEntriesValue] = useState(10);
 
@@ -55,6 +75,37 @@ function QuotesPage() {
   const handleSelectionChange = (e) => {
     setSelectedEntriesValue(e.target.value);
     setCurrentPage(1);
+  };
+
+  const handleEditQuoteClick = async (url) => {
+    try {
+      const quote = await getQuote(url);
+      setQuoteData(quote);
+      toggleEditDialog();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleShowDeleteDialogClick = async (url) => {
+    try {
+      const quote = await getQuote(url);
+      setQuoteData(quote);
+      toggleDeleteDialog();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeleteConfirmClick = async (url) => {
+    try {
+      await deleteQuote(url);
+      toggleDeleteDialog();
+      await updateTableData();
+      handleFirstPage();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const filterFunction = useCallback(

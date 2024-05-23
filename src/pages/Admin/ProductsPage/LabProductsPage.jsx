@@ -212,6 +212,12 @@ function LabProductsPage() {
             >
               Crear nuevo producto
             </Button>
+            <Button
+              className="mt-4"
+              onClick={() => navigate("/admin/cotizaciones")}
+            >
+              Cotizaciones
+            </Button>
             <Dialog
               open={openCreateDialog}
               handler={handleOpenCreateDialog}
