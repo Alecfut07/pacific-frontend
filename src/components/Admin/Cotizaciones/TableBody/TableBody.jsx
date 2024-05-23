@@ -8,7 +8,20 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-function TableBody({ headers, currentQuotesData, fullData }) {
+function TableBody({
+  headers,
+  currentQuotesData,
+  fullData,
+  openEditDialog,
+  toggleEditDialog,
+  handleEditQuoteClick,
+  openDeleteDialog,
+  toggleDeleteDialog,
+  handleShowDeleteDialogClick,
+  handleDeleteConfirmClick,
+  quoteData,
+  updateTableData,
+}) {
   return (
     <>
       <table className="w-full table-auto text-left">

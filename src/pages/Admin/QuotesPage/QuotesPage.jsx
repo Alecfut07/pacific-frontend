@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  useDialogState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -212,6 +206,15 @@ function QuotesPage() {
               headers={headers}
               currentQuotesData={currentQuotesData}
               fullData={fullData}
+              openEditDialog={openEditDialog}
+              toggleEditDialog={toggleEditDialog}
+              handleEditQuoteClick={handleEditQuoteClick}
+              openDeleteDialog={openDeleteDialog}
+              toggleDeleteDialog={toggleDeleteDialog}
+              handleShowDeleteDialogClick={handleShowDeleteDialogClick}
+              handleDeleteConfirmClick={handleDeleteConfirmClick}
+              quoteData={quoteData}
+              updateTableData={updateTableData}
             />
           }
         />
