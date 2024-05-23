@@ -3,6 +3,10 @@ import { Button } from "@material-tailwind/react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 import { updateQuote } from "../../../../services/CotizacionLabService";
 
 function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
@@ -71,6 +75,53 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
               component="div"
               className="text-red-500"
             />
+          </div>
+          <div className="mb-4">
+            <label className="mb-2 block text-lg font-bold">Productos:</label>
+            <Swiper>
+              {quoteData.additional_info.map((info) => (
+                <SwiperSlide key={info.product.url}>
+                  <div className="rounded-md border p-4 shadow-md">
+                    <img
+                      src={info.product.main_image}
+                      alt={info.product.main_image}
+                      className="mb-4 h-20 w-20 rounded-md"
+                    />
+                    <h2 className="fond-bold mb-2 text-xl">
+                      {info.product.name}
+                    </h2>
+                    <p className="mb-2 text-gray-700">
+                      {info.product.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-semibold">
+                        {info.product.price}
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        {info.product.category_page}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-500">
+                        {info.product.quantity_available}
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        {format(
+                          info.product.created_at,
+                          "d 'de' MMMM 'de' yyyy h:mm a",
+                          {
+                            locale: es,
+                          },
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                  <label>{info.product.price_iva}</label>
+                  <label>{info.product.quantity}</label>
+                  <label>{info.product.subtotal}</label>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </Form>
       )}
