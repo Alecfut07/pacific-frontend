@@ -25,6 +25,7 @@ export const createNewQuote = async (
   amount_item,
   price_total_iva,
   accepted,
+  additional_info,
   items_lab,
 ) => {
   const formData = new FormData();
@@ -32,7 +33,8 @@ export const createNewQuote = async (
   formData.append("amount_item", amount_item);
   formData.append("price_total_iva", price_total_iva);
   formData.append("accepted", accepted);
-
+  const additionalInfoJson = JSON.stringify(additional_info);
+  formData.append("additional_info", additionalInfoJson);
   const urlsItemsLab = [...items_lab];
   urlsItemsLab.forEach((url) => {
     formData.append("items_lab", url);

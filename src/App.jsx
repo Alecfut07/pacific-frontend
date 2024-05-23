@@ -256,13 +256,12 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/admin/productos" ||
-        (location.pathname !== "/admin/cotizaciones" && (
-          <CustomNavbar
-            openDrawerTop={openDrawerTop}
-            totalQuantitySum={totalQuantitySum}
-          />
-        ))}
+      {location.pathname !== "/admin/productos" && (
+        <CustomNavbar
+          openDrawerTop={openDrawerTop}
+          totalQuantitySum={totalQuantitySum}
+        />
+      )}
       <CustomDrawer
         placement="left"
         open={openDrawer}

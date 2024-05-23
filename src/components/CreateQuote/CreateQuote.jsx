@@ -7,13 +7,7 @@ import {
   View,
   Text,
 } from "@react-pdf/renderer";
-import EsquinaSuperiorIzquierda from "../../images/Quote/WithoutBackground/EsquinaSuperiorIzquierda.png";
-import EsquinaSuperiorDerecha from "../../images/Quote/WithoutBackground/EsquinaSuperiorDerecha.png";
-import Cotizacion from "../../images/Quote/WithoutBackground/TituloCotización.png";
 import EmpresaLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
-import PaginaWeb from "../../images/Quote/WithoutBackground/PaginaWeb.png";
-import EsquinaInferiorIzquierda from "../../images/Quote/WithoutBackground/EsquinaInferiorIzquierda.png";
-import EsquinaInferiorDerecha from "../../images/Quote/WithoutBackground/EsquinaInferiorDerecha.png";
 
 // Registrar el font Arial
 Font.register({
@@ -118,7 +112,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function CreateQuote({ cartItems, subtotal, currentDateTime }) {
+function CreateQuote({
+  cartItems,
+  subtotal,
+  currentDateTime,
+  totalQuantitySum,
+}) {
   const convertToNumber = (stringValue) => {
     const stringWithoutCommas = stringValue.replace(/,/g, "");
     const numberValue = parseFloat(stringWithoutCommas);
