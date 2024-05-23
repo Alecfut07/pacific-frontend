@@ -1,4 +1,5 @@
 import {
+  Button,
   Checkbox,
   Dialog,
   DialogHeader,
@@ -62,6 +63,12 @@ function TableBody({ headers, currentQuotesData, fullData }) {
                       color={quote.accepted && "green"}
                       ripple={false}
                     />
+                  </td>
+                  <td className={classes}>
+                    <Button color="amber">Editar</Button>
+                  </td>
+                  <td className={classes}>
+                    <Button color="red">Eliminar</Button>
                   </td>
                 </tr>
               );
