@@ -4,9 +4,11 @@ import {
   Dialog,
   DialogHeader,
   DialogBody,
+  DialogFooter,
   IconButton,
   Typography,
 } from "@material-tailwind/react";
+import FormUpdateQuote from "../FormUpdateQuote/FormUpdateQuote";
 
 function TableBody({
   headers,
@@ -78,10 +80,20 @@ function TableBody({
                     />
                   </td>
                   <td className={classes}>
-                    <Button color="amber">Editar</Button>
+                    <Button
+                      color="amber"
+                      onClick={() => handleEditQuoteClick(quote.url)}
+                    >
+                      Editar
+                    </Button>
                   </td>
                   <td className={classes}>
-                    <Button color="red">Eliminar</Button>
+                    <Button
+                      color="red"
+                      onClick={() => handleShowDeleteDialogClick(quote.url)}
+                    >
+                      Eliminar
+                    </Button>
                   </td>
                 </tr>
               );
@@ -89,6 +101,63 @@ function TableBody({
           </tbody>
         )}
       </table>
+      <Dialog
+        open={openEditDialog}
+        handler={toggleEditDialog}
+        size="lg"
+        className="fixed inset-0 overflow-y-auto"
+      >
+        <DialogHeader className="justify-between">
+          <Typography variant="h5" color="blue-gray">
+            Editar cotización
+          </Typography>
+          <IconButton
+            color="red"
+            size="sm"
+            variant="text"
+            onClick={toggleEditDialog}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </IconButton>
+        </DialogHeader>
+        <DialogBody>
+          <FormUpdateQuote />
+        </DialogBody>
+      </Dialog>
+      <Dialog open={openDeleteDialog} handler={toggleDeleteDialog}>
+        <DialogHeader>Eliminar cotización</DialogHeader>
+        <DialogBody></DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={toggleDeleteDialog}
+            className="mr-1"
+          >
+            <span>Cancelar</span>
+          </Button>
+          <Button
+            variant="gradient"
+            color="green"
+            onClick={() => handleDeleteConfirmClick(quoteData.url)}
+          >
+            <span>Confirmar</span>
+          </Button>
+        </DialogFooter>
+      </Dialog>
     </>
   );
 }
