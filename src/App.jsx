@@ -21,6 +21,8 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isQuotePage = location.pathname === "/admin/cotizaciones";
+
   const totalQuantitySum = cartItems.reduce(
     (total, item) => total + item.totalQuantity,
     0,
@@ -256,7 +258,7 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/admin/productos" && (
+      {!isQuotePage && location.pathname !== "/admin/productos" && (
         <CustomNavbar
           openDrawerTop={openDrawerTop}
           totalQuantitySum={totalQuantitySum}
