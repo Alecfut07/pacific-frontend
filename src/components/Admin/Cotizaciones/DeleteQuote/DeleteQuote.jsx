@@ -1,4 +1,4 @@
-import { Typography } from "@material-tailwind/react";
+import { Checkbox, Typography } from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -33,10 +33,13 @@ function DeleteQuote({ quoteData }) {
           Precio total con IVA: {quoteData.price_total_iva}
         </label>
       </div>
-      <div className="mb-4">
-        <label className="mb-1 block font-bold">
-          Es aceptado: {quoteData.accepted}
-        </label>
+      <div className="mb-4 flex justify-start font-bold">
+        <label className="mb-1 block font-bold">Es aceptado:</label>
+        <Checkbox
+          checked={quoteData.accepted}
+          color={quoteData.accepted && "green"}
+          ripple={false}
+        />
       </div>
       <div className="mb-4">
         <label className="mb-2 block text-lg font-bold">Productos:</label>
