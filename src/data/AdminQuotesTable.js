@@ -3,6 +3,6 @@ export const headers = [
   "Cantidad de productos",
   "Precio Total IVA",
   "Es aceptado",
-  "Editar cotización",
+  "Detalles de la cotización",
   "Eliminar",
 ];

@@ -84,7 +84,7 @@ function TableBody({
                       color="amber"
                       onClick={() => handleEditQuoteClick(quote.url)}
                     >
-                      Editar
+                      Ver detalles
                     </Button>
                   </td>
                   <td className={classes}>
@@ -109,7 +109,7 @@ function TableBody({
       >
         <DialogHeader className="justify-between">
           <Typography variant="h5" color="blue-gray">
-            Editar cotización
+            Detalles de la cotización
           </Typography>
           <IconButton
             color="red"
