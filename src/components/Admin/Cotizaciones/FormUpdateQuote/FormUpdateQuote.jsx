@@ -5,10 +5,14 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { updateQuote } from "../../../../services/CotizacionLabService";
 import { TrashIcon } from "@heroicons/react/24/outline";
+
+import "./FormUpdateQuote.css";
 
 function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
   // const validationSchema = Yup.object().shape({
@@ -31,6 +35,13 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
   //   additional_info: [...quoteData.additional_info],
   //   items_lab: [...quoteData.items_lab],
   // };
+
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index + 1) + "</span>";
+    },
+  };
 
   const initialValues = {
     folio: quoteData.folio,
@@ -179,7 +190,11 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
               <label className="mb-2 block text-lg font-bold">Productos:</label>
               <FieldArray name="additional_info">
                 {({ remove, form }) => (
-                  <Swiper>
+                  <Swiper
+                    loop={true}
+                    pagination={pagination}
+                    modules={[Pagination]}
+                  >
                     {values.additional_info.map((info, index) => (
                       <SwiperSlide key={info.product.url}>
                         <div className="rounded-md border p-4 shadow-md">
@@ -231,15 +246,28 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
                               Categoria Página: {info.product.category_page}
                             </Typography>
                           </div>
-                          <div className="flex items-center justify-between">
+                          <div className="mb-6 flex items-center justify-between">
                             <div className="flex items-center gap-1">
                               <Typography color="gray">Cantidad:</Typography>
                               <Field
                                 type="number"
                                 name={`additional_info[${index}].product.quantity`}
                                 className="w-16 rounded-md border border-blue-gray-300 px-2 py-1"
+                                min="1"
                                 onChange={(e) => {
-                                  const quantity = parseInt(e.target.value, 10);
+                                  let quantity = parseInt(e.target.value, 10);
+
+                                  // Si la cantidad es menor que 1, establece 1
+                                  quantity = quantity < 1 ? 1 : quantity;
+
+                                  // Si la cantidad introducida es mayor que la cantidad disponible, establece la cantidad disponible.
+                                  const availableQuantity =
+                                    info.product.quantity_available;
+                                  quantity =
+                                    quantity > availableQuantity
+                                      ? availableQuantity
+                                      : quantity;
+
                                   setFieldValue(
                                     `additional_info[${index}].product.quantity`,
                                     quantity,
