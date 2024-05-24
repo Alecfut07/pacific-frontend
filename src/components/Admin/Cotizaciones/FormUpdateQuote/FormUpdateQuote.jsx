@@ -11,6 +11,18 @@ import { updateQuote } from "../../../../services/CotizacionLabService";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
+  // const validationSchema = Yup.object().shape({
+  //   folio: Yup.string().required("Folio es requerido"),
+  //   accepted: Yup.boolean(),
+  //   additional_info: Yup.array().of(
+  //     Yup.object().shape({
+  //       product: Yup.object().shape({
+  //         quantity: Yup.number().required("Cantidad es requerida"),
+  //       }),
+  //     }),
+  //   ),
+  // });
+
   // const initialValues = {
   //   folio: quoteData.folio,
   //   amount_item: quoteData.amount_item,
@@ -59,8 +71,33 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
     return { amountItem, priceTotalIva };
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     console.log("values: ", values);
+    try {
+      await updateQuote(
+        quoteData.url,
+        values.folio,
+        values.amount_item,
+        values.price_total_iva,
+        values.accepted,
+        values.additional_info,
+        values.items_lab,
+      );
+      Swal.fire({
+        icon: "success",
+        title: "Cotización actualizada",
+        showConfirmButton: true,
+      });
+      updateTableData();
+      toggleEditDialog();
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "No se pudo actualizar la cotización",
+        showConfirmButton: true,
+      });
+    }
   };
 
   return (
@@ -162,12 +199,19 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
                             Precio: ${info.product.price}
                           </p>
                           <p className="text-lg font-semibold">
-                            Precio con IVA (16%): ${info.product.price_iva}
+                            Precio con IVA (16%): $
+                            {(
+                              info.product.quantity *
+                              info.product.price *
+                              1.16
+                            ).toFixed(2)}
                           </p>
                           <p className="text-lg font-semibold">
                             Subtotal: $
                             {(
-                              info.product.quantity * info.product.price_iva
+                              info.product.quantity *
+                              info.product.price *
+                              1.16
                             ).toFixed(2)}
                           </p>
                           <div className="flex items-center justify-between">
