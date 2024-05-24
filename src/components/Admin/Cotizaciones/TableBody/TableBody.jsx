@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import FormUpdateQuote from "../FormUpdateQuote/FormUpdateQuote";
+import DeleteQuote from "../DeleteQuote/DeleteQuote";
 
 function TableBody({
   headers,
@@ -143,7 +144,9 @@ function TableBody({
       </Dialog>
       <Dialog open={openDeleteDialog} handler={toggleDeleteDialog}>
         <DialogHeader>Eliminar cotización</DialogHeader>
-        <DialogBody></DialogBody>
+        <DialogBody>
+          <DeleteQuote quoteData={quoteData} />
+        </DialogBody>
         <DialogFooter>
           <Button
             variant="text"
