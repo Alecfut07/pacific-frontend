@@ -102,14 +102,24 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
         values.additional_info,
         updatedItemsLab,
       );
-      Swal.fire({
+
+      toggleEditDialog();
+
+      await Swal.fire({
         icon: "success",
         title: "Cotización actualizada",
         showConfirmButton: true,
       });
-      updateTableData();
-      toggleEditDialog();
+
+      await updateTableData();
+
+      await Swal.fire({
+        icon: "success",
+        title: "Tabla actualizada con éxito",
+        showConfirmButton: true,
+      });
     } catch (error) {
+      toggleEditDialog();
       Swal.fire({
         icon: "error",
         title: "Error",
