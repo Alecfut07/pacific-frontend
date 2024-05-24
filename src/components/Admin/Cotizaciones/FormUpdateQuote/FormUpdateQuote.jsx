@@ -72,8 +72,16 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
   };
 
   const handleSubmit = async (values) => {
-    console.log("values: ", values);
     try {
+      // Filtrar las URLs de los productos que aún están presentes en additional_info.
+      const remainingUrls = values.additional_info.map(
+        (info) => info.product.url,
+      );
+      // Actualizar el arreglo items_lab con las URLs filtradas.
+      const updatedItemsLab = values.items_lab.filter((url) =>
+        remainingUrls.includes(url),
+      );
+
       await updateQuote(
         quoteData.url,
         values.folio,
@@ -81,7 +89,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
         values.price_total_iva,
         values.accepted,
         values.additional_info,
-        values.items_lab,
+        updatedItemsLab,
       );
       Swal.fire({
         icon: "success",
