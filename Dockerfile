@@ -34,8 +34,11 @@ ENV NODE_ENV production
 # Copiar los archivos de salida de la construcción
 COPY --from=builder /app/dist ./dist
 
+# Instalar serve para servir la aplicación
+RUN npm install -g serve
+
 # Exponer el puerto en el que se ejecutará la aplicación
-EXPOSE 3000
+EXPOSE 5173
 
 # Comando para ejecutar la aplicación
-CMD ["node", "dist/server.js"];
+CMD ["serve", "-s", "dist", "-l", "5173"];
