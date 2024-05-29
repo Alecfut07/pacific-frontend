@@ -21,7 +21,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Construir la aplicación Vite
+# Copiar el archivo de variables de entorno de producción
+COPY .env.production .env
+
+# Construir la aplicación Vite de producción
 RUN npm run build
 
 # Imagen de producción
