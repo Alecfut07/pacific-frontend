@@ -21,8 +21,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Copiar el archivo de variables de entorno de producción
-COPY .env.production .env
+# Por seguridad no copiar el archivo de variables de entorno de producción aquí
+# Utilizar la funcionalidad de Docker Secrets en el docker-compose.yml
 
 # Construir la aplicación Vite de producción
 RUN npm run build

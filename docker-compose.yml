@@ -10,5 +10,9 @@ services:
       - "8002:5173"
     container_name: pacific_vite_app
     image: pacific_vite_app
-    env_file:
-      - .env.production
+    secrets:
+      - secret_env_production
+
+secrets:
+  secret_env_production:
+    file: .env.production
