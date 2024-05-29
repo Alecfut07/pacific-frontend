@@ -105,6 +105,9 @@ function App() {
   const updateQuantity = (productUrl, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.product.url === productUrl) {
+        if (newQuantity < 1) {
+          newQuantity = 1;
+        }
         if (newQuantity > item.product.quantity_available) {
           newQuantity = item.product.quantity_available;
           alert("No puedes establecer una cantidad mayor a la disponible.");
