@@ -51,7 +51,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
     ),
     price_total_iva: quoteData.additional_info
       .reduce(
-        (sum, info) => sum + info.product.quantity * info.product.price_iva,
+        (sum, info) => sum + info.product.quantity * info.product.price * 1.16,
         0,
       )
       .toFixed(2),
@@ -74,7 +74,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
 
     const priceTotalIva = values.additional_info
       .reduce(
-        (sum, info) => sum + info.product.quantity * info.product.price_iva,
+        (sum, info) => sum + info.product.quantity * info.product.price * 1.16,
         0,
       )
       .toFixed(2);
