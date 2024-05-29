@@ -1,7 +1,5 @@
 import axios from "axios";
 const { VITE_HOST, VITE_API_TOKEN } = import.meta.env;
-// import { host } from "../api/host";
-// import { API_TOKEN } from "../utils/data";
 
 export const login = async (username, password) => {
   const body = {

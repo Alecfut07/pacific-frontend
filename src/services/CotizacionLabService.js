@@ -1,7 +1,5 @@
 import axios from "axios";
 const { VITE_HOST, VITE_COTIZACION_LAB_VIEW_SET } = import.meta.env;
-// import { host } from "../api/host";
-// import { COTIZACION_LAB_VIEW_SET } from "../utils/data";
 
 export const getQuotes = async () => {
   try {

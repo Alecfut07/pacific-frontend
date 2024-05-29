@@ -6,13 +6,6 @@ const {
   VITE_INDUSTRIAL_PRODUCTS,
   VITE_SECURITY_PRODUCTS,
 } = import.meta.env;
-// import { host } from "../api/host";
-// import {
-//   ITEM_LAB_VIEW_SET,
-//   LAB_PRODUCTS,
-//   INDUSTRIAL_PRODUCTS,
-//   SECURITY_PRODUCTS,
-// } from "../utils/data";
 
 // PARA EL APARTADO DE LOS PRODUCTOS PÚBLICOS
 export const getLabProducts = async () => {
