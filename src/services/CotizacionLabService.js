@@ -1,10 +1,13 @@
 import axios from "axios";
-import { host } from "../api/host";
-import { COTIZACION_LAB_VIEW_SET } from "../utils/data";
+const { VITE_HOST, VITE_COTIZACION_LAB_VIEW_SET } = import.meta.env;
+// import { host } from "../api/host";
+// import { COTIZACION_LAB_VIEW_SET } from "../utils/data";
 
 export const getQuotes = async () => {
   try {
-    const { data } = await axios.get(`${host}${COTIZACION_LAB_VIEW_SET}`);
+    const { data } = await axios.get(
+      `${VITE_HOST}${VITE_COTIZACION_LAB_VIEW_SET}`,
+    );
     return data;
   } catch (error) {
     console.log(error);
@@ -51,7 +54,7 @@ export const createNewQuote = async (
 
   try {
     const { data } = await axios.post(
-      `${host}${COTIZACION_LAB_VIEW_SET}`,
+      `${VITE_HOST}${VITE_COTIZACION_LAB_VIEW_SET}`,
       formData,
       axiosConfig,
     );
