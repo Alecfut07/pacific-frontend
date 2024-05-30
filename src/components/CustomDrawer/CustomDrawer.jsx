@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Drawer,
@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { createNewQuote } from "../../services/CotizacionLabService";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import CreateQuote from "../CreateQuote/CreateQuote";
 
@@ -20,6 +21,7 @@ function CustomDrawer({
   removeItemFromCart,
   clearCart,
 }) {
+  const [quoteCreated, setQuotedCreated] = useState(false);
   const options = { timeZone: "America/Tijuana", hour12: true };
   const currentDateTime = new Date().toLocaleString("es-MX", options);
 
@@ -28,6 +30,31 @@ function CustomDrawer({
 
   const formatNumberWithCommas = (value) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const convertToNumber = (stringValue) => {
+    const stringWithoutCommas = stringValue.replace(/,/g, "");
+    const numberValue = parseFloat(stringWithoutCommas);
+    const formattedNumber = numberValue.toFixed(2);
+    return formattedNumber;
+  };
+
+  const handleCreateQuote = async () => {
+    const productsUrls = cartItems.map((item) => item.product.url);
+
+    try {
+      await createNewQuote(
+        "000000",
+        totalQuantitySum,
+        convertToNumber(String(subtotalSum * (1 + 0.16))),
+        false,
+        cartItems,
+        productsUrls,
+      );
+      setQuotedCreated(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleScroll = (event) => {
@@ -109,8 +136,9 @@ function CustomDrawer({
             document={
               <CreateQuote
                 cartItems={cartItems}
-                total={formatNumberWithCommas(subtotalSum)}
+                subtotal={formatNumberWithCommas(subtotalSum)}
                 currentDateTime={currentDateTime}
+                totalQuantitySum={totalQuantitySum}
               />
             }
             fileName={`cotizacion_${formattedDateTime}.pdf`}
@@ -122,6 +150,7 @@ function CustomDrawer({
                 <Button
                   size="sm"
                   variant="outlined"
+                  onClick={handleCreateQuote}
                   disabled={cartItems.length === 0}
                 >
                   Crear cotización

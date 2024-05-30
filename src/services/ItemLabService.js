@@ -1,17 +1,17 @@
 import axios from "axios";
-import { host } from "../api/host";
-import {
-  ITEM_LAB_VIEW_SET,
-  LAB_PRODUCTS,
-  INDUSTRIAL_PRODUCTS,
-  SECURITY_PRODUCTS,
-} from "../utils/data";
+const {
+  VITE_HOST,
+  VITE_ITEM_LAB_VIEW_SET,
+  VITE_LAB_PRODUCTS,
+  VITE_INDUSTRIAL_PRODUCTS,
+  VITE_SECURITY_PRODUCTS,
+} = import.meta.env;
 
 // PARA EL APARTADO DE LOS PRODUCTOS PÚBLICOS
 export const getLabProducts = async () => {
   try {
     const { data } = await axios.get(
-      `${host}${ITEM_LAB_VIEW_SET}${LAB_PRODUCTS}`,
+      `${VITE_HOST}${VITE_ITEM_LAB_VIEW_SET}${VITE_LAB_PRODUCTS}`,
     );
     return data;
   } catch (error) {
@@ -22,7 +22,7 @@ export const getLabProducts = async () => {
 export const getIndustrialProducts = async () => {
   try {
     const { data } = await axios.get(
-      `${host}${ITEM_LAB_VIEW_SET}${INDUSTRIAL_PRODUCTS}`,
+      `${VITE_HOST}${VITE_ITEM_LAB_VIEW_SET}${VITE_INDUSTRIAL_PRODUCTS}`,
     );
     return data;
   } catch (error) {
@@ -33,7 +33,7 @@ export const getIndustrialProducts = async () => {
 export const getSecurityProducts = async () => {
   try {
     const { data } = await axios.get(
-      `${host}${ITEM_LAB_VIEW_SET}${SECURITY_PRODUCTS}`,
+      `${VITE_HOST}${VITE_ITEM_LAB_VIEW_SET}${VITE_SECURITY_PRODUCTS}`,
     );
     return data;
   } catch (error) {
@@ -44,7 +44,7 @@ export const getSecurityProducts = async () => {
 // PARA EL APARTADO DE ADMIN/PRODUCTS
 export const getItemsLab = async () => {
   try {
-    const { data } = await axios.get(`${host}${ITEM_LAB_VIEW_SET}`);
+    const { data } = await axios.get(`${VITE_HOST}${VITE_ITEM_LAB_VIEW_SET}`);
     return data;
   } catch (error) {
     console.log(error);
@@ -94,7 +94,7 @@ export const createNewItemLab = async (
 
   try {
     const { data } = await axios.post(
-      `${host}${ITEM_LAB_VIEW_SET}`,
+      `${VITE_HOST}${VITE_ITEM_LAB_VIEW_SET}`,
       body,
       axiosConfig,
     );

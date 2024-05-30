@@ -1,0 +1,18 @@
+services:
+  pacific_vite_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - "--no-cache"
+    restart: always
+    ports:
+      - "8002:5173"
+    container_name: pacific_vite_app
+    image: pacific_vite_app
+    secrets:
+      - secret_env_production
+
+secrets:
+  secret_env_production:
+    file: .env.production

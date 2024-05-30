@@ -1,6 +1,5 @@
 import axios from "axios";
-import { host } from "../api/host";
-import { API_TOKEN } from "../utils/data";
+const { VITE_HOST, VITE_API_TOKEN } = import.meta.env;
 
 export const login = async (username, password) => {
   const body = {
@@ -8,7 +7,7 @@ export const login = async (username, password) => {
     password,
   };
   try {
-    const { data } = await axios.post(`${host}${API_TOKEN}`, body);
+    const { data } = await axios.post(`${VITE_HOST}${VITE_API_TOKEN}`, body);
     return data;
     // const accessToken = response.data;
     // localStorage.setItem("accessToken", accessToken);

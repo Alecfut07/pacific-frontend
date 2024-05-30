@@ -251,6 +251,14 @@ function LabProductsPage() {
                 />
               </DialogBody>
             </Dialog>
+            <div>
+              <Button
+                className="mt-4"
+                onClick={() => navigate("/admin/cotizaciones")}
+              >
+                Cotizaciones
+              </Button>
+            </div>
             <div className="mt-4 flex items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Mostrar entradas:&nbsp;

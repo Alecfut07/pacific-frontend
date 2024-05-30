@@ -12,6 +12,7 @@ import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/
 import MissionVision from "./pages/MissionVision/MissionVision";
 import LoginPage from "./pages/Login/LoginPage/LoginPage";
 import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
+import QuotesPage from "./pages/Admin/QuotesPage/QuotesPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -20,14 +21,15 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isQuotePage = location.pathname === "/admin/cotizaciones";
+
   const totalQuantitySum = cartItems.reduce(
     (total, item) => total + item.totalQuantity,
     0,
   );
 
   const subtotalSum = cartItems.reduce(
-    (subtotal, item) =>
-      subtotal + item.product.price_iva * item.product.quantity,
+    (subtotal, item) => subtotal + item.product.price * item.product.quantity,
     0,
   );
 
@@ -103,6 +105,9 @@ function App() {
   const updateQuantity = (productUrl, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.product.url === productUrl) {
+        if (newQuantity < 1) {
+          newQuantity = 1;
+        }
         if (newQuantity > item.product.quantity_available) {
           newQuantity = item.product.quantity_available;
           alert("No puedes establecer una cantidad mayor a la disponible.");
@@ -256,7 +261,7 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/admin/productos" && (
+      {!isQuotePage && location.pathname !== "/admin/productos" && (
         <CustomNavbar
           openDrawerTop={openDrawerTop}
           totalQuantitySum={totalQuantitySum}
@@ -280,6 +285,10 @@ function App() {
         <Route
           path="/admin/productos"
           element={isLoggedIn ? <LabProductsPage /> : <LoginPage />}
+        />
+        <Route
+          path="/admin/cotizaciones"
+          element={isLoggedIn ? <QuotesPage /> : <LoginPage />}
         />
         <Route
           path="/productos-quimicos"
