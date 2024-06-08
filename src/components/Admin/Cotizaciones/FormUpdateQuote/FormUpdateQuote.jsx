@@ -85,7 +85,6 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
 
   const handleSubmit = async (values) => {
     try {
-      console.log("values: ", values);
       // Filtrar las URLs de los productos que aún están presentes en additional_info.
       const remainingUrls = values.additional_info.map(
         (info) => info.product.url,
@@ -97,7 +96,6 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
 
       // Si el checkbox "es aceptado" es true, actualizar la cantidad disponible de cada producto.
       if (values.accepted) {
-        console.log("Fue true el checkbox");
         for (const info of values.additional_info) {
           const updatedQuantity =
             info.product.quantity_available - info.product.quantity;
@@ -115,7 +113,6 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
           );
         }
       } else {
-        console.log("Fue false el checkbox");
         // Si el checkbox "es aceptado" es false, restaurar la cantidad disponible de cada producto.
         for (const info of values.additional_info) {
           const updatedQuantity = info.product.quantity_available_original;
@@ -169,8 +166,6 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
       });
     }
   };
-
-  console.log("quoteData: ", quoteData);
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>

@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { deleteQuote } from "../../../../services/CotizacionLabService";
 
 import "./DeleteQuote.css";
 

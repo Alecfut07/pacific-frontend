@@ -17,6 +17,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { logout } from "../../../services/UserService";
 import { headers } from "../../../data/AdminQuotesTable";
+import { updateQuantityAvailableItemLab } from "../../../services/ItemLabService";
 import {
   getQuotes,
   getQuote,
@@ -93,6 +94,26 @@ function QuotesPage() {
 
   const handleDeleteConfirmClick = async (url) => {
     try {
+      // Obtén los detalles de la cotización antes de eliminarla.
+      const quote = await getQuote(url);
+
+      // Restaura la cantidad disponible de cada producto.
+      for (const info of quote.additional_info) {
+        await updateQuantityAvailableItemLab(
+          info.product.url,
+          info.product.name,
+          info.product.price,
+          info.product.category,
+          info.product.category_page,
+          info.product.main_image,
+          info.product.description,
+          info.product.quantity_available_original,
+          info.product.is_featured,
+          info.product.created_at,
+        );
+      }
+
+      // Ahora elimina la cotización.
       await deleteQuote(url);
       toggleDeleteDialog();
       await updateTableData();
