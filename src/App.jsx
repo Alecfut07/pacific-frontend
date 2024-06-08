@@ -81,6 +81,7 @@ function App() {
       const updatedProduct = {
         ...product,
         quantity: quantity,
+        quantity_available_original: product.quantity_available,
         subtotal: subtotal,
         // quantity_available: product.quantity_available - quantity,
       };

@@ -11,6 +11,7 @@ import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { updateQuote } from "../../../../services/CotizacionLabService";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { updateQuantityAvailableItemLab } from "../../../../services/ItemLabService";
 
 import "./FormUpdateQuote.css";
 
@@ -84,6 +85,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
 
   const handleSubmit = async (values) => {
     try {
+      console.log("values: ", values);
       // Filtrar las URLs de los productos que aún están presentes en additional_info.
       const remainingUrls = values.additional_info.map(
         (info) => info.product.url,
@@ -92,6 +94,45 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
       const updatedItemsLab = values.items_lab.filter((url) =>
         remainingUrls.includes(url),
       );
+
+      // Si el checkbox "es aceptado" es true, actualizar la cantidad disponible de cada producto.
+      if (values.accepted) {
+        console.log("Fue true el checkbox");
+        for (const info of values.additional_info) {
+          const updatedQuantity =
+            info.product.quantity_available - info.product.quantity;
+          await updateQuantityAvailableItemLab(
+            info.product.url,
+            info.product.name,
+            info.product.price,
+            info.product.category,
+            info.product.category_page,
+            info.product.main_image,
+            info.product.description,
+            updatedQuantity,
+            info.product.is_featured,
+            info.product.created_at,
+          );
+        }
+      } else {
+        console.log("Fue false el checkbox");
+        // Si el checkbox "es aceptado" es false, restaurar la cantidad disponible de cada producto.
+        for (const info of values.additional_info) {
+          const updatedQuantity = info.product.quantity_available_original;
+          await updateQuantityAvailableItemLab(
+            info.product.url,
+            info.product.name,
+            info.product.price,
+            info.product.category,
+            info.product.category_page,
+            info.product.main_image,
+            info.product.description,
+            updatedQuantity,
+            info.product.is_featured,
+            info.product.created_at,
+          );
+        }
+      }
 
       await updateQuote(
         quoteData.url,
@@ -128,6 +169,8 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
       });
     }
   };
+
+  console.log("quoteData: ", quoteData);
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
