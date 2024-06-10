@@ -7,6 +7,7 @@ import {
   Card,
   CardHeader,
   CardBody,
+  CardFooter,
   Input,
   Typography,
 } from "@material-tailwind/react";
@@ -100,6 +101,16 @@ function Login() {
               </Button>
             </form>
           </CardBody>
+          <CardFooter>
+            <Button
+              variant="outlined"
+              className="mt-6"
+              fullWidth
+              onClick={() => navigate("/registrarse")}
+            >
+              Crear una cuenta
+            </Button>
+          </CardFooter>
         </Card>
       </div>
     </div>
