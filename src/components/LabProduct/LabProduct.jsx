@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ButtonGroup, Button, Chip } from "@material-tailwind/react";
 import {
   PlusCircleIcon,
@@ -6,8 +6,10 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
 import { updateQuantityAvailableItemLab } from "../../services/ItemLabService";
+import AuthContext from "../../context/AuthContext";
 
 function LabProduct({ product, openModal, addToCart }) {
+  const { isLoggedIn } = useContext(AuthContext);
   const [quantity, setQuantity] = useState(0);
   const [quantityAvailable, setQuantityAvailable] = useState(
     product.quantity_available,
@@ -67,47 +69,57 @@ function LabProduct({ product, openModal, addToCart }) {
       <div className="mx-auto flex flex-grow flex-col justify-between bg-white bg-opacity-75 p-2 mix-blend-multiply">
         <p className="text-lg font-bold">{product.name}</p>
         <p className="text-sm">{product.description}</p>
-        <div className="flex justify-between">
-          <p className="text-base font-bold">${product.price} MXN</p>
+        {isLoggedIn && (
           <div className="flex justify-between">
-            <Chip
-              size="lg"
-              color={quantityAvailable !== 0 ? "green" : "red"}
-              value={quantityAvailable !== 0 ? "DISPONIBLE" : "NO DISPONIBLE"}
-              className="text-black"
-            />
-            <Chip size="lg" variant="outlined" value={quantityAvailable} />
+            <p className="text-base font-bold">${product.price} MXN</p>
+            <div className="flex justify-between">
+              <Chip
+                size="lg"
+                color={quantityAvailable !== 0 ? "green" : "red"}
+                value={quantityAvailable !== 0 ? "DISPONIBLE" : "NO DISPONIBLE"}
+                className="text-black"
+              />
+              <Chip size="lg" variant="outlined" value={quantityAvailable} />
+            </div>
           </div>
+        )}
+      </div>
+      {isLoggedIn && (
+        <div className="mx-auto flex items-center justify-between">
+          <ButtonGroup className="mb-3 flex items-center">
+            <Button
+              className="rounded-l"
+              onClick={() => handleDecreaseItemClick()}
+            >
+              <MinusCircleIcon className="h-5 w-5" />
+            </Button>
+            <input
+              className="h-10 w-20 text-center"
+              value={quantity}
+              readOnly
+            />
+            <Button
+              className="rounded-r"
+              onClick={() => handleIncreaseItemClick()}
+            >
+              <PlusCircleIcon className="h-5 w-5" />
+            </Button>
+          </ButtonGroup>
         </div>
-      </div>
-      <div className="mx-auto flex items-center justify-between">
-        <ButtonGroup className="mb-3 flex items-center">
+      )}
+      {isLoggedIn && (
+        <div className="mx-auto flex items-center justify-between">
           <Button
-            className="rounded-l"
-            onClick={() => handleDecreaseItemClick()}
+            color="blue"
+            className="flex items-center"
+            onClick={() => verifyQuantityAvailable(product, quantity)}
+            disabled={quantity === 0 || product.quantity_available <= 0}
           >
-            <MinusCircleIcon className="h-5 w-5" />
+            Agregarlo al carrito
+            <ShoppingCartIcon className="ml-2 h-5 w-5" />
           </Button>
-          <input className="h-10 w-20 text-center" value={quantity} readOnly />
-          <Button
-            className="rounded-r"
-            onClick={() => handleIncreaseItemClick()}
-          >
-            <PlusCircleIcon className="h-5 w-5" />
-          </Button>
-        </ButtonGroup>
-      </div>
-      <div className="mx-auto flex items-center justify-between">
-        <Button
-          color="blue"
-          className="flex items-center"
-          onClick={() => verifyQuantityAvailable(product, quantity)}
-          disabled={quantity === 0 || product.quantity_available <= 0}
-        >
-          Agregarlo al carrito
-          <ShoppingCartIcon className="ml-2 h-5 w-5" />
-        </Button>
-      </div>
+        </div>
+      )}
     </div>
   );
 }
