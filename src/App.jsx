@@ -13,6 +13,8 @@ import MissionVision from "./pages/MissionVision/MissionVision";
 import LoginPage from "./pages/Login/LoginPage/LoginPage";
 import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 import QuotesPage from "./pages/Admin/QuotesPage/QuotesPage";
+import Login from "./pages/User/Login/Login";
+import Signup from "./pages/User/Signup/Signup";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -300,6 +302,8 @@ function App() {
           element={<IndustrialInventoryPage addToCart={addToCart} />}
         />
         <Route path="/misión-&-visión" element={<MissionVision />} />
+        <Route path="/iniciar-sesion" element={<Login />} />
+        <Route path="/registrarse" element={<Signup />} />
       </Routes>
       {/* <CustomFooter /> */}
     </>

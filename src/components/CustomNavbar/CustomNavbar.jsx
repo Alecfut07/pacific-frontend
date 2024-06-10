@@ -27,13 +27,12 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
 
   const navigate = useNavigate();
 
-  const navigateToHome = () => {
-    navigate("/");
-  };
+  const navigateToHome = () => navigate("/");
 
   const navigateToMissionAndVision = () => navigate("/misión-&-visión");
 
-  const navigateToLogIn = () => navigate("/login");
+  const navigateToLogIn = () => navigate("/iniciar-sesion");
+  const navigateToSignUp = () => navigate("/registrarse");
 
   const handleLogOut = async () => {
     await logout();
@@ -121,6 +120,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
                 variant="text"
                 size="sm"
                 className="hidden lg:inline-block"
+                onClick={navigateToLogIn}
               >
                 <span>Iniciar Sesión</span>
               </Button>
@@ -128,6 +128,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
                 variant="gradient"
                 size="sm"
                 className="hidden lg:inline-block"
+                onClick={navigateToSignUp}
               >
                 <span>Registrarse</span>
               </Button>
@@ -176,10 +177,22 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
         {navList}
         {!isLoggedIn && (
           <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="text" size="sm" className="">
+            <Button
+              fullWidth
+              variant="text"
+              size="sm"
+              className=""
+              onClick={navigateToLogIn}
+            >
               <span>Iniciar Sesión</span>
             </Button>
-            <Button fullWidth variant="gradient" size="sm" className="">
+            <Button
+              fullWidth
+              variant="gradient"
+              size="sm"
+              className=""
+              onClick={navigateToSignUp}
+            >
               <span>Registrarse</span>
             </Button>
           </div>
