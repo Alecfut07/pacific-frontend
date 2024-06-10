@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../../services/UserService";
+import { login as loginService } from "../../../services/UserService";
 import DataContext from "../../../context/dataContext";
 import {
   Button,
@@ -11,11 +11,13 @@ import {
   Input,
   Typography,
 } from "@material-tailwind/react";
+import AuthContext from "../../../context/AuthContext";
 import LabInventoryBackground from "../../../images/LabInventory/LabInventoryPage/lab-inventory-background.png";
 import ToolsProductsBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/tools-products-background.jpg";
 
 function Login() {
-  const setToken = useContext(DataContext).setToken;
+  // const setToken = useContext(DataContext).setToken;
+  const { login } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,9 +28,10 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const data = await login(username, password);
-      localStorage.setItem("accessToken", data.access);
-      setToken(data.access);
+      const data = await loginService(username, password);
+      login(data.access);
+      // localStorage.setItem("accessToken", data.access);
+      // setToken(data.access);
       setUsername("");
       setPassword("");
       navigate("/");

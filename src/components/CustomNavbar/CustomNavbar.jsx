@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../services/UserService";
 import {
@@ -6,22 +6,15 @@ import {
   Button,
   Collapse,
   IconButton,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
   Navbar,
-  Switch,
   Typography,
 } from "@material-tailwind/react";
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
+import AuthContext from "../../context/AuthContext";
 import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
-  const token = localStorage.getItem("accessToken");
-  const [isLoggedIn, setIsLoggedIn] = useState(token !== null);
-
-  // console.log("isLoggedIn: ", isLoggedIn);
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
   const [openNav, setOpenNav] = useState(false);
 

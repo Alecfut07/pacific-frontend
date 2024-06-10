@@ -28,7 +28,13 @@ function Signup() {
 
   const handleSignup = async () => {
     try {
-      const data = await signup(username, password);
+      const data = await signup(
+        username,
+        email,
+        false,
+        password,
+        confirmPassword,
+      );
       setUsername("");
       setPassword("");
       navigate("/iniciar-sesion");

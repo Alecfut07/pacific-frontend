@@ -27,7 +27,7 @@ export const login = async (username, password) => {
 export const signup = async (
   username,
   email,
-  is_staff = false,
+  is_staff,
   password,
   confirm_password,
 ) => {
