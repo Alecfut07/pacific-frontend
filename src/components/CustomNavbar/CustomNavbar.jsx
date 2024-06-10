@@ -18,43 +18,22 @@ import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
 import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
-  // const token = localStorage.getItem("accessToken");
-  // const [isLoggedIn, setIsLoggedIn] = useState(token !== null);
+  const token = localStorage.getItem("accessToken");
+  const [isLoggedIn, setIsLoggedIn] = useState(token !== null);
 
   // console.log("isLoggedIn: ", isLoggedIn);
 
   const [openNav, setOpenNav] = useState(false);
-  const [inventoryType, setInventoryType] = useState("");
 
   const navigate = useNavigate();
 
   const navigateToHome = () => {
     navigate("/");
-    setInventoryType("Productos Químicos");
-  };
-
-  const navigateToLabInventory = () => {
-    navigate("/productos-quimicos");
-    setInventoryType("Productos Químicos");
-  };
-  const navigateToIndustrialInventory = () => {
-    navigate("/herramientas-industriales");
-    setInventoryType("Herramientas Industriales");
   };
 
   const navigateToMissionAndVision = () => navigate("/misión-&-visión");
-  const navigateToVision = () => navigate("/vision");
 
   const navigateToLogIn = () => navigate("/login");
-
-  const handleSwitchChange = (e) => {
-    const checked = e.target.checked;
-    if (checked) {
-      navigateToIndustrialInventory();
-    } else {
-      navigateToLabInventory();
-    }
-  };
 
   const handleLogOut = async () => {
     await logout();
@@ -126,26 +105,15 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
         </div>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          <div className="flex justify-between gap-x-1">
-            <Typography className="font-medium">Carrito en línea</Typography>
-            <Badge content={totalQuantitySum}>
-              <ShoppingCartIcon
-                className="ml-4 mr-4 h-6 w-6 cursor-pointer hover:text-blue-500 focus:text-blue-500"
-                onClick={openDrawerTop}
-              />
-            </Badge>
-          </div>
-          {/* {isLoggedIn ? (
-            <div>
-              <Menu>
-                <MenuHandler>
-                  <UserIcon className="h-6 w-6 hover:text-blue-500 focus:text-blue-500" />
-                </MenuHandler>
-                <MenuList>
-                  <MenuItem>Crear nuevo producto</MenuItem>
-                  <MenuItem onClick={handleLogOut}>Salir de la sesión</MenuItem>
-                </MenuList>
-              </Menu>
+          {isLoggedIn ? (
+            <div className="flex justify-between gap-x-1">
+              <Typography className="font-medium">Carrito en línea</Typography>
+              <Badge content={totalQuantitySum}>
+                <ShoppingCartIcon
+                  className="ml-4 mr-4 h-6 w-6 cursor-pointer hover:text-blue-500 focus:text-blue-500"
+                  onClick={openDrawerTop}
+                />
+              </Badge>
             </div>
           ) : (
             <div className="flex items-center gap-x-1">
@@ -153,7 +121,6 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
                 variant="text"
                 size="sm"
                 className="hidden lg:inline-block"
-                onClick={navigateToLogIn}
               >
                 <span>Iniciar Sesión</span>
               </Button>
@@ -165,7 +132,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
                 <span>Registrarse</span>
               </Button>
             </div>
-          )} */}
+          )}
           <IconButton
             variant="text"
             className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -207,22 +174,16 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
       </div>
       <Collapse open={openNav}>
         {navList}
-        {/* {!isLoggedIn && (
+        {!isLoggedIn && (
           <div className="flex items-center gap-x-1">
-            <Button
-              fullWidth
-              variant="text"
-              size="sm"
-              className=""
-              onClick={navigateToLogIn}
-            >
+            <Button fullWidth variant="text" size="sm" className="">
               <span>Iniciar Sesión</span>
             </Button>
             <Button fullWidth variant="gradient" size="sm" className="">
               <span>Registrarse</span>
             </Button>
           </div>
-        )} */}
+        )}
       </Collapse>
     </Navbar>
   );
