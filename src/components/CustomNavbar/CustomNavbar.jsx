@@ -1,11 +1,16 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../services/UserService";
+// import { logout } from "../../services/UserService";
 import {
+  Avatar,
   Badge,
   Button,
   Collapse,
   IconButton,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
   Navbar,
   Typography,
 } from "@material-tailwind/react";
@@ -15,6 +20,9 @@ import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
   const { isLoggedIn, logout } = useContext(AuthContext);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
 
   const [openNav, setOpenNav] = useState(false);
 
@@ -106,6 +114,41 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
                   onClick={openDrawerTop}
                 />
               </Badge>
+              <Menu
+                open={isMenuOpen}
+                handler={setIsMenuOpen}
+                placement="bottom-end"
+              >
+                <MenuHandler>
+                  <Button
+                    variant="text"
+                    color="blue-gray"
+                    className="flex-items-center rounded-full p-0"
+                  >
+                    <Avatar
+                      variant="circular"
+                      size="sm"
+                      withBorder={true}
+                      color="blue-gray"
+                      className="ml-4 p-0.5"
+                      src={CompanyLogo}
+                    />
+                  </Button>
+                </MenuHandler>
+                <MenuList className="p-1">
+                  <MenuItem>
+                    <Typography
+                      as="span"
+                      variant="small"
+                      className="font-normal"
+                      color="red"
+                      onClick={logout}
+                    >
+                      Cerrar sesión
+                    </Typography>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             </div>
           ) : (
             <div className="flex items-center gap-x-1">
