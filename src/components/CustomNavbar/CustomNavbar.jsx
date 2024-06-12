@@ -142,7 +142,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
                       variant="small"
                       className="font-normal"
                       color="red"
-                      onClick={logout}
+                      onClick={() => logout()}
                     >
                       Cerrar sesión
                     </Typography>

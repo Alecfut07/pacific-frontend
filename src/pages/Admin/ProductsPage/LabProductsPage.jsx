@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowLeftIcon,
@@ -30,11 +30,13 @@ import {
   getItemLab,
   deleteItemLab,
 } from "../../../services/ItemLabService";
-import { logout } from "../../../services/UserService";
+// import { logout } from "../../../services/UserService";
+import AuthContext from "../../../context/AuthContext";
 import TableBody from "../../../components/TableBody/TableBody";
 import FormUploadLabProduct from "../../../components/FormUploadLabProduct/FormUploadLabProduct";
 
 function LabProductsPage() {
+  const { logout } = useContext(AuthContext);
   const [searchProduct, setSearchProduct] = useState("");
   const [tableItemsLab, setTableItemsLab] = useState([]);
   const [fullData, setFullData] = useState([]);
@@ -146,7 +148,8 @@ function LabProductsPage() {
   }, [currentPage, selectedEntriesValue, tableItemsLab, filterFunction]);
 
   const handleSignOutClick = async () => {
-    await logout();
+    // await logout();
+    logout();
     navigate("/admin");
   };
 

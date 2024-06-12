@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useContext,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -15,7 +21,7 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import { logout } from "../../../services/UserService";
+// import { logout } from "../../../services/UserService";
 import { headers } from "../../../data/AdminQuotesTable";
 import { updateQuantityAvailableItemLab } from "../../../services/ItemLabService";
 import {
@@ -23,10 +29,12 @@ import {
   getQuote,
   deleteQuote,
 } from "../../../services/CotizacionLabService";
+import AuthContext from "../../../context/AuthContext";
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import TableBody from "../../../components/Admin/Cotizaciones/TableBody/TableBody";
 
 function QuotesPage() {
+  const { logout } = useContext(AuthContext);
   const [searchQuote, setSearchQuote] = useState("");
   const [quotesData, setQuotesData] = useState([]);
   const [fullData, setFullData] = useState([]);
@@ -142,7 +150,8 @@ function QuotesPage() {
   }, [currentPage, selectedEntriesValue, quotesData, filterFunction]);
 
   const handleSignOutClick = async () => {
-    await logout();
+    // await logout();
+    logout();
     navigate("/admin");
   };
 
