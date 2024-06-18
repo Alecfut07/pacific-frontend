@@ -152,7 +152,7 @@ function QuotesPage() {
   const handleSignOutClick = async () => {
     // await logout();
     logout();
-    navigate("/admin");
+    navigate("/");
   };
 
   const updateTableData = async () => {
@@ -199,6 +199,14 @@ function QuotesPage() {
             <Button color="black" className="mr-5" onClick={handleSignOutClick}>
               Cerrar sesión
             </Button>
+            <div>
+              <Button
+                className="mt-4"
+                onClick={() => navigate("/admin/productos")}
+              >
+                Productos
+              </Button>
+            </div>
             <div className="mt-4 flex items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Mostrar entradas:&nbsp;

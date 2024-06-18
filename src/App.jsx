@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import {
   getLabProducts,
@@ -15,11 +15,13 @@ import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 import QuotesPage from "./pages/Admin/QuotesPage/QuotesPage";
 import Login from "./pages/User/Login/Login";
 import Signup from "./pages/User/Signup/Signup";
+import AuthContext from "./context/AuthContext";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const isLoggedIn = localStorage.getItem("accessToken");
+  // const isLoggedIn = localStorage.getItem("accessToken");
+  const { isLoggedIn, user, isStaff } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -254,22 +256,31 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    if (!isLoggedIn && location.pathname === "/admin/productos") {
-      navigate("/admin", { replace: true });
-    }
-  }, [isLoggedIn, location.path, navigate]);
+  // useEffect(() => {
+  //   if (!isLoggedIn && !isStaff && location.pathname === "/admin/productos") {
+  //     navigate("/admin", { replace: true });
+  //   }
+  // }, [isLoggedIn, isStaff, location.path, navigate]);
 
-  console.log(cartItems);
+  useEffect(() => {
+    if (!isLoggedIn || !isStaff) {
+      if (location.pathname.startsWith("/admin")) {
+        navigate("/", { replace: true });
+      }
+    }
+  }, [isLoggedIn, isStaff, location.pathname, navigate]);
+
+  // console.log(cartItems);
 
   return (
     <>
-      {!isQuotePage && location.pathname !== "/admin/productos" && (
-        <CustomNavbar
-          openDrawerTop={openDrawerTop}
-          totalQuantitySum={totalQuantitySum}
-        />
-      )}
+      {isQuotePage ||
+        (location.pathname !== "/admin/productos" && (
+          <CustomNavbar
+            openDrawerTop={openDrawerTop}
+            totalQuantitySum={totalQuantitySum}
+          />
+        ))}
       <CustomDrawer
         placement="left"
         open={openDrawer}
@@ -283,15 +294,15 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/admin" element={<LoginPage />} />
+        {/* <Route path="/admin" element={<LoginPage />} /> */}
         {/* <Route path="/admin/lab-products" element={<LabProductsPage />} /> */}
         <Route
           path="/admin/productos"
-          element={isLoggedIn ? <LabProductsPage /> : <LoginPage />}
+          element={isLoggedIn && isStaff ? <LabProductsPage /> : <HomePage />}
         />
         <Route
           path="/admin/cotizaciones"
-          element={isLoggedIn ? <QuotesPage /> : <LoginPage />}
+          element={isLoggedIn && isStaff ? <QuotesPage /> : <HomePage />}
         />
         <Route
           path="/productos-quimicos"

@@ -19,7 +19,7 @@ import AuthContext from "../../context/AuthContext";
 import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
-  const { isLoggedIn, logout } = useContext(AuthContext);
+  const { isLoggedIn, logout, isStaff } = useContext(AuthContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
@@ -34,6 +34,9 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
 
   const navigateToLogIn = () => navigate("/iniciar-sesion");
   const navigateToSignUp = () => navigate("/registrarse");
+
+  const navigateToAdminProductos = () => navigate("/admin/productos");
+  const navigateToAdminCotizaciones = () => navigate("/admin/cotizaciones");
 
   const handleLogOut = async () => {
     await logout();
@@ -136,6 +139,30 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
                   </Button>
                 </MenuHandler>
                 <MenuList className="p-1">
+                  {isStaff && (
+                    <MenuItem>
+                      <Typography
+                        as="span"
+                        variant="small"
+                        className="font-normal"
+                        onClick={navigateToAdminProductos}
+                      >
+                        Admin - Productos
+                      </Typography>
+                    </MenuItem>
+                  )}
+                  {isStaff && (
+                    <MenuItem>
+                      <Typography
+                        as="span"
+                        variant="small"
+                        className="font-normal"
+                        onClick={navigateToAdminCotizaciones}
+                      >
+                        Admin - Cotizaciones
+                      </Typography>
+                    </MenuItem>
+                  )}
                   <MenuItem>
                     <Typography
                       as="span"

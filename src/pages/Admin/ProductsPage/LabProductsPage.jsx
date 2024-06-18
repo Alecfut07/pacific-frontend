@@ -150,7 +150,7 @@ function LabProductsPage() {
   const handleSignOutClick = async () => {
     // await logout();
     logout();
-    navigate("/admin");
+    navigate("/");
   };
 
   const updateTableData = async () => {

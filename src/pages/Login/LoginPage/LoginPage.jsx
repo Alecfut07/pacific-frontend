@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../../services/UserService";
+import { login as userLogin } from "../../../services/UserService";
 import DataContext from "../../../context/dataContext";
 import {
   Button,
@@ -12,9 +12,11 @@ import {
 } from "@material-tailwind/react";
 import LabInventoryBackground from "../../../images/LabInventory/LabInventoryPage/lab-inventory-background.png";
 import ToolsProductsBackground from "../../../images/IndustrialInventory/IndustrialIventoryPage/tools-products-background.jpg";
+import AuthContext from "../../../context/AuthContext";
 
 function LoginPage() {
-  const setToken = useContext(DataContext).setToken;
+  const { isStaff } = useState(AuthContext);
+  // const setToken = useContext(DataContext).setToken;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,12 +27,18 @@ function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      const data = await login(username, password);
-      localStorage.setItem("accessToken", data.access);
-      setToken(data.access);
-      setUsername("");
-      setPassword("");
-      navigate("/admin/productos");
+      const data = await userLogin(username, password);
+      console.log("DATA: ", data);
+      // login(data.access);
+      // localStorage.setItem("accessToken", data.access);
+      // setToken(data.access);
+      // setUsername("");
+      // setPassword("");
+      if (isStaff) {
+        navigate("/admin/productos");
+      } else {
+        navigate("/admin");
+      }
       // Manejar redireccionamineto o cualquier otra lógica después del inicio de sesión exitoso
     } catch (error) {
       console.log(error);

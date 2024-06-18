@@ -1,9 +1,10 @@
 import axios from "axios";
 const { VITE_HOST, VITE_API_TOKEN, VITE_USERS } = import.meta.env;
 
-export const getUser = async (url) => {
+export const getUser = async (user_id) => {
   try {
-    return url;
+    const { data } = await axios.get(`${VITE_HOST}${VITE_USERS}${user_id}/`);
+    return data.is_staff;
   } catch (error) {
     console.log(error);
   }
