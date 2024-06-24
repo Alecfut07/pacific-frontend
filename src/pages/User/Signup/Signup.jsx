@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createClientExtraData } from "../../../services/DatosClienteExtraService";
 import { signup } from "../../../services/UserService";
 import {
   Button,
@@ -7,6 +8,7 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  Checkbox,
   Input,
   Typography,
 } from "@material-tailwind/react";
@@ -18,6 +20,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [accepted, setAccepted] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,6 +28,7 @@ function Signup() {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+  const handleAcceptedChange = (e) => setAccepted(e.target.checked);
 
   const handleSignup = async () => {
     try {
@@ -35,6 +39,17 @@ function Signup() {
         password,
         confirmPassword,
       );
+
+      if (accepted !== false) {
+        const data2 = await createClientExtraData(
+          "",
+          "",
+          accepted,
+          null,
+          data.url,
+        );
+      }
+
       setUsername("");
       setPassword("");
       navigate("/iniciar-sesion");
@@ -125,6 +140,19 @@ function Signup() {
                   }}
                   onChange={(e) => handleConfirmPasswordChange(e)}
                 />
+                <div className="flex items-center">
+                  <Checkbox
+                    id="accept-info"
+                    checked={accepted}
+                    onChange={handleAcceptedChange}
+                  />
+                  <label
+                    htmlFor="accept-info"
+                    className="ml-2 text-blue-gray-700"
+                  >
+                    Acepto recibir información
+                  </label>
+                </div>
               </div>
               <Button type="submit" className="mt-6" fullWidth>
                 Crear cuenta
