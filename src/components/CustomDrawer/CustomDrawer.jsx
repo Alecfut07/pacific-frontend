@@ -43,6 +43,17 @@ function CustomDrawer({
     const productsUrls = cartItems.map((item) => item.product.url);
 
     try {
+      console.log("quote: ", {
+        folio: "000000",
+        amount_item: totalQuantitySum,
+        price_total_iva: convertToNumber(String(subtotalSum * (1 + 0.16))),
+        accepted: false,
+        additional_info: {
+          ...cartItems,
+          created_at: new Date().toLocaleDateString("es-mx"),
+        },
+        items_lab: productsUrls,
+      });
       await createNewQuote(
         "000000",
         totalQuantitySum,
