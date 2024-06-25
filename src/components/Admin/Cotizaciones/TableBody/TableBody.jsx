@@ -30,23 +30,24 @@ function TableBody({
       <table className="w-full table-auto text-left">
         <thead>
           <tr>
-            {headers.map((head, index) => (
-              <th
-                key={index}
-                className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
-              >
-                <Typography
-                  variant="lead"
-                  color="blue-gray"
-                  className="font-normal leading-none opacity-70"
+            {headers &&
+              headers.map((head, index) => (
+                <th
+                  key={index}
+                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
                 >
-                  {head}
-                </Typography>
-              </th>
-            ))}
+                  <Typography
+                    variant="lead"
+                    color="blue-gray"
+                    className="font-normal leading-none opacity-70"
+                  >
+                    {head}
+                  </Typography>
+                </th>
+              ))}
           </tr>
         </thead>
-        {currentQuotesData.length === 0 ? (
+        {currentQuotesData && currentQuotesData.length === 0 ? (
           <tbody>
             <tr>
               <td>
@@ -57,7 +58,7 @@ function TableBody({
         ) : (
           <tbody>
             {currentQuotesData.map((quote, index) => {
-              const isLast = index === fullData.length - 1;
+              const isLast = fullData && index === fullData.length - 1;
               const classes = isLast
                 ? "p-4"
                 : "p-4 border-b border-blue-gray-50";

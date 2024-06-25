@@ -348,7 +348,9 @@ function LabProductsPage() {
             <ArrowLeftIcon strokeWidth={2} className="mr-2 h-4 w-4" /> Anterior
           </Button>
           <div className="flex items-center gap-2">
-            {currentTableItemsLab.length !== 0 &&
+            {currentTableItemsLab &&
+              currentTableItemsLab.length !== 0 &&
+              numberOfPages &&
               numberOfPages.map((page, index) => (
                 <IconButton
                   key={index}

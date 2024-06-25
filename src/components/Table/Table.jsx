@@ -143,74 +143,75 @@ function Table() {
             </tr>
           </thead>
           <tbody>
-            {currentTableData.map((product, index) => {
-              const isLast = index === fullData.length - 1;
-              const classes = isLast
-                ? "p-4"
-                : "p-4 border-b border-blue-gray-50";
-              return (
-                <tr key={product.id}>
-                  <td className={classes}>
-                    <div className="flex items-center gap-3">
-                      <Avatar
-                        src={product.images[0]}
-                        alt={product.images[0]}
-                        size="md"
-                        className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
-                        onClick={() => openModal(product.images[0])}
-                      />
+            {currentTableData &&
+              currentTableData.map((product, index) => {
+                const isLast = fullData && index === fullData.length - 1;
+                const classes = isLast
+                  ? "p-4"
+                  : "p-4 border-b border-blue-gray-50";
+                return (
+                  <tr key={product.id}>
+                    <td className={classes}>
+                      <div className="flex items-center gap-3">
+                        <Avatar
+                          src={product.images[0]}
+                          alt={product.images[0]}
+                          size="md"
+                          className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1 transition duration-300 ease-in-out hover:border-blue-500 hover:brightness-90"
+                          onClick={() => openModal(product.images[0])}
+                        />
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-bold hover:border-b hover:border-blue-500"
+                        >
+                          {product.name}
+                        </Typography>
+                      </div>
+                    </td>
+                    <td className={classes}>
                       <Typography
                         variant="small"
                         color="blue-gray"
-                        className="font-bold hover:border-b hover:border-blue-500"
+                        className="font-normal"
                       >
-                        {product.name}
+                        {product.description}
                       </Typography>
-                    </div>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {product.description}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      ${product.price} MXN
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <div className="w-max">
-                      <Chip
-                        size="sm"
-                        variant="ghost"
-                        value={product.status}
-                        color={
-                          product.status === "disponible"
-                            ? "green"
-                            : product.status === "no disponible"
-                              ? "red"
-                              : "amber"
-                        }
-                      />
-                    </div>
-                  </td>
-                  <td className={classes}>
-                    <input type="" value={0} className="mr-10 w-10" />
-                    <Button color="blue">
-                      <ShoppingCartIcon className="h-5 w-5" />
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        ${product.price} MXN
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <div className="w-max">
+                        <Chip
+                          size="sm"
+                          variant="ghost"
+                          value={product.status}
+                          color={
+                            product.status === "disponible"
+                              ? "green"
+                              : product.status === "no disponible"
+                                ? "red"
+                                : "amber"
+                          }
+                        />
+                      </div>
+                    </td>
+                    <td className={classes}>
+                      <input type="" value={0} className="mr-10 w-10" />
+                      <Button color="blue">
+                        <ShoppingCartIcon className="h-5 w-5" />
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </CardBody>
@@ -235,7 +236,9 @@ function Table() {
             <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Anterior
           </Button>
           <div className="flex items-center gap-2">
-            {currentTableData.length !== 0 &&
+            {currentTableData &&
+              currentTableData.length !== 0 &&
+              numberOfPages &&
               numberOfPages.map((page, index) => (
                 <IconButton
                   key={index}

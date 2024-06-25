@@ -278,7 +278,9 @@ function QuotesPage() {
             <ArrowLeftIcon strokeWidth={2} className="mr-2 h-4 w-4" /> Anterior
           </Button>
           <div className="flex items-center gap-2">
-            {currentQuotesData.length !== 0 &&
+            {currentQuotesData &&
+              currentQuotesData.length !== 0 &&
+              numberOfPages &&
               numberOfPages.map((page, index) => (
                 <IconButton
                   key={index}
