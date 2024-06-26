@@ -324,7 +324,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
                               />
                             </div>
                             <Typography className="gray">
-                              Creado en:{" "}
+                              El producto fue creado el:{" "}
                               {format(
                                 info.product.created_at,
                                 "d 'de' MMMM 'de' yyyy h:mm a",

@@ -10,6 +10,8 @@ import {
 } from "@material-tailwind/react";
 import FormUpdateQuote from "../FormUpdateQuote/FormUpdateQuote";
 import DeleteQuote from "../DeleteQuote/DeleteQuote";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 
 function TableBody({
   headers,
@@ -81,6 +83,17 @@ function TableBody({
                       ripple={false}
                     />
                   </td>
+                  {/* <td className={classes}>
+                    <Typography>
+                      {format(
+                        quote.created_at,
+                        "d 'de' MMMM 'de' yyyy h:mm a",
+                        {
+                          locale: es,
+                        },
+                      )}
+                    </Typography>
+                  </td> */}
                   <td className={classes}>
                     <Button
                       color="amber"

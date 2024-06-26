@@ -48,7 +48,7 @@ function CustomDrawer({
         totalQuantitySum,
         convertToNumber(String(subtotalSum * (1 + 0.16))),
         false,
-        { ...cartItems, created_at: new Date().toLocaleDateString("es-mx") },
+        cartItems,
         productsUrls,
       );
       setQuotedCreated(true);
