@@ -74,21 +74,21 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="container mx-auto">
-        <div className="grid grid-cols-3 items-center gap-4">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-center">
           <div className="col-span-1">
             <Card
               className="cursor-pointer transition-opacity hover:opacity-50"
               onClick={navigateToLabInventory}
             >
               <CardHeader floated={false} shadow={false}>
-                <p className="text-center text-3xl font-bold text-black">
+                <p className="text-center text-2xl font-bold text-black md:text-3xl">
                   Productos Químicos
                 </p>
               </CardHeader>
               <CardBody>
                 <img
-                  className="h-64 w-full object-contain"
+                  className="h-40 w-full object-contain md:h-64"
                   src={LabIconAnimation}
                   alt="LabIconAnimation"
                 />
@@ -99,7 +99,7 @@ function HomePage() {
                     CLIC
                   </span>
                   <img
-                    className="h-12 w-12"
+                    className="h-8 w-8 md:h-12 md:w-12"
                     src={ClickHereAnimation}
                     alt="ClickHereAnimation"
                   />
@@ -113,13 +113,13 @@ function HomePage() {
               onClick={navigateToIndustrialTools}
             >
               <CardHeader floated={false} shadow={false}>
-                <p className="text-center text-3xl font-bold text-black">
+                <p className="text-center text-2xl font-bold text-black md:text-3xl">
                   Herramientas Industriales
                 </p>
               </CardHeader>
               <CardBody>
                 <img
-                  className="h-64 w-full object-contain"
+                  className="h-40 w-full object-contain md:h-64"
                   src={IndustrialIconAnimation}
                   alt="IndustrialIconAnimation"
                 />
@@ -130,7 +130,7 @@ function HomePage() {
                     CLIC
                   </span>
                   <img
-                    className="h-12 w-12"
+                    className="h-8 w-8 md:h-12 md:w-12"
                     src={ClickHereAnimation}
                     alt="ClickHereAnimation"
                   />
@@ -141,13 +141,13 @@ function HomePage() {
           <div className="col-span-1">
             <Card className="cursor-pointer transition-opacity hover:opacity-50">
               <CardHeader floated={false} shadow={false}>
-                <p className="text-center text-3xl font-bold text-black">
+                <p className="text-center text-2xl font-bold text-black md:text-3xl">
                   Seguridad Industrial
                 </p>
               </CardHeader>
               <CardBody>
                 <img
-                  className="h-64 w-full object-contain"
+                  className="h-40 w-full object-contain md:h-64"
                   src={SecurityIconAnimation}
                   alt="SecurityIconAnimation"
                 />
@@ -158,7 +158,7 @@ function HomePage() {
                     CLIC
                   </span>
                   <img
-                    className="h-12 w-12"
+                    className="h-8 w-8 md:h-12 md:w-12"
                     src={ClickHereAnimation}
                     alt="ClickHereAnimation"
                   />
