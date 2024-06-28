@@ -74,32 +74,34 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pb-32">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-center">
           <div className="col-span-1">
             <Card
-              className="cursor-pointer transition-opacity hover:opacity-50"
+              className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4"
               onClick={navigateToLabInventory}
             >
-              <CardHeader floated={false} shadow={false}>
-                <p className="text-center text-2xl font-bold text-black md:text-3xl">
+              {/* mx-auto max-w-xs cursor-pointer p-2 transition-opacity hover:opacity-50 md:p-4 */}
+              <CardHeader floated={false} shadow={false} className="md:p-4">
+                {/* p-2 md:p-4 */}
+                <p className="text-center text-lg font-bold text-black md:text-2xl">
                   Productos Químicos
                 </p>
               </CardHeader>
-              <CardBody>
+              <CardBody className="p-2 md:p-4">
                 <img
-                  className="h-40 w-full object-contain md:h-64"
+                  className="h-24 w-full object-contain md:h-40"
                   src={LabIconAnimation}
                   alt="LabIconAnimation"
                 />
               </CardBody>
-              <div className="absolute bottom-0 right-0 m-2">
-                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2">
-                  <span className="mr-2 flex items-center font-bold text-black">
+              <div className="flex justify-end p-2 md:p-4">
+                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2 md:p-4">
+                  <span className="mr-2 flex items-center text-sm font-bold text-black md:text-base">
                     CLIC
                   </span>
                   <img
-                    className="h-8 w-8 md:h-12 md:w-12"
+                    className="h-6 w-6 md:h-12 md:w-12"
                     src={ClickHereAnimation}
                     alt="ClickHereAnimation"
                   />
@@ -109,28 +111,30 @@ function HomePage() {
           </div>
           <div className="col-span-1">
             <Card
-              className="cursor-pointer transition-opacity hover:opacity-50"
+              className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4"
               onClick={navigateToIndustrialTools}
             >
-              <CardHeader floated={false} shadow={false}>
-                <p className="text-center text-2xl font-bold text-black md:text-3xl">
+              {/* mx-auto max-w-xs cursor-pointer p-2 transition-opacity hover:opacity-50 md:p-4 */}
+              <CardHeader floated={false} shadow={false} className="md:p-4">
+                {/* p-2 md:p-4 */}
+                <p className="text-center text-lg font-bold text-black md:text-2xl">
                   Herramientas Industriales
                 </p>
               </CardHeader>
-              <CardBody>
+              <CardBody className="p-2 md:p-4">
                 <img
-                  className="h-40 w-full object-contain md:h-64"
+                  className="h-24 w-full object-contain md:h-40"
                   src={IndustrialIconAnimation}
                   alt="IndustrialIconAnimation"
                 />
               </CardBody>
-              <div className="absolute bottom-0 right-0 m-2">
-                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2">
-                  <span className="mr-2 flex items-center font-bold text-black">
+              <div className="flex justify-end p-2 md:p-4">
+                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2 md:p-4">
+                  <span className="mr-2 flex items-center text-sm font-bold text-black md:text-base">
                     CLIC
                   </span>
                   <img
-                    className="h-8 w-8 md:h-12 md:w-12"
+                    className="h-6 w-6 md:h-12 md:w-12"
                     src={ClickHereAnimation}
                     alt="ClickHereAnimation"
                   />
@@ -139,26 +143,28 @@ function HomePage() {
             </Card>
           </div>
           <div className="col-span-1">
-            <Card className="cursor-pointer transition-opacity hover:opacity-50">
-              <CardHeader floated={false} shadow={false}>
-                <p className="text-center text-2xl font-bold text-black md:text-3xl">
+            <Card className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4">
+              {/* mx-auto max-w-xs cursor-pointer p-2 transition-opacity hover:opacity-50 md:p-4 */}
+              <CardHeader floated={false} shadow={false} className="md:p-4">
+                {/* p-2 md:p-4 */}
+                <p className="text-center text-lg font-bold text-black md:text-2xl">
                   Seguridad Industrial
                 </p>
               </CardHeader>
-              <CardBody>
+              <CardBody className="p-2 md:p-4">
                 <img
-                  className="h-40 w-full object-contain md:h-64"
+                  className="h-24 w-full object-contain md:h-40"
                   src={SecurityIconAnimation}
                   alt="SecurityIconAnimation"
                 />
               </CardBody>
-              <div className="absolute bottom-0 right-0 m-2">
-                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2">
-                  <span className="mr-2 flex items-center font-bold text-black">
+              <div className="flex justify-end p-2 md:p-4">
+                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2 md:p-4">
+                  <span className="mr-2 flex items-center text-sm font-bold text-black md:text-base">
                     CLIC
                   </span>
                   <img
-                    className="h-8 w-8 md:h-12 md:w-12"
+                    className="h-6 w-6 md:h-12 md:w-12"
                     src={ClickHereAnimation}
                     alt="ClickHereAnimation"
                   />
