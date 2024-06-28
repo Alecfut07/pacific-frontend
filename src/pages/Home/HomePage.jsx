@@ -62,8 +62,8 @@ function HomePage() {
             </div>
           </div>
           <div className="absolute bottom-0 left-0 right-0 mx-auto overflow-hidden bg-custom-yellow-color p-4 text-center">
-            <div className="absolute bottom-0 left-0 h-1/2 w-1/2 origin-bottom-left -rotate-45 transform bg-black"></div>
-            <div className="absolute bottom-0 right-0 h-1/2 w-1/2 origin-bottom-right rotate-45 transform bg-black"></div>
+            <div className="absolute bottom-0 left-0 h-1/4 w-1/4 origin-bottom-left -rotate-45 transform bg-black md:h-1/2 md:w-1/2"></div>
+            <div className="absolute bottom-0 right-0 h-1/4 w-1/4 origin-bottom-right rotate-45 transform bg-black md:h-1/2 md:w-1/2"></div>
             <p className="font-bold text-black">
               PACIFIC <br />
               Laguna Salada 22104, 14957 <br />
