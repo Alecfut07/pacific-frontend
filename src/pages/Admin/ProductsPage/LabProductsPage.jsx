@@ -198,6 +198,7 @@ function LabProductsPage() {
           nuevaUrl(item.url);
         });
 
+        console.log("ITESM TABLA ADMIN - item", items);
         console.log("ITEMS MOD: ", itemsMod);
 
         handleFirstPage();
