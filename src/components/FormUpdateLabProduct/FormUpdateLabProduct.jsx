@@ -8,6 +8,10 @@ import { updateItemLab } from "../../services/ItemLabService";
 function FormUpdateLabProduct({ handleOpen, labProduct, updateTableData }) {
   const [file, setFile] = useState(null);
 
+  if (!labProduct) {
+    return <div>Loading...</div>; // O cualquier mensaje adecuado
+  }
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("El nombre es requerido"),
     price: Yup.string()

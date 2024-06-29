@@ -4,6 +4,9 @@ import { es } from "date-fns/locale";
 
 function DeleteLabProduct({ labProduct }) {
   console.log(labProduct);
+  if (!labProduct) {
+    return <div>Loading...</div>; // O cualquier mensaje adecuado
+  }
   return (
     <>
       <div className="mb-4">
