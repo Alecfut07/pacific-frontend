@@ -85,8 +85,12 @@ function LabProductsPage() {
 
   const handleEditProductClick = async (url) => {
     try {
+      console.log(
+        "ITEM_LAB - handleEditProductClick - getItemLab(url) - URL: ",
+        url,
+      );
       const itemLab = await getItemLab(url);
-      console.log("itemLab: ", itemLab);
+      console.log("itemLab (UPDATE OP): ", itemLab);
       setLabProduct(itemLab);
       handleOpenEditDialog();
     } catch (error) {
@@ -96,8 +100,12 @@ function LabProductsPage() {
 
   const handleShowDeleteDialogClick = async (url) => {
     try {
+      console.log(
+        "ITEM_LAB - handleShowDeleteDialogClick - getItemLab(url) - URL: ",
+        url,
+      );
       const itemLab = await getItemLab(url);
-      console.log("itemLab: ", itemLab);
+      console.log("itemLab (DELETE OP): ", itemLab);
       setLabProduct(itemLab);
       handleDeleteDialog();
     } catch (error) {

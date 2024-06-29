@@ -82,7 +82,9 @@ function QuotesPage() {
 
   const handleEditQuoteClick = async (url) => {
     try {
+      console.log("QUOTE - handleEditQuoteClick - getQuote(url) - URL: ", url);
       const quote = await getQuote(url);
+      console.log("QUOTE (UPDATE OP): ", quote);
       setQuoteData(quote);
       toggleEditDialog();
     } catch (error) {
@@ -92,7 +94,12 @@ function QuotesPage() {
 
   const handleShowDeleteDialogClick = async (url) => {
     try {
+      console.log(
+        "QUOTE - handleShowDeleteDialogClick - getQuote(url) - URL: ",
+        url,
+      );
       const quote = await getQuote(url);
+      console.log("QUOTE (DELETE OP): ", quote);
       setQuoteData(quote);
       toggleDeleteDialog();
     } catch (error) {
