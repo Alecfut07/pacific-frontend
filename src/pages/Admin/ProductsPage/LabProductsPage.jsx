@@ -85,11 +85,12 @@ function LabProductsPage() {
 
   const handleEditProductClick = async (url) => {
     try {
+      let nuevaUrl = url.replace(".com/", ".com:8443/");
       console.log(
         "ITEM_LAB - handleEditProductClick - getItemLab(url) - URL: ",
         url,
       );
-      const itemLab = await getItemLab(url);
+      const itemLab = await getItemLab(nuevaUrl);
       console.log("itemLab (UPDATE OP): ", itemLab);
       setLabProduct(itemLab);
       handleOpenEditDialog();
@@ -100,11 +101,12 @@ function LabProductsPage() {
 
   const handleShowDeleteDialogClick = async (url) => {
     try {
+      let nuevaUrl = url.replace(".com/", ".com:8443/");
       console.log(
         "ITEM_LAB - handleShowDeleteDialogClick - getItemLab(url) - URL: ",
         url,
       );
-      const itemLab = await getItemLab(url);
+      const itemLab = await getItemLab(nuevaUrl);
       console.log("itemLab (DELETE OP): ", itemLab);
       setLabProduct(itemLab);
       handleDeleteDialog();
