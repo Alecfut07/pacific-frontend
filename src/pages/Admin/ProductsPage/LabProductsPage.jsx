@@ -198,6 +198,8 @@ function LabProductsPage() {
           nuevaUrl(item.url);
         });
 
+        console.log("ITEMS MOD: ", itemsMod);
+
         handleFirstPage();
         setTableItemsLab(itemsMod);
         setFullData(itemsMod);
