@@ -176,8 +176,6 @@ function LabProductsPage() {
     }
   };
 
-  const nuevaUrl = (url) => url.replace(".com/", ".com:8443/");
-
   useEffect(() => {
     (async () => {
       try {
@@ -194,18 +192,9 @@ function LabProductsPage() {
           items = await getItemsLab();
         }
 
-        // Modificar las URLs de los items
-        const itemsMod = items.map((item) => ({
-          ...item,
-          url: nuevaUrl(item.url), // Modificar la propiedad url con nuevaUrl
-        }));
-
-        console.log("ITESM TABLA ADMIN - item", items);
-        console.log("ITEMS MOD: ", itemsMod);
-
         handleFirstPage();
-        setTableItemsLab(itemsMod);
-        setFullData(itemsMod);
+        setTableItemsLab(items);
+        setFullData(items);
         setLoading(false);
       } catch (error) {
         setTableItemsLab([]);
