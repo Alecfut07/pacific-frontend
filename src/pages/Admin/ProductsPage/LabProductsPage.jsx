@@ -176,6 +176,8 @@ function LabProductsPage() {
     }
   };
 
+  const nuevaUrl = (url) => url.replace(".com/", ".com:8443/");
+
   useEffect(() => {
     (async () => {
       try {
@@ -191,9 +193,14 @@ function LabProductsPage() {
         } else {
           items = await getItemsLab();
         }
+
+        const itemsMod = items.map((item) => {
+          nuevaUrl(item.url);
+        });
+
         handleFirstPage();
-        setTableItemsLab(items);
-        setFullData(items);
+        setTableItemsLab(itemsMod);
+        setFullData(itemsMod);
         setLoading(false);
       } catch (error) {
         setTableItemsLab([]);
