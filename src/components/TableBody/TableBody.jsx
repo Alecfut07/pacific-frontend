@@ -27,6 +27,7 @@ function TableBody({
   labProduct,
   updateTableData,
 }) {
+  const nuevaUrl = (url) => url.replace(".com/", ".com:8443/");
   return (
     <>
       <table className="w-full table-auto text-left">
@@ -96,7 +97,7 @@ function TableBody({
                     </td>
                     <td className={classes}>
                       <img
-                        src={item.main_image}
+                        src={nuevaUrl(item.main_image)}
                         alt="imagen"
                         className="mx-auto w-20 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
                       />
