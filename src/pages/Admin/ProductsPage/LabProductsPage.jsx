@@ -194,9 +194,11 @@ function LabProductsPage() {
           items = await getItemsLab();
         }
 
-        const itemsMod = items.map((item) => {
-          nuevaUrl(item.url);
-        });
+        // Modificar las URLs de los items
+        const itemsMod = items.map((item) => ({
+          ...item,
+          url: nuevaUrl(item.url), // Modificar la propiedad url con nuevaUrl
+        }));
 
         console.log("ITESM TABLA ADMIN - item", items);
         console.log("ITEMS MOD: ", itemsMod);
