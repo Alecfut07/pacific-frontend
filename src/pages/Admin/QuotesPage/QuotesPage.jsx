@@ -83,7 +83,10 @@ function QuotesPage() {
   const handleEditQuoteClick = async (url) => {
     try {
       let nuevaUrl = url.replace(".com/", ".com:8443/");
-      console.log("QUOTE - handleEditQuoteClick - getQuote(url) - URL: ", url);
+      console.log(
+        "QUOTE - handleEditQuoteClick - getQuote(url) - URL: ",
+        nuevaUrl,
+      );
       const quote = await getQuote(nuevaUrl);
       console.log("QUOTE (UPDATE OP): ", quote);
       setQuoteData(quote);
@@ -98,7 +101,7 @@ function QuotesPage() {
       let nuevaUrl = url.replace(".com/", ".com:8443/");
       console.log(
         "QUOTE - handleShowDeleteDialogClick - getQuote(url) - URL: ",
-        url,
+        nuevaUrl,
       );
       const quote = await getQuote(nuevaUrl);
       console.log("QUOTE (DELETE OP): ", quote);

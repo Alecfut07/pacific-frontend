@@ -88,7 +88,7 @@ function LabProductsPage() {
       let nuevaUrl = url.replace(".com/", ".com:8443/");
       console.log(
         "ITEM_LAB - handleEditProductClick - getItemLab(url) - URL: ",
-        url,
+        nuevaUrl,
       );
       const itemLab = await getItemLab(nuevaUrl);
       console.log("itemLab (UPDATE OP): ", itemLab);

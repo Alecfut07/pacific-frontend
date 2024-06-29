@@ -60,9 +60,10 @@ function FormUpdateLabProduct({ handleOpen, labProduct, updateTableData }) {
 
   const handleSubmit = async (values) => {
     try {
+      let nuevaUrl = labProduct.url.replace(".com/", ".com:8443/");
       values.main_image = file;
       await updateItemLab(
-        labProduct.url,
+        nuevaUrl,
         values.name,
         values.price,
         values.category,
