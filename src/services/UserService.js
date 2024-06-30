@@ -1,11 +1,13 @@
 import axios from "axios";
-import https from "https";
+import createHttpsProxyAgent from "agent-base";
 const { VITE_HOST, VITE_API_TOKEN, VITE_USERS } = import.meta.env;
 
+const agent = createHttpsProxyAgent({
+  rejectUnauthorized: false,
+});
+
 const axiosInstance = axios.create({
-  httpsAgent: new https.Agent({
-    rejectUnauthorized: false,
-  }),
+  httpsAgent: agent,
 });
 
 export const getUser = async (user_id) => {
