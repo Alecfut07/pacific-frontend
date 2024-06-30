@@ -8,13 +8,4 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV || "development"}` });
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      process: "process/browser",
-      stream: "stream-browserify",
-      util: "util",
-      https: "agent-base",
-      zlib: "browserify-zlib",
-    },
-  },
 });
