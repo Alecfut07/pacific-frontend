@@ -113,6 +113,103 @@ Font.register({
 //   },
 // });
 
+// V2
+// const styles = StyleSheet.create({
+//   body: {
+//     paddingTop: 35,
+//     paddingBottom: 65,
+//     paddingHorizontal: 35,
+//   },
+//   section: {
+//     marginBottom: 20,
+//   },
+//   titleContainer: {
+//     flexDirection: "row",
+//     alignItems: "center",
+//     justifyContent: "space-between",
+//     marginBottom: 20,
+//     backgroundColor: "#FFD700",
+//     padding: 10,
+//   },
+//   title: {
+//     fontSize: 20,
+//     marginLeft: 10,
+//   },
+//   dateContainer: {
+//     marginLeft: 10,
+//   },
+//   logo: {
+//     width: 80,
+//     height: "auto",
+//   },
+//   table: {
+//     display: "table",
+//     width: "auto",
+//     borderStyle: "solid",
+//     borderWidth: 1,
+//     borderRightWidth: 0,
+//     borderBottomWidth: 0,
+//     borderColor: "#FFD700",
+//   },
+//   tableRow: {
+//     flexDirection: "row",
+//     borderBottomWidth: 1,
+//     borderRightWidth: 1,
+//     borderStyle: "solid",
+//     borderColor: "#FFD700",
+//   },
+//   tableCell: {
+//     flex: 1,
+//     padding: 5,
+//     borderStyle: "solid",
+//     borderLeftWidth: 1,
+//     borderTopWidth: 1,
+//     borderColor: "#FFD700",
+//   },
+//   tableHeader: {
+//     backgroundColor: "#f2f2f2",
+//     fontWeight: "bold",
+//     fontSize: 10,
+//   },
+//   tableFooter: {
+//     borderTopWidth: 0,
+//   },
+//   text: {
+//     margin: "auto",
+//     fontSize: 10,
+//   },
+//   footer: {
+//     position: "absolute",
+//     bottom: 30,
+//     left: 0,
+//     right: 0,
+//     textAlign: "center",
+//     fontSize: 10,
+//     backgroundColor: "#FFD700",
+//     alignSelf: "flex-start",
+//     paddingTop: 10,
+//     paddingLeft: 10,
+//     paddingBottom: 10,
+//     marginLeft: 35,
+//     marginRight: 35,
+//   },
+//   footerText: {
+//     marginBottom: 5,
+//   },
+//   date: {
+//     position: "absolute",
+//     top: 10,
+//     right: 10,
+//     fontSize: 10,
+//   },
+//   pageNumber: {
+//     position: "absolute",
+//     bottom: 10,
+//     right: 10,
+//     fontSize: 10,
+//   },
+// });
+
 const styles = StyleSheet.create({
   body: {
     paddingTop: 35,
@@ -169,13 +266,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#f2f2f2",
     fontWeight: "bold",
     fontSize: 10,
+    textAlign: "center",
   },
   tableFooter: {
     borderTopWidth: 0,
   },
   text: {
-    margin: "auto",
     fontSize: 10,
+    textAlign: "left",
+  },
+  textRight: {
+    textAlign: "right",
   },
   footer: {
     position: "absolute",
@@ -366,6 +467,145 @@ function CreateQuote({
   //   </Document>
   // );
 
+  // V2
+  // return (
+  //   <Document>
+  //     <Page style={styles.body}>
+  //       <View style={styles.section}>
+  //         <View style={styles.titleContainer}>
+  //           <Text style={styles.title}>Cotización</Text>
+  //           <Image src={EmpresaLogo} style={styles.logo} />
+  //         </View>
+  //       </View>
+  //       <View style={styles.table}>
+  //         <View style={styles.tableRow}>
+  //           <View
+  //             style={[
+  //               styles.tableCell,
+  //               styles.tableHeader,
+  //               { textAlign: "center" },
+  //             ]}
+  //           >
+  //             <Text>Concepto</Text>
+  //           </View>
+  //           <View
+  //             style={[
+  //               styles.tableCell,
+  //               styles.tableHeader,
+  //               { textAlign: "center" },
+  //             ]}
+  //           >
+  //             <Text>Cantidad</Text>
+  //           </View>
+  //           <View
+  //             style={[
+  //               styles.tableCell,
+  //               styles.tableHeader,
+  //               { textAlign: "center" },
+  //             ]}
+  //           >
+  //             <Text>Precio</Text>
+  //           </View>
+  //           <View
+  //             style={[
+  //               styles.tableCell,
+  //               styles.tableHeader,
+  //               { textAlign: "center" },
+  //             ]}
+  //           >
+  //             <Text>Subtotal</Text>
+  //           </View>
+  //         </View>
+  //         {cartItems.map((item) => (
+  //           <View key={item.product.url} style={styles.tableRow}>
+  //             <View style={styles.tableCell}>
+  //               <Text style={styles.text}>{item.product.name}</Text>
+  //             </View>
+  //             <View style={styles.tableCell}>
+  //               <Text style={styles.text}>{item.product.quantity}</Text>
+  //             </View>
+  //             <View style={[styles.tableCell, { textAlign: "right" }]}>
+  //               <Text style={styles.text}>${item.product.price}</Text>
+  //             </View>
+  //             <View style={[styles.tableCell, { textAlign: "right" }]}>
+  //               <Text style={styles.text}>
+  //                 ${formatNumber(item.product.price * item.product.quantity)}
+  //               </Text>
+  //             </View>
+  //           </View>
+  //         ))}
+  //         <View style={styles.tableRow}>
+  //           <View style={[styles.tableCell, { border: 0 }]}></View>
+  //           <View style={styles.tableCell}></View>
+  //           <View style={styles.tableCell}>
+  //             <Text style={{ textAlign: "right", ...styles.text }}>
+  //               Subtotal:
+  //             </Text>
+  //           </View>
+  //           <View style={[styles.tableCell, { textAlign: "right" }]}>
+  //             <Text style={styles.text}>${subtotal} MXN</Text>
+  //           </View>
+  //         </View>
+  //         <View style={styles.tableRow}>
+  //           <View style={[styles.tableCell, { border: 0 }]}></View>
+  //           <View style={styles.tableCell}></View>
+  //           <View style={styles.tableCell}>
+  //             <Text style={{ textAlign: "right", ...styles.text }}>
+  //               IVA (16%):
+  //             </Text>
+  //           </View>
+  //           <View style={[styles.tableCell, { textAlign: "right" }]}>
+  //             <Text style={styles.text}>${iva} MXN</Text>
+  //           </View>
+  //         </View>
+  //         <View style={styles.tableRow}>
+  //           <View style={[styles.tableCell, { border: 0 }]}></View>
+  //           <View style={styles.tableCell}></View>
+  //           <View style={styles.tableCell}>
+  //             <Text style={{ textAlign: "right", ...styles.text }}>Total:</Text>
+  //           </View>
+  //           <View style={[styles.tableCell, { textAlign: "right" }]}>
+  //             <Text style={styles.text}>${total} MXN</Text>
+  //           </View>
+  //         </View>
+  //         <View style={styles.tableRow}>
+  //           <View
+  //             style={[styles.tableCell, { border: 0, flex: 3, fontSize: 10 }]}
+  //           >
+  //             <Text>
+  //               Si tiene alguna duda sobre este presupuesto no dude en
+  //               comunicarse con nosotros
+  //             </Text>
+  //           </View>
+  //         </View>
+  //       </View>
+  //       <View style={styles.footer}>
+  //         <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
+  //           PACIFIC
+  //         </Text>
+  //         <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
+  //           Laguna Salada 22104, 14957
+  //         </Text>
+  //         <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
+  //           Los Santos, Tijuana B.C
+  //         </Text>
+  //         <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
+  //           664-622-32-04
+  //         </Text>
+  //         <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
+  //           Carlos@Pacific.com.mx
+  //         </Text>
+  //         <Text style={[styles.footerText, { alignSelf: "flex-start" }]}>
+  //           Visita nuestro sitio web: www.Pacific.com.mx
+  //         </Text>
+  //         <Text style={styles.date}>
+  //           Fecha de la cotización: {currentDateTime}
+  //         </Text>
+  //       </View>
+  //     </Page>
+  //   </Document>
+  // );
+
   return (
     <Document>
       <Page style={styles.body}>
@@ -377,40 +617,16 @@ function CreateQuote({
         </View>
         <View style={styles.table}>
           <View style={styles.tableRow}>
-            <View
-              style={[
-                styles.tableCell,
-                styles.tableHeader,
-                { textAlign: "center" },
-              ]}
-            >
+            <View style={[styles.tableCell, styles.tableHeader]}>
               <Text>Concepto</Text>
             </View>
-            <View
-              style={[
-                styles.tableCell,
-                styles.tableHeader,
-                { textAlign: "center" },
-              ]}
-            >
+            <View style={[styles.tableCell, styles.tableHeader]}>
               <Text>Cantidad</Text>
             </View>
-            <View
-              style={[
-                styles.tableCell,
-                styles.tableHeader,
-                { textAlign: "center" },
-              ]}
-            >
+            <View style={[styles.tableCell, styles.tableHeader]}>
               <Text>Precio</Text>
             </View>
-            <View
-              style={[
-                styles.tableCell,
-                styles.tableHeader,
-                { textAlign: "center" },
-              ]}
-            >
+            <View style={[styles.tableCell, styles.tableHeader]}>
               <Text>Subtotal</Text>
             </View>
           </View>
@@ -422,11 +638,13 @@ function CreateQuote({
               <View style={styles.tableCell}>
                 <Text style={styles.text}>{item.product.quantity}</Text>
               </View>
-              <View style={[styles.tableCell, { textAlign: "right" }]}>
-                <Text style={styles.text}>${item.product.price}</Text>
+              <View style={styles.tableCell}>
+                <Text style={[styles.text, styles.textRight]}>
+                  ${item.product.price}
+                </Text>
               </View>
-              <View style={[styles.tableCell, { textAlign: "right" }]}>
-                <Text style={styles.text}>
+              <View style={styles.tableCell}>
+                <Text style={[styles.text, styles.textRight]}>
                   ${formatNumber(item.product.price * item.product.quantity)}
                 </Text>
               </View>
@@ -436,34 +654,32 @@ function CreateQuote({
             <View style={[styles.tableCell, { border: 0 }]}></View>
             <View style={styles.tableCell}></View>
             <View style={styles.tableCell}>
-              <Text style={{ textAlign: "right", ...styles.text }}>
-                Subtotal:
-              </Text>
+              <Text style={[styles.text, styles.textRight]}>Subtotal:</Text>
             </View>
-            <View style={[styles.tableCell, { textAlign: "right" }]}>
-              <Text style={styles.text}>${subtotal} MXN</Text>
+            <View style={styles.tableCell}>
+              <Text style={[styles.text, styles.textRight]}>
+                ${subtotal} MXN
+              </Text>
             </View>
           </View>
           <View style={styles.tableRow}>
             <View style={[styles.tableCell, { border: 0 }]}></View>
             <View style={styles.tableCell}></View>
             <View style={styles.tableCell}>
-              <Text style={{ textAlign: "right", ...styles.text }}>
-                IVA (16%):
-              </Text>
+              <Text style={[styles.text, styles.textRight]}>IVA (16%):</Text>
             </View>
-            <View style={[styles.tableCell, { textAlign: "right" }]}>
-              <Text style={styles.text}>${iva} MXN</Text>
+            <View style={styles.tableCell}>
+              <Text style={[styles.text, styles.textRight]}>${iva} MXN</Text>
             </View>
           </View>
           <View style={styles.tableRow}>
             <View style={[styles.tableCell, { border: 0 }]}></View>
             <View style={styles.tableCell}></View>
             <View style={styles.tableCell}>
-              <Text style={{ textAlign: "right", ...styles.text }}>Total:</Text>
+              <Text style={[styles.text, styles.textRight]}>Total:</Text>
             </View>
-            <View style={[styles.tableCell, { textAlign: "right" }]}>
-              <Text style={styles.text}>${total} MXN</Text>
+            <View style={styles.tableCell}>
+              <Text style={[styles.text, styles.textRight]}>${total} MXN</Text>
             </View>
           </View>
           <View style={styles.tableRow}>
