@@ -69,7 +69,7 @@ function HomePage() {
               Laguna Salada 22104, 14957 <br />
               Los Santos, Tijuana B.C <br />
               664-622-32-04 <br />
-              Carlos@Pacific.com.mx
+              ventas@pacifichqs.tijuamex.com
             </p>
           </div>
         </div>
