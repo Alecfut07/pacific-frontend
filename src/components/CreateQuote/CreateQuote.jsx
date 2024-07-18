@@ -153,7 +153,9 @@ function CreateQuote({
             <Image src={EmpresaLogo} style={styles.logo} />
           </View>
         </View>
-        <View style={styles.folio}>{folio}</View>
+        <View style={styles.folio}>
+          <Text>{folio}</Text>
+        </View>
         <View style={styles.table}>
           <View style={styles.tableRow}>
             <View style={[styles.tableCell, styles.tableHeader]}>
