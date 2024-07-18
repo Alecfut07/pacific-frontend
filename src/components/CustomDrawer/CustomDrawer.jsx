@@ -21,6 +21,7 @@ function CustomDrawer({
   removeItemFromCart,
   clearCart,
 }) {
+  const [folio, setFolio] = useState("");
   const [quoteCreated, setQuotedCreated] = useState(false);
   const options = { timeZone: "America/Tijuana", hour12: true };
   const currentDateTime = new Date().toLocaleString("es-MX", options);
@@ -43,7 +44,7 @@ function CustomDrawer({
     const productsUrls = cartItems.map((item) => item.product.url);
 
     try {
-      await createNewQuote(
+      const quote = await createNewQuote(
         "000000",
         totalQuantitySum,
         convertToNumber(String(subtotalSum * (1 + 0.16))),
@@ -51,6 +52,7 @@ function CustomDrawer({
         cartItems,
         productsUrls,
       );
+      setFolio(quote.folio);
       setQuotedCreated(true);
     } catch (error) {
       console.log(error);
@@ -135,6 +137,7 @@ function CustomDrawer({
           <PDFDownloadLink
             document={
               <CreateQuote
+                folio={folio}
                 cartItems={cartItems}
                 subtotal={formatNumberWithCommas(subtotalSum)}
                 currentDateTime={currentDateTime}

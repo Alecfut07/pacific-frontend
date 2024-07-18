@@ -113,9 +113,16 @@ const styles = StyleSheet.create({
     right: 10,
     fontSize: 10,
   },
+  folio: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    fontSize: 10,
+  },
 });
 
 function CreateQuote({
+  folio,
   cartItems,
   subtotal,
   currentDateTime,
@@ -146,6 +153,7 @@ function CreateQuote({
             <Image src={EmpresaLogo} style={styles.logo} />
           </View>
         </View>
+        <View style={styles.folio}>{folio}</View>
         <View style={styles.table}>
           <View style={styles.tableRow}>
             <View style={[styles.tableCell, styles.tableHeader]}>
