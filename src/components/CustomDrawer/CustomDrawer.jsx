@@ -52,6 +52,8 @@ function CustomDrawer({
         cartItems,
         productsUrls,
       );
+      console.log("QUOTE: ", quote);
+      console.log("FOLIO: ", quote.folio);
       setFolio(quote.folio);
       setQuotedCreated(true);
     } catch (error) {

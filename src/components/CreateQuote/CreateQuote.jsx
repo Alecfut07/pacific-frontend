@@ -137,13 +137,14 @@ function CreateQuote({
   const iva = formatNumber(convertToNumber(subtotal) * 0.16);
 
   const total = formatNumber(convertToNumber(subtotal) * (1 + 0.16));
+  console.log("CreateQuote - folio: ", folio);
 
   return (
     <Document>
       <Page style={styles.body}>
         <View style={styles.section}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Cotización</Text>
+            <Text style={styles.title}>Cotización {folio}</Text>
             <Image src={EmpresaLogo} style={styles.logo} />
           </View>
           <View>
