@@ -19,6 +19,8 @@ function HomePage() {
   const navigateToIndustrialTools = () =>
     navigate("/herramientas-industriales");
 
+  const navigateToIndustrialSecurity = () => navigate("/seguridad-industrial");
+
   return (
     <div className="relative flex h-screen flex-col items-center justify-center">
       <div className="absolute inset-0 z-0 flex flex-col items-center justify-center">
@@ -143,7 +145,10 @@ function HomePage() {
             </Card>
           </div>
           <div className="col-span-1">
-            <Card className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4">
+            <Card
+              className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4"
+              onClick={navigateToIndustrialSecurity}
+            >
               {/* mx-auto max-w-xs cursor-pointer p-2 transition-opacity hover:opacity-50 md:p-4 */}
               <CardHeader floated={false} shadow={false} className="md:p-4">
                 {/* p-2 md:p-4 */}

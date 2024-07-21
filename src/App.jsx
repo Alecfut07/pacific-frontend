@@ -9,6 +9,7 @@ import CustomDrawer from "./components/CustomDrawer/CustomDrawer";
 import HomePage from "./pages/Home/HomePage";
 import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
 import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
+import IndustrialSecurityPage from "./pages/IndustrialSecurity/IndustrialSecurityPage";
 import MissionVision from "./pages/MissionVision/MissionVision";
 import LoginPage from "./pages/Login/LoginPage/LoginPage";
 import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
@@ -311,6 +312,10 @@ function App() {
         <Route
           path="/herramientas-industriales"
           element={<IndustrialInventoryPage addToCart={addToCart} />}
+        />
+        <Route
+          path="/seguridad-industrial"
+          element={<IndustrialSecurityPage addToCart={addToCart} />}
         />
         <Route path="/misión-&-visión" element={<MissionVision />} />
         <Route path="/iniciar-sesion" element={<Login />} />
