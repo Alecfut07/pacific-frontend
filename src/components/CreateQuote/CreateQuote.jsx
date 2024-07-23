@@ -134,9 +134,9 @@ function CreateQuote({
       minimumFractionDigits: 2,
     });
 
-  const iva = formatNumber(convertToNumber(subtotal) * 0.16);
+  const iva = formatNumber(convertToNumber(subtotal) * 0.085);
 
-  const total = formatNumber(convertToNumber(subtotal) * (1 + 0.16));
+  const total = formatNumber(convertToNumber(subtotal) * (1 + 0.085));
   console.log("CreateQuote - folio: ", folio);
 
   return (
@@ -202,7 +202,7 @@ function CreateQuote({
             <View style={[styles.tableCell, { border: 0 }]}></View>
             <View style={styles.tableCell}></View>
             <View style={styles.tableCell}>
-              <Text style={[styles.text, styles.textRight]}>IVA (16%):</Text>
+              <Text style={[styles.text, styles.textRight]}>IVA (8.5%):</Text>
             </View>
             <View style={styles.tableCell}>
               <Text style={[styles.text, styles.textRight]}>${iva} MXN</Text>

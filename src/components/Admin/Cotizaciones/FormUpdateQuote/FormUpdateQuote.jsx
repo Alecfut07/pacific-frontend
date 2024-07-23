@@ -52,7 +52,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
     ),
     price_total_iva: quoteData.additional_info
       .reduce(
-        (sum, info) => sum + info.product.quantity * info.product.price * 1.16,
+        (sum, info) => sum + info.product.quantity * info.product.price * 1.085,
         0,
       )
       .toFixed(2),
@@ -75,7 +75,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
 
     const priceTotalIva = values.additional_info
       .reduce(
-        (sum, info) => sum + info.product.quantity * info.product.price * 1.16,
+        (sum, info) => sum + info.product.quantity * info.product.price * 1.085,
         0,
       )
       .toFixed(2);
@@ -270,11 +270,11 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
                             Precio: ${info.product.price}
                           </p>
                           <p className="text-lg font-semibold">
-                            Precio con IVA (16%): $
+                            Precio con IVA (8.5%): $
                             {(
                               info.product.quantity *
                               info.product.price *
-                              1.16
+                              1.085
                             ).toFixed(2)}
                           </p>
                           <p className="text-lg font-semibold">
@@ -282,7 +282,7 @@ function FormUpdateQuote({ toggleEditDialog, quoteData, updateTableData }) {
                             {(
                               info.product.quantity *
                               info.product.price *
-                              1.16
+                              1.085
                             ).toFixed(2)}
                           </p>
                           <div className="flex items-center justify-between">

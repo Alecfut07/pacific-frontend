@@ -47,7 +47,7 @@ function CustomDrawer({
       const quote = await createNewQuote(
         "000000",
         totalQuantitySum,
-        convertToNumber(String(subtotalSum * (1 + 0.16))),
+        convertToNumber(String(subtotalSum * (1 + 0.085))),
         false,
         cartItems,
         productsUrls,

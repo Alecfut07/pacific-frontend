@@ -64,11 +64,11 @@ function DeleteQuote({ quoteData }) {
                     Precio: ${info.product.price}
                   </p>
                   <p className="text-lg font-semibold">
-                    Precio con IVA (16%): $
+                    Precio con IVA (8.5%): $
                     {(
                       info.product.quantity *
                       info.product.price *
-                      1.16
+                      1.085
                     ).toFixed(2)}
                   </p>
                   <p className="text-lg font-semibold">
@@ -76,7 +76,7 @@ function DeleteQuote({ quoteData }) {
                     {(
                       info.product.quantity *
                       info.product.price *
-                      1.16
+                      1.085
                     ).toFixed(2)}
                   </p>
                   <div className="flex items-center justify-between">
