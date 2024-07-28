@@ -7,7 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { createNewQuote } from "../../services/CotizacionLabService";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink, pdf } from "@react-pdf/renderer";
 import CreateQuote from "../CreateQuote/CreateQuote";
 
 function CustomDrawer({
@@ -21,8 +21,6 @@ function CustomDrawer({
   removeItemFromCart,
   clearCart,
 }) {
-  const [folio, setFolio] = useState("");
-  const [quoteCreated, setQuotedCreated] = useState(false);
   const options = { timeZone: "America/Tijuana", hour12: true };
   const currentDateTime = new Date().toLocaleString("es-MX", options);
 
@@ -54,12 +52,60 @@ function CustomDrawer({
       );
       console.log("QUOTE: ", quote);
       console.log("FOLIO: ", quote.folio);
-      setFolio(quote.folio);
-      setQuotedCreated(true);
+
+      const fileName = `cotizacion_${formattedDateTime}.pdf`;
+      // Genera el PDF como un Blob
+      const blob = await pdf(
+        <CreateQuote
+          folio={quote.folio}
+          cartItems={cartItems}
+          subtotal={formatNumberWithCommas(subtotalSum)}
+          currentDateTime={currentDateTime}
+          totalQuantitySum={totalQuantitySum}
+        />,
+      ).toBlob();
+
+      // Crea una URL para el Blob
+      // const url = URL.createObjectURL(blob);
+      // Abre el PDF en una nueva pestaña
+      // window.open(url, "_blank");
+
+      // Crea una URL para el Blob
+      const url = URL.createObjectURL(blob);
+
+      // Crea un enlace temporal y activa la descarga con el nombre de archivo deseado
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      // Opcional: Revoca el objeto URL después de la descarga
+      URL.revokeObjectURL(url);
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const handleCreateQuote2 = async () => {
+  //   const productsUrls = cartItems.map((item) => item.product.url);
+
+  //   try {
+  //     const quote = await createNewQuote(
+  //       "000000",
+  //       totalQuantitySum,
+  //       convertToNumber(String(subtotalSum * (1 + 0.085))),
+  //       false,
+  //       cartItems,
+  //       productsUrls,
+  //     );
+  //     console.log("QUOTE: ", quote);
+  //     console.log("FOLIO: ", quote.folio);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleScroll = (event) => {
     const container = event.target;
@@ -136,7 +182,16 @@ function CustomDrawer({
           >
             Ver y editar carrito
           </Button>
-          <PDFDownloadLink
+          {/* Poner un boton que active el metodo handleCreateQuote y dentro de ese metodo active el PDFDownloadLink y pasar el folio  */}
+          <Button
+            size="sm"
+            variant="outlined"
+            onClick={handleCreateQuote}
+            disabled={cartItems.length === 0}
+          >
+            Crear cotización
+          </Button>
+          {/* <PDFDownloadLink
             document={
               <CreateQuote
                 folio={folio}
@@ -162,7 +217,7 @@ function CustomDrawer({
                 </Button>
               )
             }
-          </PDFDownloadLink>
+          </PDFDownloadLink> */}
         </div>
         <div
           className="mt-4 flex flex-col gap-4 overflow-y-auto overflow-x-hidden"
