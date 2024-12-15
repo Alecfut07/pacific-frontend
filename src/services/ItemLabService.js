@@ -5,6 +5,7 @@ const {
   VITE_LAB_PRODUCTS,
   VITE_INDUSTRIAL_PRODUCTS,
   VITE_SECURITY_PRODUCTS,
+  VITE_REPAIR_PRODUCTS,
 } = import.meta.env;
 
 // PARA EL APARTADO DE LOS PRODUCTOS PÚBLICOS
@@ -34,6 +35,17 @@ export const getSecurityProducts = async () => {
   try {
     const { data } = await axios.get(
       `${VITE_HOST}${VITE_ITEM_LAB_VIEW_SET}${VITE_SECURITY_PRODUCTS}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getRepairProducts = async () => {
+  try {
+    const { data } = await axios.get(
+      `${VITE_HOST}${VITE_ITEM_LAB_VIEW_SET}${VITE_REPAIR_PRODUCTS}`,
     );
     return data;
   } catch (error) {
