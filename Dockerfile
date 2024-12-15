@@ -44,4 +44,4 @@ RUN npm install -g serve
 EXPOSE 5173
 
 # Comando para ejecutar la aplicación
-CMD ["serve", "-s", "dist", "-l", "5173"];
+CMD ["serve", "-s", "dist", "-l", "5173"]
