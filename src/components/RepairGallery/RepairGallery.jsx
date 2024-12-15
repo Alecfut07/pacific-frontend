@@ -13,7 +13,6 @@ import {
   ArrowRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-// Falta agregar getRepairProducts API
 import { getRepairProducts } from "../../services/ItemLabService";
 import RepairProduct from "../RepairProduct/RepairProduct";
 import ImageModal from "../ImageModal/ImageModal";
