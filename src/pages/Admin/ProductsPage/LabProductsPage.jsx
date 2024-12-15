@@ -26,6 +26,7 @@ import {
   getLabProducts,
   getIndustrialProducts,
   getSecurityProducts,
+  getRepairProducts,
   getItemsLab,
   getItemLab,
   deleteItemLab,
@@ -188,6 +189,8 @@ function LabProductsPage() {
           items = await getSecurityProducts();
         } else if (selectedCategory === "Herramientas") {
           items = await getIndustrialProducts();
+        } else if (selectedCategory === "Refaccciones") {
+          items = await getRepairProducts();
         } else {
           items = await getItemsLab();
         }
@@ -301,6 +304,7 @@ function LabProductsPage() {
                 <option value="Quimicos">Quimicos</option>
                 <option value="Seguridad">Seguridad</option>
                 <option value="Herramientas">Herramientas</option>
+                <option value="Refaccciones">Refacciones</option>
               </select>
             </div>
           </div>

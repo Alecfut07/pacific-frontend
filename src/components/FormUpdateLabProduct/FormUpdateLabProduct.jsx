@@ -163,6 +163,7 @@ function FormUpdateLabProduct({ handleOpen, labProduct, updateTableData }) {
               <option value="Quimicos">Quimicos</option>
               <option value="Seguridad">Seguridad</option>
               <option value="Herramientas">Herramientas</option>
+              <option value="Refaccciones">Refacciones</option>
             </Field>
           </div>
           <div className="mb-4">
