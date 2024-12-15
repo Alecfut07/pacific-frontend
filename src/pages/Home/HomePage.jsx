@@ -1,4 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Card, CardHeader, CardBody } from "@material-tailwind/react";
 import HomePageTopBackground from "../../images/Home/HomePageBackgroundTop.png";
 import LabBackgroundBottom from "../../images/Home/HomePageLabBackgroundBottom.png";
@@ -14,12 +19,28 @@ import ClickHereAnimation from "../../images/Home/ClickHereAnimation.gif";
 function HomePage() {
   const navigate = useNavigate();
 
-  const navigateToLabInventory = () => navigate("/productos-quimicos");
-
-  const navigateToIndustrialTools = () =>
-    navigate("/herramientas-industriales");
-
-  const navigateToIndustrialSecurity = () => navigate("/seguridad-industrial");
+  const cardsData = [
+    {
+      title: "Productos Químicos",
+      image: LabIconAnimation,
+      onClick: () => navigate("/productos-quimicos"),
+    },
+    {
+      title: "Herramientas Industriales",
+      image: IndustrialIconAnimation,
+      onClick: () => navigate("/herramientas-industriales"),
+    },
+    {
+      title: "Seguridad Industrial",
+      image: SecurityIconAnimation,
+      onClick: () => navigate("/seguridad-industrial"),
+    },
+    {
+      title: "Refacciones",
+      image: "",
+      onClick: () => navigate("/refacciones"),
+    },
+  ];
 
   return (
     <div className="relative flex h-screen flex-col items-center justify-center">
@@ -77,107 +98,51 @@ function HomePage() {
         </div>
       </div>
       <div className="container mx-auto px-4 pb-32">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-center">
-          <div className="col-span-1">
-            <Card
-              className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4"
-              onClick={navigateToLabInventory}
-            >
-              {/* mx-auto max-w-xs cursor-pointer p-2 transition-opacity hover:opacity-50 md:p-4 */}
-              <CardHeader floated={false} shadow={false} className="md:p-4">
-                {/* p-2 md:p-4 */}
-                <p className="text-center text-lg font-bold text-black md:text-2xl">
-                  Productos Químicos
-                </p>
-              </CardHeader>
-              <CardBody className="p-2 md:p-4">
-                <img
-                  className="h-24 w-full object-contain md:h-40"
-                  src={LabIconAnimation}
-                  alt="LabIconAnimation"
-                />
-              </CardBody>
-              <div className="flex justify-end p-2 md:p-4">
-                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2 md:p-4">
-                  <span className="mr-2 flex items-center text-sm font-bold text-black md:text-base">
-                    CLIC
-                  </span>
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={30}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="swiper-container"
+        >
+          {cardsData.map((card, index) => (
+            <SwiperSlide key={index}>
+              <Card
+                className="max-w-ws mx-auto cursor-pointer transition-opacity hover:opacity-50"
+                onClick={() => card.onClick()}
+              >
+                <CardHeader floated={false} shadow={false} className="p-4">
+                  <p>{card.title}</p>
+                </CardHeader>
+                <CardBody className="p-4">
                   <img
-                    className="h-6 w-6 md:h-12 md:w-12"
-                    src={ClickHereAnimation}
-                    alt="ClickHereAnimation"
+                    className="h-24 w-full object-contain md:h-40"
+                    src={card.image}
+                    alt={card.title}
                   />
+                </CardBody>
+                <div className="flex justify-end p-4">
+                  <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2 md:p-4">
+                    <span className="mr-2 flex items-center text-sm font-bold text-black md:text-base">
+                      CLIC
+                    </span>
+                    <img
+                      className="h-6 w-6 md:h-12 md:w-12"
+                      src={ClickHereAnimation}
+                      alt="ClickHereAnimation"
+                    />
+                  </div>
                 </div>
-              </div>
-            </Card>
-          </div>
-          <div className="col-span-1">
-            <Card
-              className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4"
-              onClick={navigateToIndustrialTools}
-            >
-              {/* mx-auto max-w-xs cursor-pointer p-2 transition-opacity hover:opacity-50 md:p-4 */}
-              <CardHeader floated={false} shadow={false} className="md:p-4">
-                {/* p-2 md:p-4 */}
-                <p className="text-center text-lg font-bold text-black md:text-2xl">
-                  Herramientas Industriales
-                </p>
-              </CardHeader>
-              <CardBody className="p-2 md:p-4">
-                <img
-                  className="h-24 w-full object-contain md:h-40"
-                  src={IndustrialIconAnimation}
-                  alt="IndustrialIconAnimation"
-                />
-              </CardBody>
-              <div className="flex justify-end p-2 md:p-4">
-                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2 md:p-4">
-                  <span className="mr-2 flex items-center text-sm font-bold text-black md:text-base">
-                    CLIC
-                  </span>
-                  <img
-                    className="h-6 w-6 md:h-12 md:w-12"
-                    src={ClickHereAnimation}
-                    alt="ClickHereAnimation"
-                  />
-                </div>
-              </div>
-            </Card>
-          </div>
-          <div className="col-span-1">
-            <Card
-              className="mx-auto max-w-xs cursor-pointer transition-opacity hover:opacity-50 md:p-4"
-              onClick={navigateToIndustrialSecurity}
-            >
-              {/* mx-auto max-w-xs cursor-pointer p-2 transition-opacity hover:opacity-50 md:p-4 */}
-              <CardHeader floated={false} shadow={false} className="md:p-4">
-                {/* p-2 md:p-4 */}
-                <p className="text-center text-lg font-bold text-black md:text-2xl">
-                  Seguridad Industrial
-                </p>
-              </CardHeader>
-              <CardBody className="p-2 md:p-4">
-                <img
-                  className="h-24 w-full object-contain md:h-40"
-                  src={SecurityIconAnimation}
-                  alt="SecurityIconAnimation"
-                />
-              </CardBody>
-              <div className="flex justify-end p-2 md:p-4">
-                <div className="flex items-center justify-between rounded-full bg-custom-yellow-color p-2 md:p-4">
-                  <span className="mr-2 flex items-center text-sm font-bold text-black md:text-base">
-                    CLIC
-                  </span>
-                  <img
-                    className="h-6 w-6 md:h-12 md:w-12"
-                    src={ClickHereAnimation}
-                    alt="ClickHereAnimation"
-                  />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
