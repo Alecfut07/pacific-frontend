@@ -14,6 +14,7 @@ import SecurityBackgroundBottom2 from "../../images/Home/HomePageSecurityBackgro
 import LabIconAnimation from "../../images/IndustrialInventory/IndustrialIventoryPage/LabIconAnimation.gif";
 import IndustrialIconAnimation from "../../images/IndustrialInventory/IndustrialIventoryPage/IndustrialIconAnimation.gif";
 import SecurityIconAnimation from "../../images/IndustrialInventory/IndustrialIventoryPage/SecurityIconAnimation.gif";
+import RepairIconAnimation from "../../images/Repair/RepairIconAnimation.gif";
 import ClickHereAnimation from "../../images/Home/ClickHereAnimation.gif";
 
 function HomePage() {
@@ -37,7 +38,7 @@ function HomePage() {
     },
     {
       title: "Refacciones",
-      image: "",
+      image: RepairIconAnimation,
       onClick: () => navigate("/refacciones"),
     },
   ];
