@@ -118,7 +118,9 @@ function HomePage() {
                 onClick={() => card.onClick()}
               >
                 <CardHeader floated={false} shadow={false} className="p-4">
-                  <p>{card.title}</p>
+                  <p className="text-center text-lg font-bold text-black md:text-2xl">
+                    {card.title}
+                  </p>
                 </CardHeader>
                 <CardBody className="p-4">
                   <img
