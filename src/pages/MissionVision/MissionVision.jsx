@@ -12,22 +12,27 @@ function MissionVision() {
   return (
     <div className="mission-gradient-background flex h-screen items-center justify-center p-4 md:p-0">
       <div className="flex w-full flex-col items-center justify-center md:w-3/4 md:flex-row">
+        {/* Imagen del logo */}
         <div className="mb-4 w-full md:mb-0 md:w-1/2">
           <img
             src={CompanyLogo}
-            alt="Mission"
+            alt="Logo de la empresa"
             className="mx-auto h-auto max-w-full"
           />
         </div>
+
+        {/* Contenido de Misión y Visión */}
         <div className="w-full md:w-1/2">
-          <div>
-            <Card className="bg-custom-yellow-color">
+          {/* Misión */}
+          <section aria-labelledby="mision">
+            <Card className="mb-4 bg-custom-yellow-color shadow-lg">
               <CardHeader
                 floated={false}
                 shadow={false}
                 className="bg-custom-yellow-color"
               >
                 <Typography
+                  id="mision"
                   variant="h4"
                   color="blue-gray"
                   className="mb-4 text-center font-bold md:text-left"
@@ -49,15 +54,18 @@ function MissionVision() {
                 </Typography>
               </CardBody>
             </Card>
-          </div>
-          <div className="mt-4">
-            <Card className="bg-custom-yellow-color">
+          </section>
+
+          {/* Visión */}
+          <section aria-labelledby="vision">
+            <Card className="bg-custom-yellow-color shadow-lg">
               <CardHeader
                 floated={false}
                 shadow={false}
                 className="bg-custom-yellow-color"
               >
                 <Typography
+                  id="vision"
                   variant="h4"
                   color="blue-gray"
                   className="mb-4 text-center font-bold md:text-left"
@@ -77,7 +85,7 @@ function MissionVision() {
                 </Typography>
               </CardBody>
             </Card>
-          </div>
+          </section>
         </div>
       </div>
     </div>
