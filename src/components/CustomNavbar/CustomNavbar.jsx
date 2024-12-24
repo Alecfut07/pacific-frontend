@@ -30,7 +30,13 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
 
   const navigateToHome = () => navigate("/");
 
+  const navigateToAboutUs = () => navigate("/acerca-de-nosotros");
+
   const navigateToMissionAndVision = () => navigate("/misión-&-visión");
+
+  const navigateToOurClients = () => navigate("/nuestros-clientes");
+
+  const navigateToServices = () => navigate("/servicios");
 
   const navigateToLogIn = () => navigate("/iniciar-sesion");
   const navigateToSignUp = () => navigate("/registrarse");
@@ -57,6 +63,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
         variant="h6"
         color="blue-gray"
         className="p-1 font-normal hover:underline"
+        onClick={navigateToAboutUs}
       >
         Acerca de nosotros
       </Typography>
@@ -74,6 +81,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
         variant="h6"
         color="blue-gray"
         className="p-1 font-normal hover:underline"
+        onClick={navigateToOurClients}
       >
         Nuestros clientes
       </Typography>
@@ -82,6 +90,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
         variant="h6"
         color="blue-gray"
         className="p-1 font-normal hover:underline"
+        onClick={navigateToServices}
       >
         Servicios
       </Typography>

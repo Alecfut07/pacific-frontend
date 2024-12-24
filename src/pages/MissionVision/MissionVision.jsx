@@ -41,10 +41,11 @@ function MissionVision() {
                   color="blue-gray"
                   className="text-justify text-sm md:text-base"
                 >
-                  Dar a nuestros clientes la mejor experiencia de servicio
-                  basados en una estrategia confiable de calidad con personal
-                  altamente competitivo y certificados que brindaran atención
-                  que superará tus expectativas.
+                  Delta express service es una compañía dedicada a la venta de
+                  productos mediante e-commerce, en el cual tendrás a tu
+                  disposición una gran variedad de ellos en su plataforma
+                  virtual de gran alcance, brindando un gran soporte al sector
+                  industrial local de Tijuana.
                 </Typography>
               </CardBody>
             </Card>

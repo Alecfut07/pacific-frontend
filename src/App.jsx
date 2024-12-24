@@ -11,7 +11,10 @@ import LabInventoryPage from "./pages/Lab/LabInventoryPage/LabInventoryPage";
 import IndustrialInventoryPage from "./pages/Industrial/IndustrialInventoryPage/IndustrialInventoryPage";
 import IndustrialSecurityPage from "./pages/IndustrialSecurity/IndustrialSecurityPage";
 import RepairPage from "./pages/Repair/RepairPage";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import MissionVision from "./pages/MissionVision/MissionVision";
+import OurClients from "./pages/OurClients/OurClients";
+import Services from "./pages/Services/Services";
 import LoginPage from "./pages/Login/LoginPage/LoginPage";
 import LabProductsPage from "./pages/Admin/ProductsPage/LabProductsPage";
 import QuotesPage from "./pages/Admin/QuotesPage/QuotesPage";
@@ -322,7 +325,10 @@ function App() {
           path="/refacciones"
           element={<RepairPage addToCart={addToCart} />}
         />
+        <Route path="/acerca-de-nosotros" element={<AboutUs />} />
         <Route path="/misión-&-visión" element={<MissionVision />} />
+        <Route path="/nuestros-clientes" element={<OurClients />} />
+        <Route path="/servicios" element={<Services />} />
         <Route path="/iniciar-sesion" element={<Login />} />
         <Route path="/registrarse" element={<Signup />} />
       </Routes>
