@@ -9,6 +9,7 @@ module.exports = withMT({
       colors: {
         "custom-box-table-body-color": "#f5dcb1",
         "custom-yellow-color": "#FFD700",
+        "custom-delta-color": "#F5E8A2",
       },
     },
   },
