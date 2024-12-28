@@ -149,7 +149,7 @@ function HomePage() {
 
       {/* Cuarta división: Swiper superpuesto */}
       <div className="absolute z-20 w-full max-w-5xl px-4">
-        <div className="mx-auto w-full rounded-lg bg-white/80 p-6 shadow-lg backdrop-blur-md">
+        <div className="glassmorphism-main-container mx-auto w-full rounded-lg p-6 shadow-lg backdrop-blur-md">
           <Swiper
             modules={[Navigation, Pagination]}
             spaceBetween={30}
