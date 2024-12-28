@@ -16,7 +16,7 @@ import {
 } from "@material-tailwind/react";
 import { ShoppingCartIcon, UserIcon } from "@heroicons/react/24/solid";
 import AuthContext from "../../context/AuthContext";
-import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
+import CompanyLogo from "../../images/HomeV2/DeltaLogo.png";
 
 function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
   const { isLoggedIn, logout, isStaff } = useContext(AuthContext);
@@ -112,7 +112,7 @@ function CustomNavbar({ openDrawerTop, totalQuantitySum }) {
             className="mr-4 cursor-pointer py-1.5 font-medium"
             onClick={navigateToHome}
           >
-            PACIFIC
+            DELTA
           </Typography>
         </div>
         <div className="flex items-center gap-4">
