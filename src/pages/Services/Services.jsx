@@ -4,7 +4,7 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
+import CompanyLogo from "../../images/HomeV2/DeltaLogo.png";
 
 import "./Services.css";
 
@@ -23,11 +23,11 @@ function Services() {
 
         {/* Tarjeta de servicios */}
         <div className="w-full md:w-1/2">
-          <Card className="bg-custom-yellow-color shadow-lg">
+          <Card className="bg-custom-delta-color shadow-lg">
             <CardHeader
               floated={false}
               shadow={false}
-              className="bg-custom-yellow-color p-4"
+              className="bg-custom-delta-color p-4"
             >
               <Typography
                 variant="h4"

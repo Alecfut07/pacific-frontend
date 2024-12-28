@@ -4,7 +4,7 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
+import CompanyLogo from "../../images/HomeV2/DeltaLogo.png";
 
 import "./AboutUs.css";
 
@@ -23,11 +23,11 @@ function AboutUs() {
 
         {/* Tarjeta de "Acerca de nosotros" */}
         <div className="w-full md:w-1/2">
-          <Card className="rounded-lg bg-custom-yellow-color shadow-lg">
+          <Card className="bg-custom-delta-color rounded-lg shadow-lg">
             <CardHeader
               floated={false}
               shadow={false}
-              className="rounded-t-lg bg-custom-yellow-color p-4"
+              className="bg-custom-delta-color rounded-t-lg p-4"
             >
               <Typography
                 variant="h4"

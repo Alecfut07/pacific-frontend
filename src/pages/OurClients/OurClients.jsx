@@ -4,7 +4,7 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
+import CompanyLogo from "../../images/HomeV2/DeltaLogo.png";
 
 import "./OurClients.css";
 
@@ -23,11 +23,11 @@ function OurClients() {
 
         {/* Tarjeta de "Nuestros Clientes" */}
         <div className="w-full md:w-1/2">
-          <Card className="rounded-lg bg-custom-yellow-color shadow-lg">
+          <Card className="bg-custom-delta-color rounded-lg shadow-lg">
             <CardHeader
               floated={false}
               shadow={false}
-              className="rounded-t-lg bg-custom-yellow-color p-4"
+              className="bg-custom-delta-color rounded-t-lg p-4"
             >
               <Typography
                 variant="h4"
@@ -47,7 +47,7 @@ function OurClients() {
                 eso, Delta Express Service cuenta con una diversa gama de
                 productos dirigidos a los siguientes sectores:
               </Typography>
-              <ul className="list-none pl-0">
+              <ul className="list-decimal pl-5">
                 {[
                   "Industria química",
                   "Industria automotriz",
@@ -65,7 +65,7 @@ function OurClients() {
                       color="blue-gray"
                       className="text-justify"
                     >
-                      {sector}
+                      {`${index + 1}. ${sector}`}
                     </Typography>
                   </li>
                 ))}

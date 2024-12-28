@@ -4,20 +4,20 @@ import {
   CardBody,
   Typography,
 } from "@material-tailwind/react";
-import CompanyLogo from "../../images/Quote/WithoutBackground/EmpresaLogo.png";
+import CompanyLogo from "../../images/HomeV2/DeltaLogo.png";
 
 import "./MissionVision.css";
 
 function MissionVision() {
   return (
-    <div className="mission-gradient-background flex h-screen items-center justify-center p-4 md:p-0">
-      <div className="flex w-full flex-col items-center justify-center md:w-3/4 md:flex-row">
+    <div className="mission-gradient-background flex h-screen items-center justify-center p-6 md:p-10">
+      <div className="flex w-full max-w-5xl flex-col items-center justify-center gap-6 md:w-3/4 md:flex-row">
         {/* Imagen del logo */}
         <div className="mb-4 w-full md:mb-0 md:w-1/2">
           <img
             src={CompanyLogo}
             alt="Logo de la empresa"
-            className="mx-auto h-auto max-w-full"
+            className="h-auto w-3/4 max-w-sm md:w-full"
           />
         </div>
 
@@ -25,11 +25,11 @@ function MissionVision() {
         <div className="w-full md:w-1/2">
           {/* Misión */}
           <section aria-labelledby="mision">
-            <Card className="mb-4 bg-custom-yellow-color shadow-lg">
+            <Card className="bg-custom-delta-color mb-4 shadow-lg">
               <CardHeader
                 floated={false}
                 shadow={false}
-                className="bg-custom-yellow-color"
+                className="bg-custom-delta-color"
               >
                 <Typography
                   id="mision"
@@ -58,11 +58,11 @@ function MissionVision() {
 
           {/* Visión */}
           <section aria-labelledby="vision">
-            <Card className="bg-custom-yellow-color shadow-lg">
+            <Card className="bg-custom-delta-color shadow-lg">
               <CardHeader
                 floated={false}
                 shadow={false}
-                className="bg-custom-yellow-color"
+                className="bg-custom-delta-color"
               >
                 <Typography
                   id="vision"
